@@ -43,4 +43,9 @@
     <Folder Include="AppStart\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StatusGeneric\StatusGeneric.csproj" />
+    <ProjectReference Include="..\UIOrchestrator.Core\UIOrchestrator.Core.csproj" />
+  </ItemGroup>
+
 </Project>
