@@ -1,0 +1,12 @@
+C:\Users\Peter\Documents\sources\repos\UIOrchestratorDemo\UIOrchestrator.Core\bin\Debug\net7.0\UIOrchestrator.Core.deps.json
+C:\Users\Peter\Documents\sources\repos\UIOrchestratorDemo\UIOrchestrator.Core\bin\Debug\net7.0\UIOrchestrator.Core.dll
+C:\Users\Peter\Documents\sources\repos\UIOrchestratorDemo\UIOrchestrator.Core\bin\Debug\net7.0\UIOrchestrator.Core.pdb
+C:\Users\Peter\Documents\sources\repos\UIOrchestratorDemo\UIOrchestrator.Core\obj\Debug\net7.0\UIOrchestrator.Core.csproj.AssemblyReference.cache
+C:\Users\Peter\Documents\sources\repos\UIOrchestratorDemo\UIOrchestrator.Core\obj\Debug\net7.0\UIOrchestrator.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Peter\Documents\sources\repos\UIOrchestratorDemo\UIOrchestrator.Core\obj\Debug\net7.0\UIOrchestrator.Core.AssemblyInfoInputs.cache
+C:\Users\Peter\Documents\sources\repos\UIOrchestratorDemo\UIOrchestrator.Core\obj\Debug\net7.0\UIOrchestrator.Core.AssemblyInfo.cs
+C:\Users\Peter\Documents\sources\repos\UIOrchestratorDemo\UIOrchestrator.Core\obj\Debug\net7.0\UIOrchestrator.Core.csproj.CoreCompileInputs.cache
+C:\Users\Peter\Documents\sources\repos\UIOrchestratorDemo\UIOrchestrator.Core\obj\Debug\net7.0\UIOrchestrator.Core.dll
+C:\Users\Peter\Documents\sources\repos\UIOrchestratorDemo\UIOrchestrator.Core\obj\Debug\net7.0\refint\UIOrchestrator.Core.dll
+C:\Users\Peter\Documents\sources\repos\UIOrchestratorDemo\UIOrchestrator.Core\obj\Debug\net7.0\UIOrchestrator.Core.pdb
+C:\Users\Peter\Documents\sources\repos\UIOrchestratorDemo\UIOrchestrator.Core\obj\Debug\net7.0\ref\UIOrchestrator.Core.dll
