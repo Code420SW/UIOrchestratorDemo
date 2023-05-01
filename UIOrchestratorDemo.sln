@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIOrchestrator.Server", "UIOrchestrator.Server.csproj", "{C54684AD-569A-4671-BFCC-E789F30220D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIOrchestrator.Server", "UIOrchestrator.Server\UIOrchestrator.Server.csproj", "{C54684AD-569A-4671-BFCC-E789F30220D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIOrchestrator.Core", "UIOrchestrator.Core\UIOrchestrator.Core.csproj", "{5516A2D6-FB63-4D55-A242-C652A75E526A}"
 EndProject
