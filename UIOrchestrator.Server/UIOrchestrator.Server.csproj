@@ -10,7 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.4.0" />
+    <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Syncfusion.Blazor" Version="20.4.0.38" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +37,10 @@
 
   <ItemGroup>
     <None Remove="UIOrchestrator.Core\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UIOrchestrator.Core\UIOrchestrator.Core.csproj" />
   </ItemGroup>
 
 </Project>
