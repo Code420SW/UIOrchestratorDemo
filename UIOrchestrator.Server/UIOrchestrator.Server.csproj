@@ -40,10 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UIOrchestrator.Core\UIOrchestrator.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="AppStart\" />
   </ItemGroup>
 
