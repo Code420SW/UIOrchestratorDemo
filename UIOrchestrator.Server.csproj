@@ -13,4 +13,26 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="UIOrchestrator.Core\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="UIOrchestrator.Core\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="UIOrchestrator.Core\obj\UIOrchestrator.Core.csproj.nuget.dgspec.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="UIOrchestrator.Core\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="UIOrchestrator.Core\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="UIOrchestrator.Core\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="UIOrchestrator.Core\**" />
+  </ItemGroup>
+
 </Project>
