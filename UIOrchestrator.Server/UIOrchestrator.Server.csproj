@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>54d06636-7e9b-476b-b1ae-7acc25d1d643</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
@@ -41,6 +41,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\UIOrchestrator.Core\UIOrchestrator.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AppStart\" />
   </ItemGroup>
 
 </Project>

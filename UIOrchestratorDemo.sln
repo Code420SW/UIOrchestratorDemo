@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIOrchestrator.Server", "UI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIOrchestrator.Core", "UIOrchestrator.Core\UIOrchestrator.Core.csproj", "{5516A2D6-FB63-4D55-A242-C652A75E526A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusGeneric", "StatusGeneric\StatusGeneric.csproj", "{98E37236-2BCF-40A2-BD0C-49EF7E34290C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5516A2D6-FB63-4D55-A242-C652A75E526A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5516A2D6-FB63-4D55-A242-C652A75E526A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5516A2D6-FB63-4D55-A242-C652A75E526A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E37236-2BCF-40A2-BD0C-49EF7E34290C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E37236-2BCF-40A2-BD0C-49EF7E34290C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E37236-2BCF-40A2-BD0C-49EF7E34290C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E37236-2BCF-40A2-BD0C-49EF7E34290C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
