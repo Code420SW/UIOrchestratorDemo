@@ -7,6 +7,7 @@
     <UserSecretsId>54d06636-7e9b-476b-b1ae-7acc25d1d643</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
+    <RootNamespace>Code420.UIOrchestrator.Server</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -41,6 +42,7 @@
 
   <ItemGroup>
     <Folder Include="AppStart\" />
+    <Folder Include="Code\Models\" />
   </ItemGroup>
 
   <ItemGroup>
