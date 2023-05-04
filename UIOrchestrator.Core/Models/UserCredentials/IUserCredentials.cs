@@ -25,7 +25,9 @@ public interface IUserCredentials
     bool HasPermission(string permission);
     void AddError(string errorMessage);
     void ClearErrors();
+#pragma warning disable CS8632
     void UpdateTenant(string? tenant = null);
+#pragma warning restore CS8632
     void CheckIfTokenRefreshNeeded(IStatusGeneric status);
     void LogoutUser();
 }

@@ -1,5 +1,4 @@
-﻿using Code420.CanXtracServer.MediatR.User;
-using Code420.StatusGeneric;
+﻿using Code420.StatusGeneric;
 using FluentValidation;
 using MediatR;
 using Code420.UIOrchestrator.Core.Models.AuthP;
@@ -27,12 +26,12 @@ namespace Code420.UIOrchestrator.Server.MediatR.User
         public UserLoginCommandHandler(IEnumerable<IValidator<LoginUserModel>> validators)
         {
             this.validators = validators;
+            //  Inject orchestrator, logging
         }
 
         /// <summary>
         /// Responsible for validating the passed <see cref="LoginUserModel"/> and, if valid,
-        /// invoking the <see cref="UserAuthenticationOrchestrator.LoginUser(LoginUserModel)"/>
-        /// method.
+        /// invoking the appropriate orchestrator method.
         /// </summary>
         /// <param name="request">
         /// </param>

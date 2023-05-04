@@ -16,7 +16,11 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
     internal sealed class MenuItemDefinitionsQueryHandler 
         : IRequestHandler<MenuItemDefinitionsQueryRequest, StatusGenericHandler<List<MenuItemDefinitionDto>>>
     {
-        public MenuItemDefinitionsQueryHandler() {}
+        // ReSharper disable once EmptyConstructor
+        public MenuItemDefinitionsQueryHandler()
+        {
+            //  Inject orchestrator, logging
+        }
 
         /// <summary>
         /// Responsible for retrieving the menu definitions from the repository.

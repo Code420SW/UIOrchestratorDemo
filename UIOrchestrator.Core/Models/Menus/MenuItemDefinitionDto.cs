@@ -25,7 +25,7 @@ namespace Code420.UIOrchestrator.Core.Models.Menus
         /// <summary>
         /// String value containing the relative path to the component loaded when the
         /// menu item is selected. The path is relative to the base path defined by the
-        /// <see cref="CanXtracConstants.OrchestratorTabBaseNamespace"/> constant.
+        /// <see cref="UIOrchestratorConstants.UIOrchestratorConstants.OrchestratorTabBaseNamespace"/> constant.
         /// Typically this is mapped to/from a persisted object (e.g., a MenuItemDefinition model).
         /// </summary>
         public string MenuItemComponentName { get; init; }
@@ -51,8 +51,9 @@ namespace Code420.UIOrchestrator.Core.Models.Menus
         /// <remarks>
         /// This property is calculated by the consumer so as to prevent sending human-readable
         /// permission names across the wire.
-        /// The <see cref="PermissionConverter.ConvertPackedPermissionsToListOfPermissionsNames"/> extension method
-        /// is used to convert the <see cref="MenuItemPackedPermissions"/> property.
+        /// Typically some sort of extension method would be used used to convert the
+        /// <see cref="MenuItemPackedPermissions"/> property. For this demo, the
+        /// MenuItemDefinitionsQueryHandler will build this DTO.
         /// </remarks>
         public List<string> MenuItemRequiredPermissions { get; set; } = new();
 

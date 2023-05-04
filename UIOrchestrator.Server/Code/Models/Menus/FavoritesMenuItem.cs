@@ -1,4 +1,6 @@
-﻿namespace Code420.UIOrchestrator.Server.Code.Models.Menus
+﻿using Code420.UIOrchestrator.Core.Models.Menus;
+
+namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 {
     /// <summary>
     /// Model for menu items displayed in the Favorites Menu.

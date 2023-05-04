@@ -14,7 +14,6 @@ namespace Code420.UIOrchestrator.Core.Models.AuthP
         /// </summary>
         [Required(AllowEmptyStrings = false)]
         [EmailAddress]
-        // [MaxLength(256)]
         [MaxLength(UIOrchestratorConstants.UIOrchestratorConstants.EmailSize)]
         public string Email { get; set; }
 

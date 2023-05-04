@@ -35,7 +35,8 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
         /// Default value is null.
         /// <remarks>
         /// This list is derived from <see cref="MenuItemDefinitionDto.MenuItemPackedPermissions"/>
-        /// and is populated by the <see cref="MenuSystemService.GetMenuItemDefinitionsAsync"/>
+        /// and would typically be populated by the service responsible for retrieving the
+        /// menu definitions from a repository. 
         /// method.
         /// </remarks>
         /// </summary>
@@ -83,9 +84,7 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
         /// <see cref="MenuItemDefinitionDto"/> from which this object is constructed.
         /// </para>
         /// <para>
-        /// The property is present for future use. Will need to implement persistence
-        /// in the repository and update the <see cref="MenuItemDefinition"/> class and
-        /// <see cref="MenuItemDefinitionDto"/> model.
+        /// The property is present for future use.
         /// </para>
         /// </remarks>
         /// </summary>

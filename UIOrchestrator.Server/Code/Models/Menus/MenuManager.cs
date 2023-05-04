@@ -25,7 +25,7 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
     /// <para>
     /// The <see cref="MenuManager.rawMenu"/> is a non-hierarchical <see cref="List{T}"/>
     /// of <see cref="OrchestratorMenuItem"/> built from the <see cref="List{T}"/> of
-    /// <see cref="MenuItemDefinition"/> objects.
+    /// <see cref="MenuItemDefinitionDto"/> objects.
     /// </para>
     /// <para>
     /// The raw menu list is a flat structure that is converted to a hierarchical
@@ -174,15 +174,14 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
             menuItemCallbackHandler = callbackHandler;
 
         /// <summary>
-        /// Returns the <see cref="MenuItemDefinition.MenuItemText"/> associated with the
-        /// passed <see cref="OrchestratorMenuItem.ItemId"/> which is the same as the
-        /// <see cref="MenuItemDefinition.MenuItemId"/>.
+        /// Returns the <see cref="MenuItemDefinitionDto.MenuItemText"/> associated with the
+        /// passed <see cref="OrchestratorMenuItem.ItemId"/>.
         /// </summary>
         /// <param name="menuItemId">
-        /// String value containing the <see cref="MenuItemDefinition.MenuItemId"/>.
+        /// String value containing the <see cref="MenuItemDefinitionDto.MenuItemId"/>.
         /// </param>
         /// <returns>
-        /// String value containing the <see cref="MenuItemDefinition.MenuItemText"/>,
+        /// String value containing the <see cref="MenuItemDefinitionDto.MenuItemText"/>,
         /// or string.Empty if the menuItemId is not valid.
         /// </returns>
         public string GetMenuItemTextFromMenuItemId(string menuItemId)
@@ -192,15 +191,14 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
         }
 
         /// <summary>
-        /// Returns the <see cref="MenuItemDefinition.MenuItemCode"/> associated with the
-        /// passed <see cref="OrchestratorMenuItem.ItemId"/> which is the same as the
-        /// <see cref="MenuItemDefinition.MenuItemId"/>.
+        /// Returns the <see cref="MenuItemDefinitionDto.MenuItemCode"/> associated with the
+        /// passed <see cref="OrchestratorMenuItem.ItemId"/>.
         /// </summary>
         /// <param name="menuItemId">
-        /// String value containing the <see cref="MenuItemDefinition.MenuItemId"/>.
+        /// String value containing the <see cref="MenuItemDefinitionDto.MenuItemId"/>.
         /// </param>
         /// <returns>
-        /// String value containing the <see cref="MenuItemDefinition.MenuItemCode"/>,
+        /// String value containing the <see cref="MenuItemDefinitionDto.MenuItemCode"/>,
         /// or string.Empty if the menuItemId is not valid.
         /// </returns>
         public string GetMenuItemCodeFromMenuItemId(string menuItemId)
@@ -210,15 +208,15 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
         }
 
         /// <summary>
-        /// Returns the <see cref="MenuItemDefinition.MenuItemId"/> for the passed 
-        /// <see cref="MenuItemDefinition.MenuItemCode"/>.
+        /// Returns the <see cref="MenuItemDefinitionDto.MenuItemId"/> for the passed 
+        /// <see cref="MenuItemDefinitionDto.MenuItemCode"/>.
         /// </summary>
         /// <param name="menuItemCode">
-        /// String value containing the <see cref="MenuItemDefinition.MenuItemCode"/> to search for.
+        /// String value containing the <see cref="MenuItemDefinitionDto.MenuItemCode"/> to search for.
         /// </param>
         /// <returns>
-        /// String value containing the <see cref="MenuItemDefinition.MenuItemId"/> associated with
-        /// the passed <see cref="MenuItemDefinition.MenuItemCode"/>,
+        /// String value containing the <see cref="MenuItemDefinitionDto.MenuItemId"/> associated with
+        /// the passed <see cref="MenuItemDefinitionDto.MenuItemCode"/>,
         /// or string.Empty if the menuItemCode is not valid.
         /// </returns>
         public string GetMenuItemIdFromMenuItemCode(string menuItemCode)

@@ -1,7 +1,8 @@
 ﻿using Code420.StatusGeneric;
 using MediatR;
+using Code420.UIOrchestrator.Core.Models.UserCredentials;
 
-namespace Code420.CanXtracServer.MediatR.User
+namespace Code420.UIOrchestrator.Server.MediatR.User
 {
     /// <summary>
     /// MediatR <see cref="IRequestHandler{TRequest, TResponse}"/> for the
@@ -17,7 +18,11 @@ namespace Code420.CanXtracServer.MediatR.User
     /// </remarks>
     internal sealed class UserLogoutCommandHandler : IRequestHandler<UserLogoutCommandRequest, StatusGenericHandler>
     {
-        public UserLogoutCommandHandler() {}
+        // ReSharper disable once EmptyConstructor
+        public UserLogoutCommandHandler() 
+        {
+            // Inject orchestrator, logging
+        }
 
         public async Task<StatusGenericHandler> Handle(UserLogoutCommandRequest request, CancellationToken cancellationToken)
         {

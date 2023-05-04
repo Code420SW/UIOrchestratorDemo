@@ -4,5 +4,6 @@ using MediatR;
 
 namespace Code420.UIOrchestrator.Server.MediatR.User
 {
-    internal record UserLoginCommandRequest(LoginUserModel loginUserModel) : IRequest<StatusGenericHandler>;
+    internal record UserLoginCommandRequest(LoginUserModel loginUserModel) 
+        : IRequest<StatusGenericHandler>;
 }

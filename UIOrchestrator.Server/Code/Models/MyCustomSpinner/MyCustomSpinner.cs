@@ -37,7 +37,7 @@ namespace Code420.UIOrchestrator.Server.Code.Models.MyCustomSpinner
         /// One of the <see cref="CustomSpinners"/> enum values indicating which
         /// of the predefined custom spinners is instantiated.
         /// </param>
-        /// <param name="width">
+        /// <param name="height">
         /// String value containing the desired height of the custom spinner.
         /// It is assumed the height is in the form of a CSS size style (e.g., 250px)
         /// </param>
