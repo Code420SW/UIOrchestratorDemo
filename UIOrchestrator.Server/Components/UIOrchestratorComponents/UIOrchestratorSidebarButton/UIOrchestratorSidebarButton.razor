@@ -1,0 +1,24 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorSidebarButton
+
+@using Code420.UIOrchestrator.Server.Components.BaseComponents.IconButtonBase
+
+<IconButtonBase @ref=@iconButton
+
+                CssClass="button__sidebar-toggle"
+                IconCss=@currentIconCss
+                IconFontColor="var(--button-std-icon__normal--font-color)"
+                ButtonNormalBackgroundColor="var(--button-std__normal--background-color)"
+                ButtonNormalBorder="2px solid var(--button-std__normal--border-color)"
+                ButtonHoverBackgroundColor="var(--button-std__active--background-color)"
+                ButtonHoverBorder="2px solid var(--button-std__active--border-color)"
+                ButtonActiveBackgroundColor="var(--button-std__active--background-color)"
+                ButtonActiveBorderColor="var(--button-std__active--border-color)"
+                ButtonHeight="30px"
+                ButtonWidth="30px"
+                HoverScale=1.1m
+                Margin="3px auto"
+
+                OnClick=@ButtonClickHandler
+                >
+
+</IconButtonBase>

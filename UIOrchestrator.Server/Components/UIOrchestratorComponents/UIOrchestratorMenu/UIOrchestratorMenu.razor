@@ -1,0 +1,79 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorMenu
+
+@using Syncfusion.Blazor.Navigations
+@using Code420.UIOrchestrator.Server.Code.Models.Menus
+@using Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
+
+<MenuBase   @ref=@menubase
+            TValue=@OrchestratorMenuItem
+            Items=@OrchestratorRef.SidebarMenuItems
+            Orientation=Orientation.Vertical
+            ShowItemOnClick=false
+            Target=".page__main-sidebar"
+
+            ItemSelected=@ItemSelectedHandler
+
+            CssClass=@menuCssClass
+
+            MenuFontColor="var(--vmenu__item-normal--font-color)"
+            MenuBackgroundColor="var(--vmenu__item-normal--background-color)"
+            MenuMargin="4px 0px 0px 0px"
+            MenuIconFontColor="var(--vmenu__icon--font-color)"
+            MenuCaretFontColor="var(--vmenu__caret--font-color)"
+            SeparatorBorder="1px solid var(--vmenu__separator--border-color)"
+            MenuItemSelectedFontColor="var(--vmenu__item-active--font-color)"
+            MenuItemSelectedBackgroundColor="var(--vmenu__item-active--background-color)"
+            MenuPopupBorder="2px solid var(--vmenu__popup--border-color)"
+            MenuPopupFontColor="var(--vmenu__popup--font-color)"
+            MenuPopupBackgroundColor="var(--vmenu__popup--background-color)"
+            MenuPopupLeftMargin="-4px"
+            >
+
+    @* Inject as ChildContent in MenuBase *@
+    <MenuFieldSettings  Text=@nameof(OrchestratorMenuItem.MenuText)
+                        Children=@nameof(OrchestratorMenuItem.SubMenu)
+                        IconCss=@nameof(OrchestratorMenuItem.IconCss)
+                        ItemId=@nameof(OrchestratorMenuItem.ItemId)
+                        ParentId=@nameof(OrchestratorMenuItem.ParentId)
+                        Disabled=@nameof(OrchestratorMenuItem.IsDisabled)
+                        Hidden=@nameof(OrchestratorMenuItem.IsHidden)
+                        Separator=@nameof(OrchestratorMenuItem.IsSeparator)
+                        Url=@nameof(OrchestratorMenuItem.Url)
+                        HtmlAttributes=@nameof(OrchestratorMenuItem.HtmlAttributes)
+                        >
+    </MenuFieldSettings>
+
+</MenuBase>
+
+@* 
+    Need to set some custom styling to handle appearance when the parent Sidebar is opened/closed.
+    When the Sidebar is open: the menu text and menu caret are displayed
+    When the Sidebar is closed: the menu text and menu caret are not displayed
+*@
+<style>
+
+    @* Set styling for the Menu when the Sidebar is in docked (closed) state. *@
+    @(masterCssSelector) ul .e-menu-item {
+        width: @DockedMenuWidth;
+        line-height: 1.5;
+    }
+
+    @* Set styling for Menu Icons when the Sidebar is in the docked (closed) state. *@
+    @(masterCssSelector) ul .e-menu-item .e-menu-icon {
+        font-size: @DockedIconFontSize;
+        padding-left: 3px;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    @* Set the styling for the Menu Item's carets when the Sidebar is in the docked (closed) state. *@
+    @(masterCssSelector) ul .e-menu-item .e-caret {
+        display: none;
+    }
+
+    @* Set the styling for the Menu Item's text when the Sidebar is in the docked (closed) state. *@
+    @(masterCssSelector) ul.e-menu.e-menu-parent.e-vertical li {
+        font-size: 0;
+    }
+
+</style>

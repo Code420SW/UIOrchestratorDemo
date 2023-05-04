@@ -1,0 +1,32 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorSidebar
+
+@using Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
+@using Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorMenu
+@using Syncfusion.Blazor.Navigations
+
+<SidebarBase    @ref=@sidebarbase
+                IsOpen=@isOpen
+                Target=".page__main"
+                Type=SidebarType.Push
+                
+                CssClass=@sidebarCssClass
+                CssId="orchestrator-sidebar"
+                HtmlAttributes=@sidebarHtmlAttributes
+                Width="175px"              
+                ZIndex=1
+                
+                SidebarBorderWidth="2px"
+                SidebarBorderColor="var(--sidebar__border--color)"
+                SidebarBackgroundColor="var(--sidebar--bg)"
+                BackdropBackgroundColor="var(--sidebar__backdrop--bg)"
+                >
+
+    <ChildContent>
+        <UIOrchestratorMenu @ref=@menu 
+                            OrchestratorRef=@OrchestratorRef 
+                            DockedIconFontSize="18px"
+                            SidebarCssClass=@sidebarCssClass
+                            />
+    </ChildContent>
+
+</SidebarBase>

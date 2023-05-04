@@ -1,0 +1,121 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
+
+@using Syncfusion.Blazor.Navigations
+
+@typeparam TValue
+
+<SfMenu     @ref=@menu
+            TValue=@TValue
+            EnableScrolling=@EnableScrolling
+            HamburgerMode=@HamburgerMode
+            Items=@Items
+            Orientation=@Orientation
+            ShowItemOnClick=@ShowItemOnClick
+            Title=@Title
+            
+            CssClass=@CssClass
+            Target=@Target
+            >
+    @* Inject the <MenuFieldSettings>, <MenuTemplates>/<Template> and/or <MenuItems>/<MenuItem> as ChildContent *@
+    @ChildContent
+
+    <MenuEvents TValue=@TValue
+                Closed=@Closed
+                Created=@Created
+                ItemSelected=@ItemSelected
+                OnClose=@OnClose
+                OnItemRender=@OnItemRender
+                OnOpen=@OnOpen
+                Opened=@Opened
+                >
+    </MenuEvents>
+
+</SfMenu>
+
+
+<style>
+
+    /* Set the styling for all Menu container children */
+    @(masterCssSelector) * {
+        box-sizing: border-box;
+    }
+
+    /* Set the styling for the Menu Items */
+    @(masterCssSelector) .e-menu-parent .e-menu-item:not(.e-separator) {
+        height: @MenuItemHeight;
+        line-height: @MenuItemLineHeight;
+        padding: @MenuItemPadding;
+    }
+
+    /* Set the styling for the Menu Items Icons */
+    @(masterCssSelector) .e-menu-parent .e-menu-item .e-menu-icon {
+        color: @MenuIconFontColor;
+        font-size: @MenuIconFontSize;
+        height: @MenuIconHeight;
+        line-height: @MenuIconLineHeight;
+        width: @MenuIconWidth;
+        text-align: @MenuIconTextAlign;
+        margin-right: @MenuIconRightMargin;
+        vertical-align: @MenuIconVerticalAlign;
+    }
+
+    /* Set the styling for the Menu Items Caret  */
+    @(masterCssSelector) .e-menu-parent .e-menu-item .e-caret {
+        color: @MenuCaretFontColor;
+        font-size: @MenuCaretFontSize;
+        height: @MenuCaretHeight;
+        line-height: @MenuCaretLineHeight;
+        width: @MenuCaretWidth;
+        right: @MenuCaretRight;
+        top: @MenuCaretTop;
+    }
+
+    /* Set the styling for the Menu Items when selected */
+    @(masterCssSelector) .e-menu-parent .e-menu-item.e-selected,
+    @(masterCssSelector) .e-menu-parent .e-menu-item.e-focused {
+        color: @MenuItemSelectedFontColor;
+        background-color: @MenuItemSelectedBackgroundColor;
+    }
+
+    /* Set the styling for the Menu Separator */
+    @(masterCssSelector) .e-menu-parent .e-menu-item.e-separator {
+        border: @SeparatorBorder;
+        height: @SeparatorHeight;
+        margin: @SeparatorMargin;
+        line-height: @SeparatorLineHeight;
+    }
+
+    /* Set styling for popup menu container */
+    @(masterCssSelector):is(.e-menu-popup) ul {
+        color: @MenuPopupFontColor; 
+        font-size: @MenuPopupFontSize;
+        font-weight: @MenuPopupFontWeight;
+        background-color: @MenuPopupBackgroundColor;
+        border: @MenuPopupBorder;     
+        border-radius: @MenuPopupBorderRadius;  
+        box-shadow: @MenuPopupBoxShadow;
+        margin-left: @MenuPopupLeftMargin;
+    }
+
+    /* Set the styling for the Menu wrapper */
+    @(masterCssSelector):not(.e-menu-popup) {
+        border: @MenuBorder;
+        border-radius: @MenuBorderRadius;
+        width: @MenuWidth;
+    }
+
+    /* Set the styling for the Menu */
+    @(masterCssSelector):not(.e-menu-popup) .e-menu.e-menu-parent.e-vertical,
+    @(masterCssSelector):not(.e-menu-popup) .e-menu.e-menu-parent {
+        color: @MenuFontColor;
+        font-size: @MenuFontSize;
+        font-weight: @MenuFontWeight;
+        text-align: @MenuTextAlign;
+        background-color: @MenuBackgroundColor;
+        min-width: @MenuMinimumWidth;
+        margin: @MenuMargin;
+        padding: @MenuPadding;
+        width: @MenuWidth;
+    }
+
+</style>

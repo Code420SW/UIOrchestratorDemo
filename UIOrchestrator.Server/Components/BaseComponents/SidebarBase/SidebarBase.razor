@@ -1,0 +1,86 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
+
+@using Syncfusion.Blazor.Navigations
+
+<SfSidebar  @ref=@sidebar
+            Animate=@Animate
+            ChildContent=@ChildContent
+            CloseOnDocumentClick=@CloseOnDocumentClick
+            EnableDock=@EnableDock
+            EnableGestures=@EnableGestures
+            EnablePersistence=@EnablePersistence
+            IsOpen=@IsOpen
+            Position=@Position
+            ShowBackdrop=@ShowBackdrop
+            Target=@Target
+            Type=@Type
+
+            DockSize=@DockSize
+            HtmlAttributes=@HtmlAttributes
+            ID=@CssId
+            MediaQuery=@MediaQuery
+            Width=@Width
+            ZIndex=@ZIndex
+
+            Changed=@Changed
+            Created=@Created
+            Destroyed=@Destroyed
+            IsOpenChanged=@IsOpenChangedHandler
+            OnClose=@OnClose
+            OnOpen=@OnOpen
+            >
+
+</SfSidebar>
+
+
+<style>
+
+    /* Set the styling for all children */
+    @(masterCssSelector) * {
+        box-sizing: border-box;
+    }
+
+    /* Set the styling for the Sidebar element */
+    @(masterCssSelector) {
+        background: @SidebarBackgroundColor;
+        overflow: hidden;
+    }
+
+
+    /* Set the styling for the Right Sidebar element */
+    @(masterCssSelector).e-right {
+        border-left: @SidebarBorderWidth @SidebarBorderStyle @SidebarBorderColor;
+    }
+
+    /* Set the styling for the Right Sidebar transition */
+    @(masterCssSelector).e-right.e-close.e-dock {
+        transition: @SidebarCloseTransition;
+    }
+
+    @(masterCssSelector).e-right.e-open {
+        transition: @SidebarOpenTransition;
+    }
+
+
+    /* Set the styling for the Left Sidebar element */
+    @(masterCssSelector).e-left {
+        border-right: @SidebarBorderWidth @SidebarBorderStyle @SidebarBorderColor;
+    }
+
+    /* Set the styling for the Left Sidebar transition */
+    @(masterCssSelector).e-left.e-close.e-dock {
+        transition: @SidebarCloseTransition;
+    }
+
+    @(masterCssSelector).e-left.e-open {
+        transition: @SidebarOpenTransition;
+    }
+
+
+    /* Set the styling for the Sidebar overlay element */
+    @(masterCssSelector) ~ .e-content-animation > .e-sidebar-overlay {
+        background-color: @BackdropBackgroundColor;
+        opacity: @BackdropOpacity;
+    }
+
+</style>

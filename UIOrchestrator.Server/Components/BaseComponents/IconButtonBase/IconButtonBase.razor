@@ -1,0 +1,119 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.BaseComponents.IconButtonBase
+
+@using Syncfusion.Blazor.Buttons
+@using Code420.UIOrchestrator.Server.Code.Enums
+
+
+<SfButton @ref=@sfButton
+          Disabled=@IsDisabled
+          IsPrimary=@IsPrimary
+          IconPosition=@IconPosition
+          IsToggle=@IsToggle
+
+          OnClick=@OnClick
+          Created=@OnCreated
+
+          CssClass=@aggregatedCssClass
+          IconCss=@IconCss
+          />
+
+
+<style>
+
+    /* Applies to all icon buttons */
+    @(masterCssSelector)
+    {
+        text-align: center;
+        margin: @Margin;
+        padding: @Padding;
+        line-height: 1.0;
+        opacity: 1;
+        border: @ButtonNormalBorder;
+        @((HoverScale != 1.0m) ? "transition: transform 125ms ease-in-out;" : "")
+        @((ButtonNormalBackgroundColor != string.Empty) 
+            ? $"background-color: { ButtonNormalBackgroundColor };" 
+            : "")
+
+        @((ButtonHeight != string.Empty) 
+            ? $"height: { ButtonHeight };" 
+            : "")
+
+        @(
+        (IconButtonStyle == IconButtonStyle.Round) 
+            ? $"width: { ButtonHeight };" 
+            : ((ButtonWidth != string.Empty) ? $"width: { ButtonWidth };" : "")
+            )
+    }
+
+
+    /* To customize the button on focus */
+    @(masterCssSelector).e-icon-only:focus,
+    @(masterCssSelector).e-round:focus {
+    
+        @(
+        (ButtonHoverBackgroundColor != string.Empty) 
+            ? $"background-color: { ButtonNormalBackgroundColor };" 
+            : IsPrimary ? "" : "filter: hue-rotate(180deg);"
+        )
+    }
+
+
+    /* To customize the button on hover and focus-visible */
+    @(masterCssSelector).e-icon-only:hover,
+    @(masterCssSelector).e-icon-only:focus-visible,
+    @(masterCssSelector).e-round:hover,
+    @(masterCssSelector).e-round:focus-visible {
+        border: @ButtonHoverBorder;
+        @((HoverScale != 1.0m) 
+            ? $"transform: scale({ HoverScale });" 
+            : "")
+        @(
+        (ButtonHoverBackgroundColor != string.Empty) 
+            ? $"background-color: { ButtonHoverBackgroundColor };" 
+            : ((IsPrimary) ? "" : "filter: hue-rotate(180deg);")
+        )
+    }
+
+
+    /* To customize the button on active */
+    @(masterCssSelector).e-icon-only:active,
+    @(masterCssSelector).e-round:active {
+        border-color: @ButtonActiveBorderColor;
+        box-shadow: 0 0 0 .25rem @boxShadowRgba;
+        @((ButtonActiveBackgroundColor != string.Empty) 
+            ? $"background-color: { ButtonActiveBackgroundColor };" 
+            : $"background-color: { ButtonNormalBackgroundColor };")
+    }
+
+
+    /* To customize the button when disabled */
+    @(masterCssSelector).e-icon-only:disabled,
+    @(masterCssSelector).e-icon-only:disabled:hover,
+    @(masterCssSelector).e-round:disabled,
+    @(masterCssSelector).e-round:disabled:hover {
+        opacity: @ButtonDisabledOpacity;
+        filter: none;
+        border: @ButtonNormalBorder;
+        @((ButtonNormalBackgroundColor != string.Empty) 
+            ? $"background-color: { ButtonNormalBackgroundColor };" 
+            : "")
+    }
+
+
+    /* Applies to the span in all icon button types (square and round) */
+    @(masterCssSelector).e-round .e-btn-icon,
+    @(masterCssSelector).e-icon-only .e-btn-icon {
+        text-align: @IconFontTextAlign;
+        vertical-align: @IconFontVerticalAlign;
+        font-size: @IconFontSize;
+        color: @IconFontColor;
+        line-height: @IconFontLineHeight;
+    }
+
+
+    /* Applies to the span in all round icon buttons */
+    @(masterCssSelector).e-round .e-btn-icon {
+        top: 0;
+    }
+
+</style>

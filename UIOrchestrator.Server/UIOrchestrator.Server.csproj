@@ -43,6 +43,11 @@
   <ItemGroup>
     <Folder Include="AppStart\" />
     <Folder Include="Code\Models\" />
+    <Folder Include="Components\BaseComponents\" />
+    <Folder Include="Components\CompositeComponents\" />
+    <Folder Include="Components\CustomComponents\" />
+    <Folder Include="Components\UIOrchestratorComponents\" />
+    <Folder Include="Pages\UIOrchestrator\" />
   </ItemGroup>
 
   <ItemGroup>
