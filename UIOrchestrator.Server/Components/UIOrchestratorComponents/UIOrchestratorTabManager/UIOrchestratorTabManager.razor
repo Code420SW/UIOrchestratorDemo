@@ -1,0 +1,41 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager
+
+@using Code420.UIOrchestrator.Server.Components.BaseComponents.TabBase
+@using Syncfusion.Blazor.Navigations
+
+
+<TabBase    @ref=@tabbase
+            AllowDragAndDrop=true
+            EnablePersistence=true
+            TabItems=@tabItem
+            LoadOn="ContentLoad.Demand"
+            SelectedItem=@selectedItem
+            ShowCloseButton=true
+            
+            Removed=@RemovedHandler
+            Removing=@RemovingHandler
+            SelectedItemChanged=@SelectedItemChangedHandler
+            
+            CssClass="tab__manager"
+            CssId="id-tab__manager"
+            
+            TabHeaderBorderWidth="2px"
+            TabHeaderBorderColor="var(--tab__header-active-border--color)"
+            TabHeaderBackgroundColor="var(--tab__header--bg)"
+            TabHeaderInactiveHoveredBorderColor="var(--tab__header-inactive-border--color)"
+            TabHeaderExtraMargin="8px"
+
+            TabItemMargin="4px"
+            TabItemHeight="40px"
+
+            TabTextActiveFontColor="var(--tab__text-active--font-color)"
+            TabTextInactiveFontColor="var(--tab__text-inactive--font-color)"
+            TabTextActiveHoveredFontColor="var(--tab__text-active-hover--font-color)"
+            TabTextInactiveHoveredFontColor="var(--tab__text-inactive-hover--font-color)"
+
+            ScrollButtonNormalBackground="transparent"
+            ScrollButtonBorderRadius="4px"
+            ScrollButtonFontSize="12px"
+            >
+
+</TabBase>

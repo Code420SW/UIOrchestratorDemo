@@ -1,0 +1,342 @@
+﻿@namespace Code420.CanXtracServer.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.FavoritesMenuTab
+
+<div class="container__favorites-menu">
+    <div class="orbit">
+        <div class="center-image">
+            <img src=@OrchestratorRef.FavoritesMenu.PrimaryCenterImage alt="">
+            <img src=@OrchestratorRef.FavoritesMenu.SecondaryCenterImage alt="">
+        </div>
+        <ul>
+            @for(int i = 0; i < @OrchestratorRef.FavoritesMenu.MenuItemCount; i++)
+            {
+                int j = i;
+                <li @onclick="() => MyButtonClickHandler(j)">
+                    <div>
+                        <span class=@OrchestratorRef.FavoritesMenu.FavoritesMenuItems[j].IconCss></span>
+                    </div>
+                    <p>@OrchestratorRef.FavoritesMenu.FavoritesMenuItems[j].HoverText</p>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+
+<style>
+
+    /* CREDITS: https://github.com/kevin-powell/seamless-can-i-clone-it/blob/main/src/index.html */
+
+    /* Box sizing rules */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    /* Remove default margin and padding and reset fonts */
+    * {
+        margin: 0;
+        padding: 0;
+        font: inherit;
+    }
+
+    /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+    ul[role=list],
+    ol[role=list] {
+        list-style: none;
+    }
+
+    /* Set core body defaults */
+    body {
+      text-rendering: optimizeSpeed;
+      line-height: 1.5;
+    }
+
+    /* Make images easier to work with */
+    img,
+    picture {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+    @@media (prefers-reduced-motion: reduce) {
+        html:focus-within {
+            scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+            -webkit-animation-duration: 0.01ms !important;
+                    animation-duration: 0.01ms !important;
+            -webkit-animation-iteration-count: 1 !important;
+                    animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+
+
+    /* Styling for the main div element */
+    .container__favorites-menu { 
+        --throb-scale: @OrchestratorRef.FavoritesMenu.ThrobScale;
+        min-height: @OrchestratorRef.FavoritesMenu.MenuMinimumHeight;
+
+        font-family: system-ui;
+        display: grid;
+        place-content: center;
+        overflow: hidden;
+    }
+
+    /* Set styling for orbit animation */
+    .orbit {
+        --size: @OrchestratorRef.FavoritesMenu.CenterImageSize;
+        --speed: @OrchestratorRef.FavoritesMenu.MenuItemRotationSpeed;
+        --center-image-transition-speed: @OrchestratorRef.FavoritesMenu.CenterImageTransitionSpeed;
+    }
+
+    /* Set styling for the center image */
+    .orbit .center-image {
+        width: var(--size);
+        position: relative;
+        z-index: 10;
+    }
+    .orbit .center-image img {
+        position: absolute;
+        transition: opacity var(--center-image-transition-speed);
+        border-radius: 50%;
+    }
+    .orbit .center-image img:not(:first-child):hover {
+        opacity: 0;
+    }
+
+    /* Set styling for the menu items */
+    .orbit ul {
+        width: var(--size);
+        height: var(--size);
+
+        display: grid;
+        place-items: center;
+        position: relative;
+        list-style: none;
+        transform-origin: center;
+
+        -webkit-animation: orbit var(--speed) linear infinite;
+        animation: orbit var(--speed) linear infinite;
+    }
+
+    /* Set styling for menu item animations when hovered */
+    .orbit ul:hover {
+        -webkit-animation-play-state: paused;
+        animation-play-state: paused;
+        --orbit-play-state: paused;
+    }
+
+    /* Set styling for the menu items. */
+    .orbit li {
+        position: absolute;
+        width: @OrchestratorRef.FavoritesMenu.MenuItemSize;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        font-weight: 500;
+        text-align: center;
+        line-height: 1;
+        display: grid;
+        place-items: center;
+    }
+
+    /* Set styling for menu items throb delays. */
+    .orbit li:hover {
+        --throb-play-state: paused;
+    }
+    .orbit li:nth-child(1) {
+        --throb-delay: 0ms;
+    }
+    .orbit li:nth-child(2) {
+        --throb-delay: 500ms;
+    }
+    .orbit li:nth-child(3) {
+        --throb-delay: 1000ms;
+    }
+    .orbit li:nth-child(4) {
+        --throb-delay: 1500ms;
+    }
+    .orbit li:nth-child(5) {
+        --throb-delay: 2000ms;
+    }
+    .orbit li:nth-child(6) {
+        --throb-delay: 2500ms;
+    }
+    .orbit li:nth-child(7) {
+        --throb-delay: 3000ms;
+    }
+    .orbit li:nth-child(8) {
+        --throb-delay: 3500ms;
+    }
+
+    /* Set styling for the div and p elements for the menu items */
+    .orbit li > * {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        border-radius: inherit;
+        position: absolute;
+        padding: 0;
+        margin: 0;
+
+        animation: orbit var(--speed) linear reverse infinite,throb 1s var(--throb-delay) ease-in-out infinite alternate;
+        -webkit-animation-play-state: var(--orbit-play-state, running),var(--throb-play-state, running);
+        animation-play-state: var(--orbit-play-state, running), var(--throb-play-state, running);
+    }
+
+
+    /*
+        Set styling for the menu item background color. 
+        The --icon-bg is set below in the orbit li:nth-child(x) sections
+    */
+    .orbit li > div {
+        background-color: var(--icon-bg);
+    }
+
+
+    /*  Set the styling for the icon element of the menu item div */
+    .orbit .oi:empty::before {
+        font-size: var(--icon-font-size);
+        color: var(--icon-fg);
+    }
+
+    /*
+        Set the styling for the menu item p element 
+        Including the styling when hovered
+    */
+    .orbit li > p {
+        background: var(--text-bg);
+        font-size: var(--text-font-size);
+        color: var(--text-fg);
+        transition: opacity @OrchestratorRef.FavoritesMenu.MenuItemTransitionSpeed;
+        opacity: 0;
+    }
+    .orbit li:hover > p {
+        opacity: 1;
+    }
+
+    /*
+        Set the styling for the eight menu items
+    */
+    .orbit li:nth-child(1) {
+        --icon-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[0].MenuItemIconBackgroundColor;
+        --text-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[0].MenuItemTextBackgroundColor;
+        --icon-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[0].IconFontSize;
+        --icon-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[0].IconColor;
+        --text-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[0].HoverTextFontSize;
+        --text-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[0].HoverTextColor;
+        transform: translate( @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[0].OffsetX,
+                              @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[0].OffsetY);
+    }
+
+    .orbit li:nth-child(2) {
+        --icon-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[1].MenuItemIconBackgroundColor;
+        --text-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[1].MenuItemTextBackgroundColor;
+        --icon-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[1].IconFontSize;
+        --icon-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[1].IconColor;
+        --text-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[1].HoverTextFontSize;
+        --text-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[1].HoverTextColor;
+        transform: translate( @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[1].OffsetX,
+                              @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[1].OffsetY);
+    }
+    .orbit li:nth-child(3) {
+        --icon-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[2].MenuItemIconBackgroundColor;
+        --text-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[2].MenuItemTextBackgroundColor;
+        --icon-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[2].IconFontSize;
+        --icon-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[2].IconColor;
+        --text-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[2].HoverTextFontSize;
+        --text-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[2].HoverTextColor;
+        transform: translate( @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[2].OffsetX,
+                              @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[2].OffsetY);
+    }
+    .orbit li:nth-child(4) {
+        --icon-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[3].MenuItemIconBackgroundColor;
+        --text-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[3].MenuItemTextBackgroundColor;
+        --icon-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[3].IconFontSize;
+        --icon-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[3].IconColor;
+        --text-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[3].HoverTextFontSize;
+        --text-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[3].HoverTextColor;
+        transform: translate( @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[3].OffsetX,
+                              @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[3].OffsetY);
+    }
+    .orbit li:nth-child(5) {
+        --icon-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[4].MenuItemIconBackgroundColor;
+        --text-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[4].MenuItemTextBackgroundColor;
+        --icon-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[4].IconFontSize;
+        --icon-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[4].IconColor;
+        --text-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[4].HoverTextFontSize;
+        --text-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[4].HoverTextColor;
+        transform: translate( @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[4].OffsetX,
+                              @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[4].OffsetY);
+    }
+    .orbit li:nth-child(6) {
+        --icon-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[5].MenuItemIconBackgroundColor;
+        --text-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[5].MenuItemTextBackgroundColor;
+        --icon-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[5].IconFontSize;
+        --icon-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[5].IconColor;
+        --text-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[5].HoverTextFontSize;
+        --text-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[5].HoverTextColor;
+        transform: translate( @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[5].OffsetX,
+                              @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[5].OffsetY);
+    }
+    .orbit li:nth-child(7) {
+        --icon-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[6].MenuItemIconBackgroundColor;
+        --text-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[6].MenuItemTextBackgroundColor;
+        --icon-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[6].IconFontSize;
+        --icon-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[6].IconColor;
+        --text-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[6].HoverTextFontSize;
+        --text-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[6].HoverTextColor;
+        transform: translate( @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[6].OffsetX,
+                              @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[6].OffsetY);
+    }
+    .orbit li:nth-child(8) {
+        --icon-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[7].MenuItemIconBackgroundColor;
+        --text-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[7].MenuItemTextBackgroundColor;
+        --icon-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[7].IconFontSize;
+        --icon-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[7].IconColor;
+        --text-font-size: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[7].HoverTextFontSize;
+        --text-fg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[7].HoverTextColor;
+        transform: translate( @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[7].OffsetX,
+                              @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[7].OffsetY);
+    }
+
+    @@-webkit-keyframes orbit {
+        100% {
+            rotate: 1turn;
+        }
+    }
+
+    @@keyframes orbit {
+        100% {
+            rotate: 1turn;
+        }
+    }
+    @@-webkit-keyframes hold-position {
+        100% {
+            rotate: -1turn;
+        }
+    }
+    @@keyframes hold-position {
+        100% {
+            rotate: -1turn;
+        }
+    }
+    @@-webkit-keyframes throb {
+        100% {
+            scale: var(--throb-scale);                              
+        }
+    }
+    @@keyframes throb {
+        100% {
+            scale: var(--throb-scale);
+        }
+    }
+
+</style>

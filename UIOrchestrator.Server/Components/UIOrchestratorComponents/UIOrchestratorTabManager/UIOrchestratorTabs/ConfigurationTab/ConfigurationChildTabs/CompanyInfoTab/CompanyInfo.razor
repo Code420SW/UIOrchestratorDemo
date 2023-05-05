@@ -1,0 +1,181 @@
+﻿@namespace Code420.CanXtracServer.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.ConfigurationTab.ConfigurationChildTabs.CompanyInfoTab
+
+@using Code420.CanXtracServer.Code.Enums
+@using Code420.CanXtracServer.Components.BaseComponents.TextBoxBase
+@using Code420.CanXtracServer.Components.BaseComponents.LabelBase
+@using Code420.CanXtracServer.Components.BaseComponents.ButtonBase
+@using Code420.CanXtracServer.Components.CustomComponents.CustomToasts.GenericErrors
+@using Code420.CanXtracServer.Components.CustomComponents.CustomToasts.Spinners
+@using Code420.CanXtracServer.Components.CustomComponents.CustomSpinners
+
+
+<!--
+-->
+<!-- START-- Layout Grid -->
+<div id="grid-main__company-info" class="grid__main">
+
+    <!-- Page Title -->
+    <div class="flex__row">
+
+        <LabelBase @ref=@labelPageHeader
+                   LabelText="Company Information"
+                   FontSize="1.5rem"
+                   FontColor="inherit"
+                   FontWeight="600"
+                   FontStyle="normal"
+                   TextAlign="left"
+                   TextDecoration="none"
+                   TextTransform="capitalize"
+                   CssClass="label__page-header"
+                   LabelBackgroundColor="inherit"
+                   LabelBorder="none"
+                   LabelBorderRadius="0px"
+                   LabelMargin="1rem 0 0 0"
+                   LabelPadding="0px 1rem 0px 0px" />
+
+    </div>
+
+
+    <!-- User Email textbox -->
+    <!--
+    -->
+    <div class="flex__row">
+
+        <!-- User Email Address Textbox -->
+        <TextBoxBase @ref=@emailTextBoxBase
+                     Value=@loginUserModel.Email
+                     Enabled=true
+                     FloatLabelType=@emailFloatLabelType
+                     Placeholder=@emailPlaceholderPrompt
+                     ReadOnly=false
+                     ShowClearButton=true
+                     TabIndex=1
+                     Type=InputType.Text
+                     ValidateOnInput=false
+                     Width="300px"
+                     Height="29px"
+                     Blur=@((e) => OnEmailBlurAsync(e.Value))
+                     Focus=@((e) => OnEmailFocusAsync(e.Value))
+                     ValueChange=@OnEmailValueChange
+                     CssId="user__email"
+                     CssClass="user-email"
+                     TextboxMargin="2rem 0px 0 0px"
+                     TextboxBackgroundColor="whitesmoke"
+                     TextboxBorderColor="var(--mydarkbrown)"
+                     TextboxActiveBorderColor="var(--mylightbrown)"
+                     TextboxFontColor="var(--mydarkgreen)"
+                     PlaceholderFontSize="14px"
+                     PlaceholderFontWeight="400"
+                     PlaceholderNormalColor="var(--mylightgreen)"
+                     PlaceholderFloatingFontSize="14px"
+                     PlaceholderFloatingFontWeight="500"
+                     PlaceholderFloatingColor="var(--mydarkgreen)" />
+
+    </div>
+
+
+    <!-- User Password text box -->
+    <!--
+    -->
+    <div class="flex__row">
+
+        <TextBoxBase @ref=@passwordTextBoxBase
+                     Value=@loginUserModel.Password
+                     Enabled=true
+                     FloatLabelType=@passwordFloatLabelType
+                     Placeholder=@passwordPlaceholderPrompt
+                     ReadOnly=false
+                     ShowClearButton=true
+                     TabIndex=2
+                     Type=InputType.Password
+                     ValidateOnInput=false
+                     Width="300px"
+                     Height="29px"
+                     Blur=@((e) => OnPasswordBlurAsync(e.Value))
+                     Focus=@((e) => OnPasswordFocusAsync(e.Value))
+                     ValueChange=@OnPasswordValueChange
+                     CssId="user__password"
+                     CssClass="user-password"
+                     TextboxMargin="2rem 0px 0 0px"
+                     TextboxBackgroundColor="whitesmoke"
+                     TextboxBorderColor="var(--mydarkbrown)"
+                     TextboxActiveBorderColor="var(--mylightbrown)"
+                     TextboxFontColor="var(--mydarkgreen)"
+                     PlaceholderFontSize="14px"
+                     PlaceholderFontWeight="400"
+                     PlaceholderNormalColor="var(--mylightgreen)"
+                     PlaceholderFloatingFontSize="14px"
+                     PlaceholderFloatingFontWeight="500"
+                     PlaceholderFloatingColor="var(--mydarkgreen)" />
+
+    </div>
+
+
+    <!-- Command buttons -->
+
+    <div class="flex__row">
+        <ButtonBase @ref=@loginButton
+                    IsDisabled=false
+                    IsPrimary=true
+                    IsToggle=false
+                    EnableRtl=false
+                    IconPosition=IconPosition.Left
+                    ButtonStyle=ButtonStyle.Primary
+                    OnClick=@OnSubmit
+                    CssClass="button__login"
+                    IconCss=""
+                    IconFontSize="1em"
+                    TextFontSize="1rem"
+                    TextFontColor="white"
+                    TextFontWeight="normal"
+                    TextHorizontalAlignment="center"
+                    TextVerticalAlignment="middle"
+                    ButtonLineHeight="1.6"
+                    ButtonActiveBorderColor="black"
+                    HoverScale=1.0m
+                    Margin="1rem 0 0 0"
+                    Padding="4px 8px">
+
+            <ContentFragment>Login</ContentFragment>
+
+        </ButtonBase>
+    </div>
+
+
+    <!-- END-- Grid Layout -->
+</div>
+
+
+<!-- ======================== -->
+<!-- Supporting Custom Toasts -->
+<!-- ======================== -->
+<!-- Toast uses to display validation errors -->
+<GenericError @ref=@toastUserLoginError Target=@toastTarget />
+
+<!-- The "Please Wait" Toast -->
+<GenericSpinner @ref=@toastUserLoginExecute
+                Target=@toastTarget
+                Title="Logging in Title">
+
+    <ContentTemplate>
+        <ThreeBarLoader></ThreeBarLoader>
+    </ContentTemplate>
+
+</GenericSpinner>
+
+
+
+
+<style>
+
+    #grid-main__company-info {
+        display: grid;
+        margin: 1rem 2rem;
+    }
+
+    .flex__row {
+        display: flex;
+        flex-direction: row;
+    }
+
+</style>
