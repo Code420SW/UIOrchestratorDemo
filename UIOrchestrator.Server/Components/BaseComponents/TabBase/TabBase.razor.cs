@@ -11,17 +11,14 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TabBase
     /// and to overload tab events. 
     /// </para>
     ///<para>
-    /// The ChildContent parameter captures the menu item definition either through one of the
-    /// <c>MenuItems</c> and <c>MenuItem</c> component, through the <c>MenuFieldSettings</c> component,
-    /// or through the <c>MenuTemplates</c> component. An example for <c>MenuTemplates</c> can be found
-    /// at: Menu Templates: https://blazor.syncfusion.com/demos/menu-bar/templates?theme=bootstrap4
+    /// Tabs can be defined using either of two methods. The <see cref="TabItems"/> parameter allows
+    /// the consume to specify a <see cref="List{T}"/> of <see cref="TabItem"/> objects. The second
+    /// method is to use the <c>TabItems</c> and <c>TabItem</c> components which is passed through
+    /// the <see cref="ChildContent"/> parameter.
     /// </para>
     ///<para>
-    /// Note that only one of these menu definition schemes should be used. I don't know that they
-    /// be intermixed.
-    /// </para>
-    ///<para>
-    /// The <c>MenuEvents</c> component should not be defined. Use this components event parameters instead.
+    /// Note that only one of these methods can be used. If the <see cref="TabItems"/> parameter is
+    /// defined (not null) it will take precedence over the <see cref="ChildContent"/> parameter.
     /// </para>
     /// </summary>
     

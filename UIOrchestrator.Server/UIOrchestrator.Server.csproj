@@ -47,6 +47,7 @@
     <Folder Include="Components\CompositeComponents\" />
     <Folder Include="Components\CustomComponents\" />
     <Folder Include="Components\UIOrchestratorComponents\" />
+    <Folder Include="Components\UIOrchestratorComponents\UIOrchestratorTabManager\UIOrchestratorTabs\ConfigurationTab\ConfigurationChildTabs\" />
     <Folder Include="Pages\UIOrchestrator\" />
   </ItemGroup>
 
