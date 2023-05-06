@@ -1,20 +1,13 @@
-﻿using Code420.CanXtracCore.Models.AuthP;
-using Code420.CanXtracCore.Models.UserCredentials;
-using Code420.CanXtracServer.Components.BaseComponents.ButtonBase;
-using Code420.CanXtracServer.Components.BaseComponents.LabelBase;
-using Code420.CanXtracServer.Components.BaseComponents.TextBoxBase;
+﻿using Code420.CanXtracServer.Components.BaseComponents.ButtonBase;
+using Code420.CanXtracServer.Components.CustomComponents.CustomToasts.GenericErrors;
 using Code420.CanXtracServer.Components.CustomComponents.CustomToasts.Spinners;
-using Code420.CanXtracServer.MediatR.User;
-using Code420.CanXtracServer.Pages.UIOrchestrator;
+using Code420.UIOrchestrator.Server.Components.BaseComponents.LabelBase;
+using Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase;
 using MediatR;
 using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Inputs;
-using System.Threading.Tasks;
-using Code420.CanXtracServer.Code.Models.Menus;
-using Code420.CanXtracServer.Components.CustomComponents.CustomToasts.GenericErrors;
-using Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager;
 
-namespace Code420.CanXtracServer.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.UserLoginTab
+namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.UserLoginTab
 {
     /// <summary>
     /// Provides the user login screen which is loaded as a Tab by the <see cref="UIOrchestratorTabManager"/>.

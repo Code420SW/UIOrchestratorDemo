@@ -1,0 +1,33 @@
+﻿@namespace Code420.CanXtracServer.Components.CustomComponents.CustomToasts.GenericErrors
+
+@using Code420.CanXtracServer.Components.BaseComponents.ToastBase
+
+<ToastBase  @ref=@toast
+            AnimationHideDuration=100
+            AnimationShowDuration=100
+            CloseToastOnClick=true
+            Content=@Content
+            Icon="oi oi-circle-x"
+            NewestOnTop=true
+            PositionX="Center"
+            PositionY="Top"
+            ShowCloseButton=true
+            Target=@Target
+            Timeout=5_000
+            Title=@Title
+
+            OnOpen=OnOpenHandler
+
+            CssId="toast-generic-error"
+            CssClass="toast__generic-error"
+            Width="500px"
+
+            ToastFontColor="#721c24"
+            ToastBackground= "#f8d7da"
+            ToastBorder="1px solid #f5c6cb"
+
+            ToastContentFontColor="#6C757D"
+            ToastContentLetterSpacing=".5px"
+            ToastContentPaddingLastChild="10px 0px 0px 0px"
+            >
+</ToastBase>

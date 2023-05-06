@@ -1,4 +1,4 @@
-﻿@namespace Code420.CanXtracServer.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.FavoritesMenuTab
+﻿@namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.FavoritesMenuTab
 
 <div class="container__favorites-menu">
     <div class="orbit">
@@ -24,42 +24,47 @@
 
 <style>
 
-    /* CREDITS: https://github.com/kevin-powell/seamless-can-i-clone-it/blob/main/src/index.html */
+    @* CREDITS: https://github.com/kevin-powell/seamless-can-i-clone-it/blob/main/src/index.html *@
 
-    /* Box sizing rules */
+    @* Box sizing rules *@
     *,
     *::before,
     *::after {
         box-sizing: border-box;
     }
 
-    /* Remove default margin and padding and reset fonts */
+    @* Remove default margin and padding and reset fonts *@
     * {
         margin: 0;
         padding: 0;
         font: inherit;
     }
 
-    /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+    @* 
+    Remove list styles on ul, ol elements with a list role, which 
+    suggests default styling will be removed 
+    *@
     ul[role=list],
     ol[role=list] {
         list-style: none;
     }
 
-    /* Set core body defaults */
+    @* Set core body defaults *@
     body {
       text-rendering: optimizeSpeed;
       line-height: 1.5;
     }
 
-    /* Make images easier to work with */
-    img,
-    picture {
+    @* Make images easier to work with *@
+    img, picture {
       max-width: 100%;
       display: block;
     }
 
-    /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+    @* 
+    Remove all animations, transitions and smooth scroll for 
+    people that prefer not to see them 
+    *@
     @@media (prefers-reduced-motion: reduce) {
         html:focus-within {
             scroll-behavior: auto;
@@ -78,7 +83,7 @@
     }
 
 
-    /* Styling for the main div element */
+    @* Styling for the main div element *@
     .container__favorites-menu { 
         --throb-scale: @OrchestratorRef.FavoritesMenu.ThrobScale;
         min-height: @OrchestratorRef.FavoritesMenu.MenuMinimumHeight;
@@ -89,14 +94,14 @@
         overflow: hidden;
     }
 
-    /* Set styling for orbit animation */
+    @* Set styling for orbit animation *@
     .orbit {
         --size: @OrchestratorRef.FavoritesMenu.CenterImageSize;
         --speed: @OrchestratorRef.FavoritesMenu.MenuItemRotationSpeed;
         --center-image-transition-speed: @OrchestratorRef.FavoritesMenu.CenterImageTransitionSpeed;
     }
 
-    /* Set styling for the center image */
+    @* Set styling for the center image *@
     .orbit .center-image {
         width: var(--size);
         position: relative;
@@ -111,7 +116,7 @@
         opacity: 0;
     }
 
-    /* Set styling for the menu items */
+    @* Set styling for the menu items *@
     .orbit ul {
         width: var(--size);
         height: var(--size);
@@ -126,14 +131,14 @@
         animation: orbit var(--speed) linear infinite;
     }
 
-    /* Set styling for menu item animations when hovered */
+    @* Set styling for menu item animations when hovered *@
     .orbit ul:hover {
         -webkit-animation-play-state: paused;
         animation-play-state: paused;
         --orbit-play-state: paused;
     }
 
-    /* Set styling for the menu items. */
+    @* Set styling for the menu items. *@
     .orbit li {
         position: absolute;
         width: @OrchestratorRef.FavoritesMenu.MenuItemSize;
@@ -146,7 +151,7 @@
         place-items: center;
     }
 
-    /* Set styling for menu items throb delays. */
+    @* Set styling for menu items throb delays. *@
     .orbit li:hover {
         --throb-play-state: paused;
     }
@@ -175,7 +180,7 @@
         --throb-delay: 3500ms;
     }
 
-    /* Set styling for the div and p elements for the menu items */
+    @* Set styling for the div and p elements for the menu items *@
     .orbit li > * {
         width: 100%;
         height: 100%;
@@ -192,25 +197,25 @@
     }
 
 
-    /*
-        Set styling for the menu item background color. 
-        The --icon-bg is set below in the orbit li:nth-child(x) sections
-    */
+    @*
+    Set styling for the menu item background color. 
+    The --icon-bg is set below in the orbit li:nth-child(x) sections
+    *@
     .orbit li > div {
         background-color: var(--icon-bg);
     }
 
 
-    /*  Set the styling for the icon element of the menu item div */
+    @*  Set the styling for the icon element of the menu item div *@
     .orbit .oi:empty::before {
         font-size: var(--icon-font-size);
         color: var(--icon-fg);
     }
 
-    /*
-        Set the styling for the menu item p element 
-        Including the styling when hovered
-    */
+    @*
+    Set the styling for the menu item p element 
+    Including the styling when hovered
+    *@
     .orbit li > p {
         background: var(--text-bg);
         font-size: var(--text-font-size);
@@ -222,9 +227,7 @@
         opacity: 1;
     }
 
-    /*
-        Set the styling for the eight menu items
-    */
+    @* Set the styling for the eight menu items *@
     .orbit li:nth-child(1) {
         --icon-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[0].MenuItemIconBackgroundColor;
         --text-bg: @OrchestratorRef.FavoritesMenu.FavoritesMenuItems[0].MenuItemTextBackgroundColor;

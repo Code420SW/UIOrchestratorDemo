@@ -1,0 +1,130 @@
+﻿@namespace Code420.CanXtracServer.Components.CustomComponents.CustomSpinners
+
+<!--
+    Fixed-behavior spinner consisting of three spheres that progressively fill.
+    The size and colors of the spheres are fix. Changes must be made in the code below.
+    Changes can me made my modifying the --s and --c variables in the CSS (.ball) and the HTML.
+    Two parameters are exposed that allows customization of the spinner container height and margins.
+-->
+
+
+<div class="container__sphere-3d-animated">
+    <div class="ball"></div>
+    <div class="ball" style="--c: lightblue;--s:80px"></div>
+    <div class="ball" style="--c: lightgreen;--s:60px"></div>
+</div>
+
+
+
+@code{
+
+    /// <summary>
+    /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height">height</a> value 
+    /// used for the spinner container.
+    /// The height CSS property specifies the height of an element.
+    /// Default value is 150px.
+    /// </summary>
+    [Parameter]
+    public string ContainerHeight { get; set; } = "150px";
+
+
+    /// <summary>
+    /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a> 
+    /// value used for the spinner margin.
+    /// The margin CSS shorthand property sets the margin area on all four sides of an element
+    /// Default value is 0px 0px 0px 0px.
+    /// </summary>
+    [Parameter]
+    public string Margin { get; set; } = "0px 0px 0px 0px";
+}
+
+
+
+<style>
+
+     .container__sphere-3d-animated {
+        margin: @Margin;
+        height: @ContainerHeight;
+        display: grid;
+        place-content: center;
+        align-items: center;
+        grid-auto-flow: column;
+        gap: 20px;
+        background: transparent;
+    }
+
+    .ball {
+        --s: 100px; /* control the size */
+        --c: red; /* the color */
+
+        width: var(--s);
+        aspect-ratio: 1;
+        border-radius: 100%;
+        display: grid;
+        overflow: hidden;
+        background: radial-gradient(at 36% 45%, #0000, 80%, #000);
+        box-shadow: calc(var(--s) / 8) calc(var(--s) / 8) calc(var(--s) / 8)
+            calc(var(--s) / -8) #0009;
+    }
+   
+    .ball:before,
+    .ball:after {
+        content: "";
+        grid-area: 1/1;
+    }
+
+    .ball:before {
+        background: radial-gradient(circle at top, var(--c), #000);
+        mix-blend-mode: multiply;
+        -webkit-mask: linear-gradient(#000 0 0) bottom no-repeat;
+        animation: c 7s linear infinite;
+    }
+
+    .ball:after {
+        border-radius: 50%;
+        z-index: 1;
+        width: 0%;
+        aspect-ratio: 1;
+        margin: auto;
+        background-image: linear-gradient(var(--c) 0 0);
+        background-blend-mode: multiply;
+        animation: b 7s linear infinite,
+            a 7s cubic-bezier(0.06, 1334, 0.93, 1334) infinite;
+    }
+
+    @@keyframes a {
+        0%,
+        5% {
+            width: 0%;
+        }
+        95%,
+        100% {
+            width: 0.1%;
+        }
+    }
+
+    @@keyframes b {
+        0%,
+        5% {
+            transform: translateY(calc(var(--s) / 2)) rotateX(78deg);
+            background-color: #333;
+        }
+        95%,
+        100% {
+            transform: translateY(calc(var(--s) / -2)) rotateX(78deg);
+            background-color: #ccc;
+        }
+    }
+
+    @@keyframes c {
+        0%,
+        5% {
+            -webkit-mask-size: 100% 0%;
+        }
+        95%,
+        100% {
+            -webkit-mask-size: 100% 100%;
+        }
+    }
+
+</style>

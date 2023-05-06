@@ -1,0 +1,224 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
+
+@using Syncfusion.Blazor.Inputs
+
+<SfTextBox  @ref=@sfTextBox
+            Autocomplete=@Autocomplete
+            Enabled=@Enabled
+            EnablePersistence=@EnablePersistence
+            EnableRtl=@EnableRtl
+            FloatLabelType=@FloatLabelType
+            Multiline=@Multiline
+            Placeholder=@Placeholder
+            Readonly=@ReadOnly
+            ShowClearButton=@ShowClearButton
+            TabIndex=@TabIndex
+            Type=@Type
+            ValidateOnInput=@ValidateOnInput
+            Value=@Value
+            
+            Blur=@Blur
+            Created=@Created
+            Destroyed=@Destroyed
+            Focus=@Focus
+            Input=@Input
+            ValueChange=@ValueChangeHandler
+           
+            CssClass=@CssClass
+            ID=@CssId
+            HtmlAttributes=@HtmlAttributes
+            InputAttributes=@InputAttributes
+            Width=@Width
+            />
+
+
+<style>
+
+    /*
+        To ensure isolation of styling between multiple sliders on a page, append the CssClass
+        to each selector (assuming the CssClass is not String.Empty).
+        Need to use CssClass to directly address.
+
+        masterCssSelector = .CssClass.e-control-wrapper
+
+    */
+
+    /*
+        Set the styling for the Masked Textbox div
+        .e-input-group.e-control-wrapper:hover:not(.e-disabled)
+        Defaults:
+            background = #fff
+            color = #495057
+            border = 1px solid
+            border-width = 1px
+            border-radius = 4px
+    */
+    @(masterCssSelector).e-input-group {
+        background-color: @TextboxBackgroundColor;
+        color: @TextboxFontColor;
+        border: @TextboxBorderWidth;
+        border-style: solid;
+        border-color: @TextboxBorderColor;
+        border-radius: @TextboxBorderRadius;
+    }
+
+     /*
+        Set the styling for the Masked Textbox div when hovered
+        
+        Defaults:
+
+    */
+    @(masterCssSelector).e-input-group:hover:not(.e-disabled) {
+        border-width: @TextboxBorderWidth;
+    }
+
+    /*
+        Set the styling for the font in the Masked Textbox div
+        Need to use CssClass to directly address.
+
+        Defaults:
+            font-family = "Helvetica Neue","Helvetica","Arial",sans-serif,"-apple-system","BlinkMacSystemFont"
+            font-size = 14px
+            font-weight = 400
+            line-height = 1.4
+            margin-top = 24px
+            margin=bottom = 0
+            padding-top = 0
+    */
+    @(masterCssSelector).e-float-input {
+        font-size: @TextboxFontSize;
+        font-weight: @TextboxFontWeight;
+        line-height: @TextboxLineHeight;
+        margin: @TextboxMargin;
+        padding-top: @TextboxPaddingTop;
+    }
+
+    /*
+        Set the styling for the Masked Textbox div when not in error mode
+        Need to use CssClass to directly address.
+
+        Defaults:
+            border-color = #ced4da
+    */
+    @(masterCssSelector).e-input-group:not(.e-success):not(.e-warning):not(.e-error) {
+        border-color: @TextboxBorderColor;
+        background-color: @TextboxBackgroundColor;
+        color: @TextboxFontColor;
+    }
+
+    /*
+        Set the styling of the Masked Textbox div when active
+        (not disabled, not success, not warning, not error)
+        Need to use CssClass to directly address.
+
+        Defaults:
+            border-color = #80bdff
+            box-shadow = 0 0 0 3px rgba(0,123,255,0.25)
+    */
+    @(masterCssSelector).e-input-group:not(.e-disabled):active:not(.e-success):not(.e-warning):not(.e-error),
+    @(masterCssSelector).e-input-group:not(.e-disabled):not(.e-success):not(.e-warning):not(.e-error).e-input-focus {
+        border-color: @TextboxActiveBorderColor;
+        box-shadow: 0 0 0 3px @boxShadowRgba;
+    }
+
+        /*
+        Set the styling for the font in the Masked Textbox input element
+        Need to use CssId to directly address
+
+        Defaults:
+            overflow = hidden
+            text-overflow = ellipse
+            white-space = nowrap
+            background = none
+            color = inherit
+            padding-left = 8px
+            text-indent = 0
+            box-sizing = border-box
+            height = 29px
+    */
+    @(masterCssSelector).e-float-input input{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background: none;
+        color: inherit;
+        padding-left: @TextboxPaddingLeft;
+        text-indent: @TextboxTextIndent;
+        box-sizing: border-box;
+        height: @Height;
+    }
+
+    /*
+        Set the styling for the clear button
+
+        Defaults:
+            padding-right = 0
+            padding-top = 0
+            padding-left = 0
+            padding-bottom = 0
+            min-height = 0
+            min-width = 24px
+            color = rgba(0,0,0,0.5)
+            background-color = transparent
+    */
+    @(masterCssSelector).e-float-input .e-clear-icon {
+        padding: @ClearButtonPadding;
+        color: @ClearButtonIconColor;
+        min-height: 0;
+        min-width: @ClearButtonMinimumWidth;
+        background-color: @ClearButtonIconBackgroundColor;
+    }
+
+        /*
+        Set the styling for the clear button's icon
+
+        Defaults:
+            font-size = 12px
+            padding = 0
+            text-align = center
+    */
+    @(masterCssSelector).e-float-input .e-clear-icon::before {
+        font-size: @ClearButtonIconSize;
+        padding: 0;
+        text-align: center;
+    }
+
+    /*
+        Set styling for placeholder text when not floating
+
+        Defaults:
+            color = #6c757d (not floating)
+            font-size: 14px
+            font-weight = 400
+
+            .e-float-input:not(.e-error) input
+    */
+    @(masterCssSelector).e-float-input:not(.e-error) input:not(:focus):valid ~ label.e-float-text.e-label-bottom,
+    @(masterCssSelector).e-input-group input.e-input::placeholder {
+        color: @PlaceholderNormalColor;
+        font-size: @PlaceholderFontSize;
+        font-weight: @PlaceholderFontWeight;
+    } 
+    
+    /*
+        Set styling for placeholder text when floating
+
+        Defaults:
+            color = #212529 (floating)
+            font-size: 14px
+            font-weight = 400
+            
+            Changed:
+            input:focus:valid and input:not(:focus):valid -to-
+            input:focus and input:not(:focus)
+            Because the former doesn't work when Type=InputType.Email and the contents is not valid
+    */
+    @(masterCssSelector).e-float-input:not(.e-error) input:focus ~ label.e-float-text.e-label-top,
+    @(masterCssSelector).e-float-input:not(.e-error) input:not(:focus) ~ label.e-float-text.e-label-top {
+        color: @PlaceholderFloatingColor;
+        font-size: @PlaceholderFloatingFontSize;
+        font-weight: @PlaceholderFloatingFontWeight;
+    }
+
+
+</style>

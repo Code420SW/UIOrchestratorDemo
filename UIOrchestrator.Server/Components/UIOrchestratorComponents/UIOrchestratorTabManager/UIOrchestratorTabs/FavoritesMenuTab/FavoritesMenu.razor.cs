@@ -1,9 +1,7 @@
-﻿using Code420.CanXtracServer.Pages.UIOrchestrator;
+﻿using Code420.UIOrchestrator.Server.Code.Models.Menus;
 using Microsoft.AspNetCore.Components;
-using System.Threading.Tasks;
-using Code420.CanXtracServer.Code.Models.Menus;
 
-namespace Code420.CanXtracServer.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.FavoritesMenuTab
+namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.FavoritesMenuTab
 {
     /// <summary>
     /// Renders a rotating menu containing "favorites" menu items in icon for.

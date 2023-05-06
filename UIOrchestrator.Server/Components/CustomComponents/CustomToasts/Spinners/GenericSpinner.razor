@@ -1,0 +1,84 @@
+﻿@namespace Code420.CanXtracServer.Components.CustomComponents.CustomToasts.Spinners
+
+@using Code420.CanXtracServer.Components.BaseComponents.ToastBase
+
+<!--
+-->
+
+<ToastBase  @ref=@toast
+            Target=@Target
+            PositionX="Center"
+            PositionY="Top"
+            NewestOnTop=true
+            
+            AnimationHideDuration=100
+            AnimationHideEasing=ToastEasing.Ease
+            AnimationHideEffect=ToastEffect.FadeOut
+            AnimationShowDuration=100
+            AnimationShowEasing=ToastEasing.Ease
+            AnimationShowEffect=ToastEffect.FadeIn
+
+            CloseToastOnClick=false
+            
+            ContentTemplate=@ContentTemplate
+            UseContentTemplate=true
+            Title=@Title
+
+            Timeout=0
+            ExtendedTimeout=0
+
+            ShowCloseButton=false
+            ShowProgressBar=false
+            ProgressDirection=ProgressDirection.LTR
+
+            OnOpen=OnOpenHandler
+
+            CssId="toast-spinner-generic"
+            CssClass="toast__spinner-generic"
+
+            ToastFontSize="14px"
+            ToastFontColor="#212529"
+            ToastBackground= "#0001"
+            ToastBorder="1px solid rgba(0,0,0,0.1)"
+            ToastBoxShadow="0 4px 5px 0 rgba(0,0,0,0.1)"
+            ToastBorderRadius="4px"
+            ToastMargin="0px 0px 10px 0px"
+            ToastPadding="12px"
+
+            ProgressBarLeft="0px"
+            ProgressBarBottom="6px"
+            ProgressBarHeight="4px"
+            ProgressBarBackground="#007BFF"
+            ProgressBarBorderRadius="2px"
+
+            ToastIconFontSize="16px"
+            ToastIconFontColor="rgba(0,0,0,0.25)"
+            ToastIconSize="24px"
+            ToastIconMargin="0px 8px 0px 0px"
+
+            ToastTitleFontSize="1em"
+            ToastTitleFontColor="#6C757D"
+            ToastTitleFontWeight="bold"
+            ToastTitleLetterSpacing=".5px"
+
+            ToastContentFontSize="1em"
+            ToastContentFontColor="#6C757D"
+            ToastContentFontWeight="normal"
+            ToastContentLetterSpacing=".5px"
+            ToastContentPadding="10px 0px 5px 0px"
+            ToastContentPaddingFirstChild="0px 0px 0px 0px"
+            ToastContentPaddingLastChild="10px 0px 0px 0px"
+
+            ToastCloseButtonFontSize="10px"
+            ToastCloseButtonFontColor="rgba(0,0,0,0.5)"
+            ToastCloseButtonSize="24px"
+            ToastCloseButtonBackground="transparent"
+            ToastCloseButtonBorder="none"
+            ToastCloseButtonBoxShadow="none"
+            ToastCloseButtonHoverBackground="transparent"
+            ToastCloseButtonHoverBorder="none"
+            ToastCloseButtonHoverBoxShadow="none"
+            >
+            
+
+</ToastBase>
