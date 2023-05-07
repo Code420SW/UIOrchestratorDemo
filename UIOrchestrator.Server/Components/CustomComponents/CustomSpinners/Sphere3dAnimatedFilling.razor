@@ -1,11 +1,11 @@
-﻿@namespace Code420.CanXtracServer.Components.CustomComponents.CustomSpinners
+﻿@namespace Code420.UIOrchestrator.Server.Components.CustomComponents.CustomSpinners
 
-<!--
+@*
     Fixed-behavior spinner consisting of three spheres that progressively fill.
     The size and colors of the spheres are fix. Changes must be made in the code below.
     Changes can me made my modifying the --s and --c variables in the CSS (.ball) and the HTML.
     Two parameters are exposed that allows customization of the spinner container height and margins.
--->
+*@
 
 
 <div class="container__sphere-3d-animated">
@@ -19,8 +19,8 @@
 @code{
 
     /// <summary>
-    /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height">height</a> value 
-    /// used for the spinner container.
+    /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height">height</a>
+    /// value used for the spinner container.
     /// The height CSS property specifies the height of an element.
     /// Default value is 150px.
     /// </summary>

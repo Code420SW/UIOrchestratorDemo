@@ -1,8 +1,8 @@
-﻿using Code420.CanXtracServer.Components.BaseComponents.ToastBase;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Notifications;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase;
 
 namespace Code420.CanXtracServer.Components.CustomComponents.CustomToasts.Spinners
 {

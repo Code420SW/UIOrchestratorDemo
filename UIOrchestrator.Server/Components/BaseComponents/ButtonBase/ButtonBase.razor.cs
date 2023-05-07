@@ -1,14 +1,11 @@
-﻿using Code420.CanXtracServer.Code.Enums;
+﻿using Code420.UIOrchestrator.Server.Code.Enums;
+using Code420.UIOrchestrator.Server.Code.Extensions;
+using Code420.UIOrchestrator.Server.Code.Models.CssUtilities;
 using Microsoft.AspNetCore.Components;
-using Syncfusion.Blazor.Buttons;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Code420.CanXtracServer.Code.Models.CssUtilities;
-using Code420.CanXtracServer.Code.Extensions;
 using Microsoft.AspNetCore.Components.Web;
+using Syncfusion.Blazor.Buttons;
 
-namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
+namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ButtonBase
 {
     public partial class ButtonBase : ComponentBase
     {
@@ -16,10 +13,6 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         #region Component Parameters
         
         #region Base Parameters
-
-        // ==================================================
-        // Base Parameters
-        // ==================================================
 
         /// <summary>
         /// Boolean value indicating if the button is disabled.
@@ -29,8 +22,9 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         public bool IsDisabled { get; set; }
 
         /// <summary>
-        /// Boolean value indicating if the button has toggled states (e.g., active/inactive, play/pause).
-        /// Makes the Button toggle, when set to true. When you click it, the state changes from normal to active or vice-versa.
+        /// Boolean value indicating if the button has toggled states
+        /// (e.g., active/inactive, play/pause). Makes the Button toggle, when set
+        /// to true. When you click it, the state changes from normal to active or vice-versa.
         /// Default value is false.
         /// </summary>
         [Parameter]
@@ -38,8 +32,8 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
 
         /// <summary>
         /// Boolean value indicating if the button is a primary button. 
-        /// This setting may override the styling associated with the <see cref="ButtonStyle"/> property,
-        /// depending on the button style. 
+        /// This setting may override the styling associated with the <see cref="ButtonStyle"/>
+        /// property, depending on the button style. 
         /// This setting will also override any setting specified in the <see cref="ButtonNormalBackgroundColor"/>,
         /// <see cref="ButtonHoverBackgroundColor"/> or <see cref="ButtonActiveBackgroundColor"/> parameters.
         /// Default value is false.
@@ -49,8 +43,9 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
 
         /// <summary>
         /// Boolean value indicating if the button is a submit button.
-        /// This is used primarily in an <see cref="Microsoft.AspNetCore.Components.Forms.EditForm"/> application.
-        /// When this parameter is true, a "type = submit" key-value pair is injected in the <see cref="HtmlAttributes"/> parameter.
+        /// This is used primarily in an <see cref="Microsoft.AspNetCore.Components.Forms.EditForm"/>
+        /// application. When this parameter is true, a <c>type = submit</c> key-value pair is
+        /// injected in the <see cref="HtmlAttributes"/> parameter.
         /// Default value is false.
         /// </summary>
         [Parameter]
@@ -91,18 +86,16 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
 
         #region Event Callback Parameters
         
-        // ==================================================
-        // Event Callback Parameters
-        // ==================================================
-
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the Icon Button is clicked.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when
+        /// the Icon Button is clicked.
         /// </summary>
         [Parameter]
         public EventCallback<MouseEventArgs> OnClick { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the Icon Button is created.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when
+        /// the Icon Button is created.
         /// </summary>
         [Parameter]
         public EventCallback<object> OnCreated { get; set; }
@@ -112,29 +105,29 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
 
         #region CSS Parameters
 
-        // ==================================================
-        // CSS Styling Parameters
-        // ==================================================
-
         /// <summary>
-        /// String value containing CSS class definition(s) that will be injected in the HTML. 
-        /// Injecting a class will provide styling segregation when multiple icon buttons are on the same page.
+        /// String value containing CSS class definition(s) that will be injected in
+        /// the HTML. Injecting a class will provide styling segregation when multiple
+        /// icon buttons are on the same page.
         /// Default value is string.Empty.
         /// </summary>
         [Parameter]
         public string CssClass { get; set; } = string.Empty;
 
         /// <summary>
-        /// String value containing CSS icon definition(s) that will be injected in the span tag of the button's HTML.
+        /// String value containing CSS icon definition(s) that will be injected in
+        /// the span tag of the button's HTML.
         /// Default value is string.Empty.
         /// </summary>
         [Parameter]
         public string IconCss { get; set; } = string.Empty;
 
         /// <summary>
-        /// Collection of additional HTML attributes such as styles, class, and more that are injected in root element. 
-        /// If both property and equivalent HTML attribute are configured, the component considers the property value. 
-        /// This is a <see cref="Dictionary{TKey, TValue}"/> where TKey is a <see cref="string"/> and TValue is an <see cref="object"/>.
+        /// Collection of additional HTML attributes such as styles, class, and more that are
+        /// injected in root element. If both property and equivalent HTML attribute are configured,
+        /// the component considers the property value. 
+        /// This is a <see cref="Dictionary{TKey, TValue}"/> where TKey is a <see cref="string"/> and
+        /// TValue is an <see cref="object"/>.
         /// Default value is an empty dictionary.
         /// </summary>
         [Parameter]
@@ -167,7 +160,8 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color</a>
         /// value applied to the button text.
-        /// The color CSS property sets the foreground color value of an element's text and text decorations, and sets the currentcolor value.
+        /// The color CSS property sets the foreground color value of an element's text and text
+        /// decorations, and sets the currentcolor value.
         /// Default value is white.
         /// </summary>
         [Parameter]
@@ -185,7 +179,8 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">text-align</a>
         /// value applied to the button text.
-        /// The text-align CSS property sets the horizontal alignment of the content inside a block element or table-cell box.
+        /// The text-align CSS property sets the horizontal alignment of the content inside a
+        /// block element or table-cell box.
         /// Default value is center.
         /// </summary>
         [Parameter]
@@ -194,7 +189,8 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align">vertical-align</a>
         /// value applied to the button text.
-        /// The vertical-align CSS property sets vertical alignment of an inline, inline-block or table-cell box.
+        /// The vertical-align CSS property sets vertical alignment of an inline, inline-block
+        /// or table-cell box.
         /// Default value is middle.
         /// </summary>
         [Parameter]
@@ -206,7 +202,8 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height">line-height</a>
         /// value applied to the button text.
-        /// The line-height CSS property sets the height of a line box. It's commonly used to set the distance between lines of text.
+        /// The line-height CSS property sets the height of a line box. It's commonly used to set
+        /// the distance between lines of text.
         /// On block-level elements, it specifies the minimum height of line boxes within the element.
         /// Default value is 1.6.
         /// </summary>
@@ -217,7 +214,8 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         /// String containing the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-color">background-color</a>
         /// value for the button.
         /// The background-color CSS property sets the background color of an element.
-        /// Default value is string.Empty indicating the default color associated with the <see cref="ButtonStyle"/> is used. 
+        /// Default value is string.Empty indicating the default color associated with the
+        /// <see cref="ButtonStyle"/> is used. 
         /// When the <see cref="IsPrimary"/> is set to true, it will override this parameter.
         /// </summary>
         [Parameter]
@@ -236,8 +234,8 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         /// String containing the CSS <see href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-color">background-color</see>
         /// value for the button when hovered or has the focus.
         /// The background-color CSS property sets the background color of an element.
-        /// Default value is string.Empty indicating the color of the button when hovered/focused will the the complementary color of
-        /// <see cref="ButtonNormalBackgroundColor"/>.
+        /// Default value is string.Empty indicating the color of the button when hovered/focused
+        /// will the the complementary color of <see cref="ButtonNormalBackgroundColor"/>.
         /// When the <see cref="IsPrimary"/> is set to true, it will override this parameter.
         /// </summary>
         [Parameter]
@@ -256,8 +254,9 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         /// String containing the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-color">background-color</a>
         /// value for the button when active.
         /// The background-color CSS property sets the background color of an element.
-        /// Default value is string.Empty indicating the default color associated with the <see cref="IconButtonStyle"/> is used
-        /// (a slightly brighter version of the normal or hover/focus color). 
+        /// Default value is string.Empty indicating the default color associated with the
+        /// <see cref="IconButtonStyle"/> is used (a slightly brighter version of the normal
+        /// or hover/focus color). 
         /// When the <see cref="IsPrimary"/> is set to true, it will override this parameter.
         /// </summary>
         [Parameter]
@@ -273,18 +272,22 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         public string ButtonActiveBorderColor { get; set; } = "#000";
 
         /// <summary>
-        /// String containing the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height">height</a> value for the button.
-        /// The height CSS property specifies the height of an element. By default, the property defines the height of the content area.
-        /// If box-sizing is set to border-box, however, it instead determines the height of the border area.
+        /// String containing the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height">height</a>
+        /// value for the button.
+        /// The height CSS property specifies the height of an element.
+        /// By default, the property defines the height of the content area.
+        /// If box-sizing is set to border-box, however, it instead determines the height of
+        /// the border area.
         /// Default value is string.Empty indicating that the height will be calculated by the base class.
         /// </summary>
         [Parameter]
         public string ButtonHeight { get; set; } = string.Empty;
 
         /// <summary>
-        /// String containing the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/width">width</a> value for the button.
-        /// The width CSS property sets an element's width. By default, it sets the width of the content area, but if box-sizing is set
-        /// to border-box, it sets the width of the border area.
+        /// String containing the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/width">width</a>
+        /// value for the button.
+        /// The width CSS property sets an element's width. By default, it sets the width of the content area,
+        /// but if box-sizing is set to border-box, it sets the width of the border area.
         /// Default value is string.Empty indicating that the width will be calculated by the base class.
         /// </summary>
         [Parameter]
@@ -293,17 +296,17 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         /// <summary>
         /// Decimal value containing the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform">transform: scale()</a>
         /// value that the button will grow/shrink when hovered.
-        /// The transform CSS property lets you rotate, scale, skew, or translate an element. It modifies the coordinate space of
-        /// the CSS visual formatting model.
+        /// The transform CSS property lets you rotate, scale, skew, or translate an element.
+        /// It modifies the coordinate space of the CSS visual formatting model.
         /// Must be a positive value.
+        /// Default value is 1.0 indicating the button will not change size.
+        /// <remarks>
         /// Values greater than 1.0 cause the button to grow. 
         /// Values less than 1.0 cause the button to shrink.
-        /// Default value is 1.0 indicating the button will not change size.
+        /// </remarks>
         /// </summary>
         [Parameter]
         public decimal HoverScale { get; set; } = 1.0m;
-
-
 
         /// <summary>
         /// String containing the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a>
@@ -330,29 +333,12 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         #endregion
 
 
-
-        #region Callback Events Invoked from Underlying Components
-
-        private async Task OnClickHandler(MouseEventArgs args)
-        {
-            if (OnClick.HasDelegate) await OnClick.InvokeAsync(args);
-        }
-        
-        private async Task OnCreatedHandler(object args)
-        {
-            if (OnCreated.HasDelegate) await OnCreated.InvokeAsync(args);
-        }
-
-        #endregion
-
-
-
         #region Instance Variables
 
         private SfButton sfButton;
         private string masterCssSelector;
         private string aggregatedCssClass;
-        private string boxShadowRgba = string.Empty;            // The RGBA value when styling the box shadow used when the icon button is active
+        private string boxShadowRgba = string.Empty;
 
         #endregion
 
@@ -400,19 +386,6 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
             }
         }
 
-        // This is the first place that the State should be changed
-        //
-        // This method is executed every time Blazor has re-generated the component’s RenderTree.
-        //  This can be as a result of the component’s parent re-rendering, the user interacting with the component
-        //  (e.g. a mouse-click), or if the component executes its StateHasChanged method to invoke a re-render.
-        // This method has a single parameter named firstRender. This parameter is true only the first time the
-        //  method is called on the current component, from there onwards it will always be false. In cases where
-        //  additional component hook-up is required (for example, via JavaScript) it is useful to know this is the
-        //  first render.
-        // It is not until after the OnAfterRender method have executed that it is safe to use any references to
-        //  components set via the @ref directive. And it is not until after the OnAfterRender method have been
-        //  executed with firstRender set to true that it is safe to use any references to HTML elements set via
-        //  the @ref directive
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
@@ -452,10 +425,6 @@ namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
         /// </summary>
         public async Task FocusAsync() => await sfButton.FocusAsync();
 
-        #endregion
-
-        
-        #region Private Methods for Internal Use Only
         #endregion
         
     }

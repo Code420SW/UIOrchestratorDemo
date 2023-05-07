@@ -1,13 +1,13 @@
 ﻿@namespace Code420.CanXtracServer.Components.CustomComponents.CustomSpinners
 
 
-<!--
+@*
     This is a simple spinner consisting of three vertical bars.
     The bars expand/contract in height and have a linear gradient applied.
     The spinner exposes four parameters that allow the consumer to control
     the height of the spinner's container, the height of the spinner itself,
     the margin around the container and the linear gradient.
--->
+*@
 
 
 <div class="container__3d-bar-loader">
@@ -19,9 +19,10 @@
 @code{
 
     /// <summary>
-    /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient">linear-gradient</a> value 
-    /// used for the spinner.
-    /// The linear-gradient CSS function creates an image consisting of a progressive transition between two or more colors along a straight line.
+    /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient">linear-gradient</a>
+    /// value used for the spinner.
+    /// The linear-gradient CSS function creates an image consisting of a progressive transition between
+    /// two or more colors along a straight line.
     /// Default value is linear-gradient(135deg, #00a8c6, #8fbe00).
     /// </summary>
     [Parameter]
@@ -29,8 +30,8 @@
 
 
     /// <summary>
-    /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height">height</a> value 
-    /// used for the spinner container.
+    /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height">height</a>
+    /// value used for the spinner container.
     /// The height CSS property specifies the height of an element.
     /// Default value is 150px.
     /// </summary>
@@ -49,8 +50,8 @@
 
 
     /// <summary>
-    /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height">height</a> value 
-    /// used for the spinner.
+    /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height">height</a>
+    /// value used for the spinner.
     /// The height CSS property specifies the height of an element.
     /// The width of the spinner is calculated as 20% of the height.
     /// Default value is 100px.
@@ -63,7 +64,7 @@
 
 <style>
 
-    /* CREDITS: https://codepen.io/t_afif/pen/PoEeMYO */
+    @* CREDITS: https://codepen.io/t_afif/pen/PoEeMYO *@
 
     .container__3d-bar-loader {
         margin: @Margin;
@@ -74,8 +75,8 @@
     }
 
     .loader {
-        --s: @SpinnerHeight; /* control the size */
-        --c: @BackgroundLinearGradient; /* control the coloration */
+        --s: @SpinnerHeight; @* control the size *@
+        --c: @BackgroundLinearGradient; @* control the coloration *@
 
         display: grid;
         place-items: center;

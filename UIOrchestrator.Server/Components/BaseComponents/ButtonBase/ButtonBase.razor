@@ -1,7 +1,6 @@
-﻿@namespace Code420.CanXtracServer.Components.BaseComponents.ButtonBase
+﻿@namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ButtonBase
 
 @using Syncfusion.Blazor.Buttons
-@using Code420.CanXtracServer.Code.Extensions;
 
 <SfButton   @ref=@sfButton
             IconPosition=@IconPosition
@@ -14,8 +13,8 @@
             HtmlAttributes=@HtmlAttributes
             IconCss=@IconCss
 
-            Created=@OnCreatedHandler
-            OnClick="@OnClickHandler"
+            Created=@OnCreated
+            OnClick=@OnClick
             >
 
     <ChildContent>
@@ -26,7 +25,7 @@
 
 <style>
 
-    /* To customize the button. */
+    @* To customize the button. *@
     @(masterCssSelector) {
         @((ButtonHeight != string.Empty) ? $"height: { ButtonHeight };" : "")
         @((ButtonWidth != string.Empty) ? $"width: { ButtonWidth };" : "")
@@ -44,12 +43,12 @@
         padding: @Padding;
     }
 
-    /* To customize the icon for standard buttons */
+    @* To customize the icon for standard buttons *@
     @(masterCssSelector) .e-btn-icon {
         font-size: @IconFontSize;
     }
 
-    /* To customize the button on hover */
+    @* To customize the button on hover *@
     @(masterCssSelector):hover,
     @(masterCssSelector):focus,
     @(masterCssSelector):focus-visible {
@@ -63,7 +62,7 @@
         )
     }
 
-    /* To customize the button on active. */
+    @* To customize the button on active. *@
     @(masterCssSelector):active {
         @((ButtonActiveBackgroundColor != string.Empty) 
             ? $"background-color: { ButtonActiveBackgroundColor };" 

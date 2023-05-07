@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Code420.UIOrchestrator.Server.Code.Models.CssUtilities;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Syncfusion.Blazor.Inputs;
 
@@ -12,7 +13,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
     /// </para>
     /// <para>
     /// The component is NOT setup to use parameter binding for the Value parameter
-    /// (e.g., <code>TextBoxBase @bind-Value=@myValue</code>).
+    /// (e.g., <c>TextBoxBase @bind-Value=@myValue</c>).
     /// This means that the ValueChanged event handler is NOT exposed. If you want to handle binding to
     /// the Value parameter yourself, uncomment the ValueChangedHandler method in the cs file and
     /// its use in the razor file.
@@ -31,7 +32,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
     /// has example usage. You will have to provide CSS elements in your code to style the icon(s).
     /// It is recommended using the <see cref="CssClass"/> parameter to aid in selection.
     /// For example, the CSS selector needed to access the icon would be:
-    /// ".e-control-wrapper.{CssClass} .e-input-in-wrap .{icons}" where icons is the second
+    /// <c>.e-control-wrapper.{CssClass} .e-input-in-wrap .{icons}</c> where icons is the second
     /// parameter to the <see cref="AddIconAsync"/> method.
     /// </para>
     /// </summary>
@@ -48,13 +49,10 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
 
         #region Base Parameters
 
-        // ==================================================
-        // Base Parameters
-        // ==================================================
-
         /// <summary>
-        /// One of the <see cref="Syncfusion.Blazor.Inputs.AutoComplete"/> enum values indicating if the browser
-        /// is allowed to automatically enter or select a value for the textbox.
+        /// One of the <see cref="Syncfusion.Blazor.Inputs.AutoComplete"/> enum values
+        /// indicating if the browser is allowed to automatically enter or select a value
+        /// for the textbox.
         /// Default value is <see cref="Syncfusion.Blazor.Inputs.AutoComplete.Off"/>.
         /// </summary>
         [Parameter]
@@ -68,7 +66,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         public bool Enabled { get; set; } = true;
 
         /// <summary>
-        /// Boolean value indicating if the Textbox <see cref="Value"/> parameter is persisted between page reloads.
+        /// Boolean value indicating if the Textbox <see cref="Value"/> parameter is
+        /// persisted between page reloads.
         /// Default value is false.
         /// <remarks>
         /// The <see cref="CssId"/> parameter is used as the key in the browser local storage.
@@ -87,8 +86,10 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         public bool EnableRtl { get; set; }
 
         /// <summary>
-        /// A <see cref="Syncfusion.Blazor.Inputs.FloatLabelType"/> that specifies the floating label behavior of the TextBox.
-        /// Valid values are Never, Always and Auto (label floats above the textbox after focusing it or when enters the value in it).
+        /// A <see cref="Syncfusion.Blazor.Inputs.FloatLabelType"/> that specifies the floating
+        /// label behavior of the TextBox.
+        /// Valid values are Never, Always and Auto (label floats above the textbox after focusing
+        /// it or when enters the value in it).
         /// Default value is <see cref="Syncfusion.Blazor.Inputs.FloatLabelType.Auto"/>.
         /// </summary>
         [Parameter]
@@ -103,7 +104,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         public bool Multiline { get; set; }
 
         /// <summary>
-        /// String value containing the text that is shown as a hint or placeholder until the user focuses or enters a value in the Textbox. 
+        /// String value containing the text that is shown as a hint or placeholder until the
+        /// user focuses or enters a value in the Textbox. 
         /// Use of this property depends on the <see cref="FloatLabelType"/> property setting.
         /// Default value is string.Empty.
         /// </summary>
@@ -125,15 +127,16 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         public bool ShowClearButton { get; set; }
 
         /// <summary>
-        /// Integer value specifying the tab order of the Textbox relative to other HTML elements on the page.
+        /// Integer value specifying the tab order of the Textbox relative to other HTML
+        /// elements on the page.
         /// Default value is 0.
         /// </summary>
         [Parameter]
         public int TabIndex { get; set; }
 
         /// <summary>
-        /// One of the <see cref="Syncfusion.Blazor.Inputs.InputType"/> enums that specifies the behavior
-        /// of the TextBox such as text, password, email, and more.
+        /// One of the <see cref="Syncfusion.Blazor.Inputs.InputType"/> enums that specifies
+        /// the behavior of the TextBox such as text, password, email, and more.
         /// Default value is <see cref="Syncfusion.Blazor.Inputs.InputType.Text"/>.
         /// </summary>
         [Parameter]
@@ -141,8 +144,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
 
         /// <summary>
         /// Boolean value that indicates whether the component validates the input or not.
-        /// If the ValidateOnInput is enabled for form validation, then the model value will be updated on 
-        /// entering the value to the input.
+        /// If the ValidateOnInput is enabled for form validation, then the model value will
+        /// be updated on entering the value to the input.
         /// The default value is false.
         /// </summary>
         [Parameter]
@@ -160,48 +163,47 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
 
         #region Event Callback Parameters
 
-        // ==================================================
-        // Event Callback Parameters
-        // ==================================================
-
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the TextBox loses focus.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when
+        /// the TextBox loses focus.
         /// </summary>
         [Parameter]
         public EventCallback<FocusOutEventArgs> Blur { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the TextBox component is created.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when
+        /// the TextBox component is created.
         /// </summary>
         [Parameter]
         public EventCallback<object> Created { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the TextBox component is destroyed.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when
+        /// the TextBox component is destroyed.
         /// </summary>
         [Parameter]
         public EventCallback<object> Destroyed { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the TextBox
-        /// gains focus.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when
+        /// the TextBox gains focus.
         /// </summary>
         [Parameter]
         public EventCallback<FocusInEventArgs> Focus { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked each time when the
-        /// value of TextBox has changed.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked each
+        /// time the value of TextBox has changed.
         /// </summary>
         [Parameter]
         public EventCallback<InputEventArgs> Input { get; set; }
         
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the Textbox value
-        /// changes and loses focus.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when
+        /// the Textbox value changes and loses focus.
         /// <remarks>
         /// If the consuming component specifies a method for this event handler, that method is
-        /// responsible for all updated to the <see cref="Value"/> parameter. If a callback
+        /// responsible for all updates to the <see cref="Value"/> parameter. If a callback
         /// method is not specified, the TextBoxBase component will update the Value parameter.
         /// </remarks>
         /// </summary>
@@ -211,18 +213,14 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         // [Parameter]
         // public EventCallback<string> ValueChanged { get; set; }
 
-
         #endregion
 
 
         #region CSS Parameters
 
-        // ==================================================
-        // CSS Styling Parameters
-        // ==================================================
-
         /// <summary>
-        /// String value containing CSS class definition(s) that will be injected in the root HTML div element of the Textbox.
+        /// String value containing CSS class definition(s) that will be injected in the root
+        /// HTML div element of the Textbox.
         /// Default value is string.Empty.
         /// </summary>
         [Parameter]
@@ -243,18 +241,22 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         public string CssId { get; set; } = string.Empty;
 
         /// <summary>
-        /// Collection of additional HTML attributes such as styles, class, and more that are injected in root element. 
-        /// If both property and equivalent HTML attribute are configured, the component considers the property value. 
-        /// This is a <see cref="Dictionary{TKey, TValue}"/> where TKey is a <see cref="string"/> and TValue is an <see cref="object"/>.
+        /// Collection of additional HTML attributes such as styles, class, and more that are
+        /// injected in root element. If both property and equivalent HTML attribute are configured,
+        /// the component considers the property value. 
+        /// This is a <see cref="Dictionary{TKey, TValue}"/> where TKey is a <see cref="string"/>
+        /// and TValue is an <see cref="object"/>.
         /// Default value is null.
         /// </summary>
         [Parameter]
         public Dictionary<string, object> HtmlAttributes { get; set; }
 
         /// <summary>
-        /// Collection of additional input attributes such as disabled, value, and more that are injected in root element. 
-        /// If both property and equivalent input attribute are configured, the component considers the property value. 
-        /// This is a <see cref="Dictionary{TKey, TValue}"/> where TKey is a <see cref="string"/> and TValue is an <see cref="object"/>.
+        /// Collection of additional input attributes such as disabled, value, and more that are
+        /// injected in root element. If both property and equivalent input attribute are configured,
+        /// the component considers the property value. 
+        /// This is a <see cref="Dictionary{TKey, TValue}"/> where TKey is a <see cref="string"/> and
+        /// TValue is an <see cref="object"/>.
         /// Default value is null.
         /// </summary>
         [Parameter]
@@ -317,7 +319,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-color">border-color</a> 
         /// value used for the textbox when active.
-        /// The border-color shorthand CSS property sets the color of an element's border..
+        /// The border-color shorthand CSS property sets the color of an element's border.
         /// Default value is #80BDFF.
         /// </summary>
         [Parameter]
@@ -344,7 +346,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight">font-weigh</a> 
         /// value used for the textbox font.
-        /// The font-weight CSS property sets the weight (or boldness) of the font. The weights available depend on the font-family that is currently set.
+        /// The font-weight CSS property sets the weight (or boldness) of the font. The weights
+        /// available depend on the font-family that is currently set.
         /// Default value is 400.
         /// </summary>
         [Parameter]
@@ -353,7 +356,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height">line-height</a>
         /// value used for the textbox line height.
-        /// The line-height CSS property sets the height of a line box. It's commonly used to set the distance between lines of text.
+        /// The line-height CSS property sets the height of a line box. It is commonly used to set
+        /// the distance between lines of text.
         /// Default value is 1.4.
         /// </summary>
         [Parameter]
@@ -365,9 +369,10 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// The margin CSS shorthand property sets the margin area on all four sides of an element
         /// Default value is 24px 0px 0px 0px.
         /// <remarks>
-        /// When the <see cref="FloatLabelType"/> parameter is set to <see cref="Syncfusion.Blazor.Inputs.FloatLabelType.Auto"/>
-        /// or <see cref="Syncfusion.Blazor.Inputs.FloatLabelType.Always"/>, make sure to leave enough margin above the component
-        /// for the floating label.
+        /// When the <see cref="FloatLabelType"/> parameter is set to
+        /// <see cref="Syncfusion.Blazor.Inputs.FloatLabelType.Auto"/>
+        /// or <see cref="Syncfusion.Blazor.Inputs.FloatLabelType.Always"/>, make sure to
+        /// leave enough margin above the component for the floating label.
         /// </remarks>
         /// </summary>
         [Parameter]
@@ -385,7 +390,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left">padding-left</a> 
         /// value used for the textbox padding.
-        /// The padding-left CSS property sets the width of the padding area to the left of an element.
+        /// The padding-left CSS property sets the width of the padding area to the left
+        /// of an element.
         /// Default value is 8px.
         /// </summary>
         [Parameter]
@@ -394,7 +400,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-indent">text-indent</a> 
         /// value used for the textbox contents.
-        /// The text-indent CSS property sets the length of empty space (indentation) that is put before lines of text in a block.
+        /// The text-indent CSS property sets the length of empty space (indentation) that
+        /// is put before lines of text in a block.
         /// Default value is 0px.
         /// </summary>
         [Parameter]
@@ -422,7 +429,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color</a> 
         /// value used for the textbox placeholder font its normal (non-floating) position.
-        /// The color CSS property sets the foreground color value of an element's text and text decorations.
+        /// The color CSS property sets the foreground color value of an element's text and
+        /// text decorations.
         /// Default value is #6C757D.
         /// </summary>
         [Parameter]
@@ -440,8 +448,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight">font-weigh</a> 
         /// value used for the textbox placeholder font in its floating position.
-        /// The font-weight CSS property sets the weight (or boldness) of the font. The weights available depend on the font-family
-        /// that is currently set.
+        /// The font-weight CSS property sets the weight (or boldness) of the font.
+        /// The weights available depend on the font-family that is currently set.
         /// Default value is 400.
         /// </summary>
         [Parameter]
@@ -450,7 +458,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color</a> 
         /// value used for the textbox placeholder font its floating position.
-        /// The color CSS property sets the foreground color value of an element's text and text decorations.
+        /// The color CSS property sets the foreground color value of an element's text and
+        /// text decorations.
         /// Default value is #212529.
         /// </summary>
         [Parameter]
@@ -468,7 +477,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color</a> 
         /// value used for the close button's <see cref="ShowClearButton"/> icon..
-        /// The color CSS property sets the foreground color value of an element's text and text decorations.
+        /// The color CSS property sets the foreground color value of an element's text and
+        /// text decorations.
         /// Default value is rgba(0,0,0,0.5).
         /// </summary>
         [Parameter]
@@ -486,8 +496,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/min-width">min-width</a> 
         /// value used for the close button's <see cref="ShowClearButton"/> icon.
-        /// The min-width CSS property sets the minimum width of an element. It prevents the used value of the width property from
-        /// becoming smaller than the value specified for min-width.
+        /// The min-width CSS property sets the minimum width of an element. It prevents the used
+        /// value of the width property from becoming smaller than the value specified for min-width.
         /// Default value is 24px.
         /// </summary>
         [Parameter]
@@ -496,7 +506,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">padding</a> 
         /// value used for the close button padding.
-        /// The padding CSS shorthand property sets the padding area on all four sides of an element at once.
+        /// The padding CSS shorthand property sets the padding area on all four sides of
+        /// an element at once.
         /// Default value is 0px on all sides.
         /// </summary>
         [Parameter]
@@ -509,15 +520,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
 
 
         #region Callback Events Invoked from Underlying Components
-
-        // ==================================================
-        // Methods used as Callback Events from the underlying component(s)
-        //
-        //	These methods act as intermediaries for the child component's event
-        //	callbacks when this base component needs to inject some behavior.
-        //	Defining/using an intermediary when behavior injection is not required
-        //	is bloat...simply pass the event callback directly to the child component,
-        // ==================================================
 
         /// <summary>
         /// Passes the event to the consumer's method.
@@ -541,14 +543,9 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
 
         #region Instance Variables
 
-        // ==================================================
-        // Instance variables
-        // ==================================================
-
-        private SfTextBox sfTextBox;                            // SF Textbox component
-        private string masterCssSelector = string.Empty;        // The master selector for the HTML div element
-        private string boxShadowRgba = string.Empty;            // The RGBA value when styling the box shadow used when the textbox is active
-
+        private SfTextBox sfTextBox;
+        private string masterCssSelector = string.Empty;
+        private string boxShadowRgba = string.Empty;
 
         #endregion
 
@@ -563,11 +560,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
 
 
         #region Constructors
-
-
-        // ==================================================
-        // Constructors
-        // ==================================================
 
         // This method will be executed immediately after OnInitializedAsync if this is a new
         //  instance of a component. If it is an existing component that is being re-rendered because
@@ -635,10 +627,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// <param name="events">
         /// The icon events are added to the events element
         /// </param>
-        /// <remarks>
-        /// There isn't a mechanism to adding icons when the component is defined.
-        /// The best method to add icons is to 
-        /// </remarks>
         /// <example>
         /// The below code demonstrates usage of AddIconAsync method through component instance. While passing
         /// Events parameter, onclick denotes the Event type and the Click denotes the EventHandler method.
@@ -650,20 +638,17 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// ]]>
         /// </code>
         /// </example>
-        /// <returns></returns>
         public async Task AddIconAsync(string position, string icons, Dictionary<string, object> events = null) 
             => await sfTextBox.AddIconAsync(position, icons, events);
 
         /// <summary>
         /// Sets the focus to TextBox component for interaction.
         /// </summary>
-        /// <returns></returns>
         public async Task FocusAsync() => await sfTextBox.FocusAsync();
 
         /// <summary>
         /// Remove the focus from TextBox component, if the component is in focus state.
         /// </summary>
-        /// <returns></returns>
         public async Task FocusOutAsync() => await sfTextBox.FocusOutAsync();
 
         /// <summary>
@@ -676,10 +661,12 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// </summary>
         /// <param name="value">The new Placeholder property value</param>
         /// <remarks>
-        /// Uses JavaScript to find the label_CssId HTML Id element and sets its innerHTML to the passed value.
+        /// Uses JavaScript to find the label_CssId HTML Id element and sets its innerHTML
+        /// to the passed value.
         /// To ensure proper operation, ensure the CssId property is set to a unique value.
-        /// Example: The placeholder displayed when the textbox is empty should be "Enter your email address..."
-        /// whereas when the textbox has content, the placeholder should be: "Email address".
+        /// Example: The placeholder displayed when the textbox is empty should be
+        /// "Enter your email address..." whereas when the textbox has content, the
+        /// placeholder should be: "Email address".
         /// </remarks>
         public async Task UpdatePlaceholderAsync(string value)
         {
@@ -687,10 +674,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
             await jsRuntime.InvokeVoidAsync("Code420.setMaskedTextboxPlaceholder", id, value);
         }
 
-        #endregion
-
-
-        #region Private Methods for Internal Use Only
         #endregion
 
     }
