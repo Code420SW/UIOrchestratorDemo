@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Notifications;
 
 namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
@@ -25,6 +26,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
     /// <see cref="Target"/> -- Specify the parent element for the toast,
     /// </remarks>
     /// </summary>
+    [SuppressMessage("Usage", "BL0005:Component parameter should not be set outside of its component.")]
     public partial class ToastBase : ComponentBase
     {
 

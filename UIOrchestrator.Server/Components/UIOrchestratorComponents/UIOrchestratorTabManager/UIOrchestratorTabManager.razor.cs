@@ -52,7 +52,7 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         /// </summary>
         [CascadingParameter(Name ="OrchestratorRef")]
         [EditorRequired]
-        public UIOrchestrator OrchestratorRef { get; set; }
+        public Pages.UIOrchestrator.UIOrchestrator OrchestratorRef { get; set; }
 
         #endregion
 

@@ -1,8 +1,13 @@
-﻿using Code420.CanXtracServer.Components.CustomComponents.CustomToasts.Spinners;
+﻿using System.Diagnostics.CodeAnalysis;
+using Code420.UIOrchestrator.Core.Models.AuthP;
+using Code420.UIOrchestrator.Core.Models.UserCredentials;
+using Code420.UIOrchestrator.Server.Code.Models.Menus;
 using Code420.UIOrchestrator.Server.Components.BaseComponents.ButtonBase;
 using Code420.UIOrchestrator.Server.Components.BaseComponents.LabelBase;
 using Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase;
 using Code420.UIOrchestrator.Server.Components.CustomComponents.CustomToasts.GenericErrors;
+using Code420.UIOrchestrator.Server.Components.CustomComponents.CustomToasts.Spinners;
+using Code420.UIOrchestrator.Server.MediatR.User;
 using MediatR;
 using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Inputs;
@@ -10,15 +15,17 @@ using Syncfusion.Blazor.Inputs;
 namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.UserLoginTab
 {
     /// <summary>
-    /// Provides the user login screen which is loaded as a Tab by the <see cref="UIOrchestratorTabManager"/>.
+    /// Provides the user login screen which is loaded as a Tab by the
+    /// <see cref="UIOrchestratorTabManager"/>.
     /// </summary>
     /// <remarks>
     /// <para>
     /// This is the default Tab element loaded when the application starts.
     /// </para>
     /// <para>
-    /// Other than the <see cref="OrchestratorRef"/>parameter, a reference to the <see cref="UIOrchestrator"/> passed though
-    /// a <see cref="CascadingParameterAttribute"/>, the component has no parameters.
+    /// Other than the <see cref="OrchestratorRef"/>parameter, a reference to the
+    /// <see cref="UIOrchestrator"/> passed though a <see cref="CascadingParameterAttribute"/>,
+    /// the component has no parameters.
     /// </para>
     /// <para>
     /// The <see cref="IMediator"/> object injected through DI.
@@ -27,20 +34,23 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
     /// No public methods are exposed.
     /// </para>
     /// <para>
-    /// The component consumes the TextBoxBase component to acquire the user's email address and password.
-    /// A ButtonBase is consumed to initiate the login action. Two custom components <see cref="GenericError"/> and
-    /// <see cref="GenericSpinner"/> are consumed to display messages to the user.
+    /// The component consumes the TextBoxBase component to acquire the user's email address
+    /// and password. A ButtonBase is consumed to initiate the login action. Two custom components
+    /// <see cref="GenericError"/> and <see cref="GenericSpinner"/> are consumed to display messages
+    /// to the user.
     /// </para>
     /// <para>
-    /// The product of the component is a completed <see cref="UserLogoutCommandRequest"/> which is submitted to the 
-    /// IMediator <see cref="ISender.Send"/> method to authenticate the user through the API.
-    /// The results of the API call is an updated <see cref="IUserCredentials"/>
+    /// The product of the component is a completed <see cref="UserLogoutCommandRequest"/>
+    /// which is submitted to the IMediator <see cref="ISender.Send"/> method to authenticate
+    /// the user through the API. The results of the API call is an updated <see cref="IUserCredentials"/>
     /// </para>
     /// <para>
-    /// Upon a successful login, this component calls back to the <see cref="UIOrchestrator"/> passed though
-    /// a <see cref="CascadingParameterAttribute"/> to inform the UIOrchestrator of the event.
+    /// Upon a successful login, this component calls back to the <see cref="UIOrchestrator"/>
+    /// passed though a <see cref="CascadingParameterAttribute"/> to inform the UIOrchestrator
+    /// of the event.
     /// </para>
     /// </remarks>
+    [SuppressMessage("Usage", "BL0005:Component parameter should not be set outside of its component.")]
     public partial class UserLogin : ComponentBase
     {
 
@@ -56,8 +66,7 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         /// </remarks>
         /// </summary>
         [CascadingParameter(Name = "OrchestratorRef")]
-        public UIOrchestrator OrchestratorRef { get; set; }
-
+        public Pages.UIOrchestrator.UIOrchestrator OrchestratorRef { get; set; }
 
         /// <summary>
         /// String value containing the <see cref="OrchestratorMenuItem.ItemId"/> for this Tab.

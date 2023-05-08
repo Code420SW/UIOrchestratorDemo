@@ -32,7 +32,7 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         /// Used to subscribe to event handlers provided by the parent.
         /// </summary>
         [CascadingParameter(Name = "OrchestratorRef")]
-        public UIOrchestrator OrchestratorRef { get; set; }
+        public Pages.UIOrchestrator.UIOrchestrator OrchestratorRef { get; set; }
 
         /// <summary>
         /// String value containing the <see cref="OrchestratorMenuItem.ItemId"/> for this Tab.

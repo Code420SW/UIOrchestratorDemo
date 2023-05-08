@@ -1,4 +1,5 @@
-﻿using Code420.StatusGeneric;
+﻿using System.Diagnostics.CodeAnalysis;
+using Code420.StatusGeneric;
 using Code420.UIOrchestrator.Core.Models.Enums;
 using Code420.UIOrchestrator.Core.Models.Menus;
 using Code420.UIOrchestrator.Core.Models.UIOrchestratorConstants;
@@ -46,6 +47,7 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
     /// </para>
     /// </remarks>
 
+    [SuppressMessage("Usage", "BL0005:Component parameter should not be set outside of its component.")]
     internal sealed class MenuManager : IMenuManager
     {
         //  Make sure this menu item code matches the one for the login menu item

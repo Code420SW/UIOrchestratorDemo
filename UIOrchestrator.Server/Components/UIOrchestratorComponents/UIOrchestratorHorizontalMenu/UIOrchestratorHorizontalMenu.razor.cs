@@ -47,7 +47,7 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         /// </summary>
         [Parameter]
         [EditorRequired]
-        public UIOrchestrator OrchestratorRef { get; set; }
+        public Pages.UIOrchestrator.UIOrchestrator OrchestratorRef { get; set; }
         
         /// <summary>
         /// String value containing the CSS class of the HTML div containing the

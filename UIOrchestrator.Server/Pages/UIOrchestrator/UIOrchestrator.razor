@@ -1,0 +1,234 @@
+﻿@page "/"
+
+@namespace Code420.UIOrchestrator.Server.Pages.UIOrchestrator
+
+@using Code420.UIOrchestrator.Server.Components.CustomComponents.CustomToasts.GenericErrors
+@using Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorHorizontalMenu
+@using Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorSidebar
+@using Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorSidebarButton
+@using Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager
+
+@*
+MainLayout provides the page div for the application amd establishes a grid on the page div
+consisting of three row with one column each.The page div height is set to 100vh meaning it
+will fill the entire page The grid rows are defined as auto, 1fr, auto meaning the top and
+bottom rows will be sized based on their contents and the center row will consume the balance
+of the space.
+
+The Orchestrator component populates the grid rows with its header, main, and footer HTML elements.
+These elements are containers for other components.The Orchestrator provides basic CSS styling for
+the HTML elements which should be used to provide basic styling (e.g., height, background and borders).
+Note that the child components should provide their own styling.
+
+The page header encapsulates two inner header rows
+*@
+
+
+<header class="page__header">
+
+    @* Right now the first header row is a dummy and is not displayed *@
+    <div class="page__header-1">
+        <h1 style = "font-size: 1em;">This is the Orchestrator Page</h1>
+    </div>
+
+    @*
+    The second header row contains the sidebar button and the horizontal menu
+    A reference to the UIOrchestrator is passed directly to the components
+    *@
+    <div class="page__header-2">
+        <div class="header2__sidebar-button">
+            <UIOrchestratorSidebarButton 
+                @ref=@buttonSidebarToggle 
+                OrchestratorRef=@this 
+            />
+        </div>
+        <div class=@orchestratorMenuTargetClass>
+            <UIOrchestratorHorizontalMenu 
+                @ref=@horizontalMenu 
+                OrchestratorRef=@this 
+                TargetCssClass=@orchestratorMenuTargetClass
+            />
+        </div>
+    </div>
+
+</header>
+
+<main class="page__main">
+
+    @*
+    The main page div contains the sidebar menu and the tab manager
+
+    Note that a reference to the UIOrchestrator is cascaded down through the
+    tab manager so that any child tabs can access it
+
+    The page__main-content div is required so that OrchestratorSidebar 
+    correctly animates page__main when opening/closing. If everything
+    is shoved under page__main, only the first div is animated correctly.
+    *@
+    <div id="id-page__main-content" class="page__main-content">
+        <CascadingValue Value=@this Name="OrchestratorRef" IsFixed=true>
+            <UIOrchestratorTabManager @ref=@tabmanager />
+        </CascadingValue>
+    </div>
+
+</main>
+
+@* The footer doesn't contain anything right now *@
+<footer class="page__footer">
+    <div class="page__footer-filler"></div>
+</footer>
+
+
+@*
+The sidebar menu component has its Target parameter set to .page__main.
+A reference to the UIOrchestrator is passed directly to the component
+*@
+<UIOrchestratorSidebar  @ref=sidebar 
+                        OrchestratorRef=@this 
+                        InitialSidebarIsOpen=@initialSidebarIsOpen 
+                        />
+
+
+
+@* 
+========================
+Supporting Custom Toasts
+======================== 
+*@
+
+@* Toast uses to display execution errors *@
+<GenericError   @ref=@toastGenericError
+                Target="#id-page__main-content" />
+
+
+@* ReSharper disable once ConditionalTernaryEqualBranch *@
+<!--suppress CssUnresolvedCustomProperty -->
+<style>
+
+    @* Set the theme colors to CSS variables available to all children *@
+    :root {
+
+        --header1--bg: @themeManager.GetThemeItem("header1--bg");
+        --header2--bg: @themeManager.GetThemeItem("header2--bg");
+        --footer--bg: @themeManager.GetThemeItem("footer--bg");
+        --border__main--color: @themeManager.GetThemeItem("border__main--color");
+
+        --tab__container--bg: @themeManager.GetThemeItem("tab__container--bg");
+        --tab__container--fg: @themeManager.GetThemeItem("tab__container--fg");
+
+        --tab__header--bg: @themeManager.GetThemeItem("tab__header--bg");
+        --tab__header-active-border--color: @themeManager.GetThemeItem("tab__header-active-border--color");
+        --tab__header-inactive-border--color: @themeManager.GetThemeItem("tab__header-inactive-border--color");
+
+        --tab__secondary-header--bg: @themeManager.GetThemeItem("tab__secondary-header--bg");
+        --tab__secondary-header-active-border--color: @themeManager.GetThemeItem("tab__secondary-header-active-border--color");
+        --tab__secondary-header-inactive-border--color: @themeManager.GetThemeItem("tab__secondary-header-inactive-border--color");
+
+        --tab__text-active--font-color: @themeManager.GetThemeItem("tab__text-active--font-color");
+        --tab__text-inactive--font-color: @themeManager.GetThemeItem("tab__text-inactive--font-color");
+        --tab__text-active-hover--font-color: @themeManager.GetThemeItem("tab__text-active-hover--font-color");
+        --tab__text-inactive-hover--font-color: @themeManager.GetThemeItem("tab__text-inactive-hover--font-color");
+
+        --sidebar--bg: @themeManager.GetThemeItem("sidebar--bg");
+        --sidebar__border--color: @themeManager.GetThemeItem("sidebar__border--color");
+        --sidebar__backdrop--bg: @themeManager.GetThemeItem("sidebar__backdrop--bg");
+
+        --vmenu__item-normal--font-color: @themeManager.GetThemeItem("vmenu__item-normal--font-color");
+        --vmenu__item-normal--background-color: @themeManager.GetThemeItem("vmenu__item-normal--background-color");
+        --vmenu__item-active--font-color: @themeManager.GetThemeItem("vmenu__item-active--font-color");
+        --vmenu__item-active--background-color: @themeManager.GetThemeItem("vmenu__item-active--background-color");
+        --vmenu__icon--font-color: @themeManager.GetThemeItem("vmenu__icon--font-color");
+        --vmenu__caret--font-color: @themeManager.GetThemeItem("vmenu__caret--font-color");
+        --vmenu__separator--border-color: @themeManager.GetThemeItem("vmenu__separator--border-color");
+        --vmenu__popup--font-color: @themeManager.GetThemeItem("vmenu__popup--font-color");
+        --vmenu__popup--background-color: @themeManager.GetThemeItem("vmenu__popup--background-color");
+        --vmenu__popup--border-color: @themeManager.GetThemeItem("vmenu__popup--border-color");
+
+        --hmenu__item-normal--font-color: @themeManager.GetThemeItem("hmenu__item-normal--font-color");
+        --hmenu__item-normal--background-color: @themeManager.GetThemeItem("hmenu__item-normal--background-color");
+        --hmenu__item-active--font-color: @themeManager.GetThemeItem("hmenu__item-active--font-color");
+        --hmenu__item-active--background-color: @themeManager.GetThemeItem("hmenu__item-active--background-color");
+        --hmenu__icon--font-color: @themeManager.GetThemeItem("hmenu__icon--font-color");
+        --hmenu__caret--font-color: @themeManager.GetThemeItem("hmenu__caret--font-color");
+        --hmenu__separator--border-color: @themeManager.GetThemeItem("hmenu__separator--border-color");
+        --hmenu__popup--font-color: @themeManager.GetThemeItem("hmenu__popup--font-color");
+        --hmenu__popup--background-color: @themeManager.GetThemeItem("hmenu__popup--background-color");
+        --hmenu__popup--border-color: @themeManager.GetThemeItem("hmenu__popup--border-color");
+
+        --button-std__normal--background-color: @themeManager.GetThemeItem("button-std__normal--background-color");
+        --button-std__normal--border-color: @themeManager.GetThemeItem("button-std__normal--border-color");
+        --button-std__active--background-color: @themeManager.GetThemeItem("button-std__active--background-color");
+        --button-std__active--border-color: @themeManager.GetThemeItem("button-std__active--border-color");
+        --button-std__normal--font-color: @themeManager.GetThemeItem("button-std__normal--font-color");
+        --button-std-icon__normal--font-color: @themeManager.GetThemeItem("button-std-icon__normal--font-color");
+        
+        --element__normal--background-color: @themeManager.GetThemeItem("element__normal--background-color");
+        --element__normal--border-color: @themeManager.GetThemeItem("element__normal--border-color");
+        --element__active--border-color: @themeManager.GetThemeItem("element__active--border-color");
+        --element__normal--font-color: @themeManager.GetThemeItem("element__normal--font-color");
+        --element__disabled--font-color: @themeManager.GetThemeItem("element__disabled--font-color");
+    }
+
+    @* Set styling for the header element *@
+    .page__header {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 0;
+        row-gap: 0;
+
+        height: auto;
+        border-bottom: 2px solid var(--border__main--color);
+    }
+
+    @* Set styling for the header-1 element *@
+    .page__header-1 {
+        background-color: var(--header1--bg);
+        height: auto;
+        display: @((showPageHeader1) ? "none" : "none"); @* change the first none to what should normally be shown when implemented (flex); leave the second as none *@
+        padding: .5em 2em;
+    }
+
+    @*
+    Set styling for the header-2 element
+
+    The right/left padding should match the right/left padding passed
+    by OrchestratorMenu to the MenuBase MenuItemPadding parameter. This
+    will align the OrchestratorSidebarButton with the menu icons when
+    the Sidebar is docked (closed).
+    *@
+    .page__header-2 {
+        background-color: var(--header2--bg);
+        height: auto;
+        display: @((showPageHeader1) ? "flex" : "none");
+        align-items: center;
+        padding: .5em 12px;
+    }
+
+    @* Set styling for the Header2 Sidebar toggle button *@
+    .header2__sidebar-button {
+        align-items:flex-start;
+        background-color: inherit;
+    }
+
+    @* Set styling for the Header2 menu *@
+    .header2__menu {
+        align-items:flex-start;
+        background-color: inherit;
+    }
+
+    @* Set styling for the main element *@
+    .page__main {
+        background-color: var(--tab__container--bg);
+        color: var(--tab__container--fg);
+        overflow-y: auto;
+    }
+
+    @* Set styling for the footer element *@
+    .page__footer {
+        background-color: var(--footer--bg);
+        height: 3em;
+        border-top: 3px solid var(--border__main--color);
+    }
+
+</style>

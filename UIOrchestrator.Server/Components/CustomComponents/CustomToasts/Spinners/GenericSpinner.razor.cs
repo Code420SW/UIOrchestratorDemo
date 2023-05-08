@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase;
+using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Notifications;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase;
 
-namespace Code420.CanXtracServer.Components.CustomComponents.CustomToasts.Spinners
+namespace Code420.UIOrchestrator.Server.Components.CustomComponents.CustomToasts.Spinners
 {
     /// <summary>
     /// A Toast component used as a standardized "Please Wait" message for the application.
@@ -79,36 +77,11 @@ namespace Code420.CanXtracServer.Components.CustomComponents.CustomToasts.Spinne
 
         #endregion
 
-
-        #region Event Callback Parameters
-
-        // ==================================================
-        // Event Callback Parameters
-        // ==================================================
-
-
         #endregion
-
-
-        #region CSS Parameters
-
-        // ==================================================
-        // CSS Styling Parameters
-        // ==================================================
-
-
-        #endregion
-
-        #endregion
-
 
 
         #region Callback Events Invoked from Underlying Components
 
-        // ==================================================
-        // Methods used as Callback Events from the underlying component(s)
-        // ==================================================
-        
         /// <summary>
         /// Handles the OnOpen event from ToastBase.
         /// Responsible for updating dynamic content from the parent which is passed
@@ -136,42 +109,13 @@ namespace Code420.CanXtracServer.Components.CustomComponents.CustomToasts.Spinne
         #endregion
 
 
-
         #region Instance Variables
-
-        // ==================================================
-        // Instance variables
-        // ==================================================
 
         private ToastBase toast;
 
         #endregion
 
-
-
-        #region Injected Dependencies
-
-        // Injected Dependencies
-
-
-        // Dependency Injection
-
-
-        #endregion
-
-
-
-        #region Constructors
-
-        // ==================================================
-        // Constructors
-        // ==================================================
-
         
-        #endregion
-
-
-
         #region Public Methods Providing Access to the Underlying Components to the Consumer
 
         /// <summary>
@@ -194,13 +138,5 @@ namespace Code420.CanXtracServer.Components.CustomComponents.CustomToasts.Spinne
         }
 
         #endregion
-
-
-
-        #region Private Methods for Internal Use Only
-
-        
-        #endregion
-
     }
 }

@@ -26,7 +26,7 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         /// Contains the reference to the <see cref="UIOrchestrator"/> parent.
         /// </summary>
         [CascadingParameter(Name = "OrchestratorRef")]
-        public UIOrchestrator OrchestratorRef { get; set; }
+        public Pages.UIOrchestrator.UIOrchestrator OrchestratorRef { get; set; }
 
 
         /// <summary>
