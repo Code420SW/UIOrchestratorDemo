@@ -3,6 +3,7 @@ using FluentValidation;
 using MediatR;
 using Code420.UIOrchestrator.Core.Models.AuthP;
 using Code420.UIOrchestrator.Core.Models.UserCredentials;
+using Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.UserLoginTab;
 
 namespace Code420.UIOrchestrator.Server.MediatR.User
 {
@@ -22,10 +23,14 @@ namespace Code420.UIOrchestrator.Server.MediatR.User
     internal sealed class UserLoginCommandHandler : IRequestHandler<UserLoginCommandRequest, StatusGenericHandler>
     {
         private readonly IEnumerable<IValidator<LoginUserModel>> validators;
+        private readonly IUserCredentials userCredentials;  // For demo only
 
-        public UserLoginCommandHandler(IEnumerable<IValidator<LoginUserModel>> validators)
+        public UserLoginCommandHandler(IEnumerable<IValidator<LoginUserModel>> validators,
+            IUserCredentials userCredentials)
         {
             this.validators = validators;
+            this.userCredentials = userCredentials; // For demo only
+            
             //  Inject orchestrator, logging
         }
 
@@ -71,13 +76,33 @@ namespace Code420.UIOrchestrator.Server.MediatR.User
             }
 
             //  Typically this will contain the results of the call to the orchestrator
-            //  responsible for authenticating the user. For the demo we will simply
-            //  return a no-errors status.
+            //  responsible for authenticating the user. For example:
+            //  status = await userAuthenticationOrchestrator.LoginUser(request.loginUserModel);
+            //  For the demo we will simply return a no-errors status.
             StatusGenericHandler status = new();
             
-            // Define UserCredentials here versus invoking the orchestrator
+            // For demo only...See comments below
+            BuildUserCredentials(request.loginUserModel);
             
             return status;
+        }
+
+        private void BuildUserCredentials(LoginUserModel loginUserModel)
+        {
+            //  To make this simple we will define three users based on the email address:
+            //  1.  accessall@test.com -- Receive AccessAll permission
+            //  2.  permission1@test.com -- Receive Permission_1 permission
+            //  3.  anything else -- Receive Permission_2 permission
+
+            var permissions = loginUserModel.Email.ToLower() switch
+            {
+                "accessall@test.com" => new List<string> { "AllAccess" },
+                "permission1@test.com" => new List<string> { "Permission_1" },
+                _ => new List<string> { "Permission_2" }
+            };
+            
+            userCredentials.UpdateTokens("DummyJWT", "DummyRefreshToken");
+            userCredentials.UpdateUserPermissions(permissions);
         }
     }
 }

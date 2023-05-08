@@ -12,6 +12,6 @@ Code420.setMaskedTextboxPlaceholder = function (labelId, labelText) {
     document.getElementById(labelId).innerText = labelText;
 };
 
-Code420.getCssVariable = function (variable) {
+window.getCssVariable = function (variable) {
     return getComputedStyle(document.documentElement).getPropertyValue(variable);
 };

@@ -1,3 +1,27 @@
 ﻿@inherits LayoutComponentBase
 
-<main> @Body </main>
+<PageTitle>UIOrchestratorDemo</PageTitle>
+
+
+<div class="page">
+    @Body
+</div>
+
+<style>
+
+    /* Set styling for the page container */
+    .page {
+        position: relative;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+        column-gap: 0;
+        row-gap: 0;
+
+        height: 100vh;
+        font-size: 14px;
+        color: #FFF;
+    }
+
+</style>
