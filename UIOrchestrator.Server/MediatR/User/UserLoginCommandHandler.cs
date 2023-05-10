@@ -96,7 +96,7 @@ namespace Code420.UIOrchestrator.Server.MediatR.User
 
             var permissions = loginUserModel.Email.ToLower() switch
             {
-                "accessall@test.com" => new List<string> { "AllAccess" },
+                "accessall@test.com" => new List<string> { "AccessAll" },
                 "permission1@test.com" => new List<string> { "Permission_1" },
                 _ => new List<string> { "Permission_2" }
             };

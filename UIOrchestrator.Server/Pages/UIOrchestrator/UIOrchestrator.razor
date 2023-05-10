@@ -182,10 +182,11 @@ Supporting Custom Toasts
     }
 
     @* Set styling for the header-1 element *@
+    @* change the first none to what should normally be shown when implemented (flex); leave the second as none *@
     .page__header-1 {
         background-color: var(--header1--bg);
         height: auto;
-        display: @((showPageHeader1) ? "none" : "none"); @* change the first none to what should normally be shown when implemented (flex); leave the second as none *@
+        display: @((showPageHeader1) ? "none" : "none"); 
         padding: .5em 2em;
     }
 

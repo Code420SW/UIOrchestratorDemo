@@ -119,8 +119,6 @@ namespace Code420.UIOrchestrator.Server.Pages.UIOrchestrator
 
         protected override async Task OnInitializedAsync()
         {
-            await base.OnInitializedAsync();
-
             //  Execute the following if the menu system has not been initialized
             if (menuManager.MenuSystemInitialized is false)
             {
@@ -148,15 +146,14 @@ namespace Code420.UIOrchestrator.Server.Pages.UIOrchestrator
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            await base.OnAfterRenderAsync(firstRender);
-
             //  This is a result of the component lifecycle
             //  The second (and additional) invocation of OnAfterRenderAsync() will occur AFTER
             //      the menu system has had a chance to load (see OnInitializedAsync()).
             //  The startupComplete flag will ensure the following is executed only once.
-            if ((firstRender is false) && (startupComplete is false))
+            // if ((firstRender is false) && (startupComplete is false))
+            if (startupComplete is false)
             {
-                await LoadLoginTab();
+                await LoadLoginTabAsync();
                 startupComplete = true;
             }
         }
@@ -474,7 +471,7 @@ namespace Code420.UIOrchestrator.Server.Pages.UIOrchestrator
         /// Responsible for loading the Login tab in the UIOrchestratorTabManager.
         /// </summary>
         /// <returns></returns>
-        private async Task LoadLoginTab()
+        private async Task LoadLoginTabAsync()
         {
             //  Find the index for the Tab associated with the LoginTabItemId.
             //  TabItem object for the Login tab

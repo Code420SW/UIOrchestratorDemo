@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Navigations;
 using Code420.UIOrchestrator.Server.Components.BaseComponents.TabBase;
 using Code420.UIOrchestrator.Server.Code.Models.Menus;
@@ -91,6 +92,15 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
     
         #endregion
 
+        protected override void OnInitialized()
+        {
+            Debug.WriteLine("TabManager OnInitialized hit");
+        }
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            Debug.WriteLine($"TabManager OnAfterRender hit: {firstRender}");
+        }
 
         #region Public Methods Providing Access to the Underlying Components to the Consumer
 

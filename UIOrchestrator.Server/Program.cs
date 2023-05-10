@@ -1,8 +1,6 @@
 using Code420.UIOrchestrator.Server.AppStart;
 using FluentValidation;
 using MediatR;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
