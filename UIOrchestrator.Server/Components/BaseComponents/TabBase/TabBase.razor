@@ -370,6 +370,18 @@ else
     }
 
 
+     @* 
+     Set the styling for the active Tab Item text when focused. 
+     
+     Override bootstrap styling:
+     .e-tab.e-focused > .e-tab-header .e-toolbar-item .e-tab-wrap:focus {
+      background: #eee;
+      border: 1px solid rgba(0,0,0,0);
+    *@
+    @(masterCssSelector) .e-tab-header .e-toolbar-item .e-tab-wrap:focus {
+        background: inherit;
+    }
+        
     @* Set the styling for the inactive Tab Item text. *@
     @(masterCssSelector) .e-tab-header .e-toolbar-item .e-tab-wrap {
         font-size: @TabTextInactiveFontSize;

@@ -1,6 +1,7 @@
 ﻿using Code420.StatusGeneric;
 using MediatR;
 using Code420.UIOrchestrator.Core.Models.UserCredentials;
+using Code420.UIOrchestrator.Server.Pages.UIOrchestrator;
 
 namespace Code420.UIOrchestrator.Server.MediatR.User
 {
@@ -18,9 +19,12 @@ namespace Code420.UIOrchestrator.Server.MediatR.User
     /// </remarks>
     internal sealed class UserLogoutCommandHandler : IRequestHandler<UserLogoutCommandRequest, StatusGenericHandler>
     {
+        private readonly IUserCredentials userCredentials;  // For demo only
+        
         // ReSharper disable once EmptyConstructor
-        public UserLogoutCommandHandler() 
+        public UserLogoutCommandHandler(IUserCredentials userCredentials)
         {
+            this.userCredentials = userCredentials;
             // Inject orchestrator, logging
         }
 
@@ -32,6 +36,7 @@ namespace Code420.UIOrchestrator.Server.MediatR.User
             StatusGenericHandler status = new();
 
             // Update UserCredentials here versus invoking the orchestrator
+            userCredentials.LogoutUser();
 
             return await Task.FromResult(status);
         }
