@@ -82,6 +82,7 @@ namespace Code420.UIOrchestrator.Server.MediatR.User
             StatusGenericHandler status = new();
             
             // For demo only...See comments below
+            await Task.Delay(1_000);
             BuildUserCredentials(request.loginUserModel);
             
             return status;

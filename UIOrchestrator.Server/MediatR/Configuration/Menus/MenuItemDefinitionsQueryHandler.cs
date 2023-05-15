@@ -89,12 +89,14 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
                     MenuItemScope = MenuItemScope.AllMenus,
                     MenuItemRequiredPermissions = new List<string>()
                     {
-                        "Permission_1"
+                        "Permission_1",
+                        "Permission_2",
+                        "AccessAll"
                     },
-                    MenuItemIconCss = "",
-                    MenuItemParentId = "",
+                    MenuItemIconCss = "oi oi-bug",
+                    MenuItemParentId = null,
                     MenuItemIsSeparator = false,
-                    MenuItemUrl = ""
+                    MenuItemUrl = string.Empty
                 },
                 
                 new MenuItemDefinitionDto()
@@ -106,6 +108,8 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
                     MenuItemScope = MenuItemScope.HorizontalMenu,
                     MenuItemRequiredPermissions = new List<string>()
                     {
+                        "Permission_1",
+                        "Permission_2",
                         "AccessAll"
                     },
                     MenuItemIconCss = "oi oi-cog",
@@ -123,6 +127,7 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
                     MenuItemScope = MenuItemScope.HorizontalMenu,
                     MenuItemRequiredPermissions = new List<string>()
                     {
+                        "Permission_1",
                         "AccessAll"
                     },
                     MenuItemIconCss = string.Empty,
@@ -140,6 +145,7 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
                     MenuItemScope = MenuItemScope.HorizontalMenu,
                     MenuItemRequiredPermissions = new List<string>()
                     {
+                        "Permission_1",
                         "AccessAll"
                     },
                     MenuItemIconCss = string.Empty,
@@ -157,6 +163,8 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
                     MenuItemScope = MenuItemScope.HorizontalMenu,
                     MenuItemRequiredPermissions = new List<string>()
                     {
+                        "Permission_1",
+                        "Permission_2",
                         "AccessAll"
                     },
                     MenuItemIconCss = string.Empty,
@@ -174,6 +182,8 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
                     MenuItemScope = MenuItemScope.HorizontalMenu,
                     MenuItemRequiredPermissions = new List<string>()
                     {
+                        "Permission_1",
+                        "Permission_2",
                         "AccessAll"
                     },
                     MenuItemIconCss = string.Empty,
@@ -191,6 +201,8 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
                     MenuItemScope = MenuItemScope.HorizontalMenu,
                     MenuItemRequiredPermissions = new List<string>()
                     {
+                        "Permission_1",
+                        "Permission_2",
                         "AccessAll"
                     },
                     MenuItemIconCss = string.Empty,
@@ -208,6 +220,7 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
                     MenuItemScope = MenuItemScope.HorizontalMenu,
                     MenuItemRequiredPermissions = new List<string>()
                     {
+                        "Permission_1",
                         "AccessAll"
                     },
                     MenuItemIconCss = string.Empty,
@@ -225,10 +238,11 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
                     MenuItemScope = MenuItemScope.HorizontalMenu,
                     MenuItemRequiredPermissions = new List<string>()
                     {
+                        "Permission_1",
                         "AccessAll"
                     },
                     MenuItemIconCss = string.Empty,
-                    MenuItemParentId = "5000",
+                    MenuItemParentId = "5800",
                     MenuItemIsSeparator = false,
                     MenuItemUrl = string.Empty
                 },
@@ -242,6 +256,7 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
                     MenuItemScope = MenuItemScope.HorizontalMenu,
                     MenuItemRequiredPermissions = new List<string>()
                     {
+                        "Permission_1",
                         "AccessAll"
                     },
                     MenuItemIconCss = string.Empty,

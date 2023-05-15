@@ -119,10 +119,15 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         /// Boolean value indicating if the sidebar state should be set to opened
         /// (true) or closed
         /// </param>
-        public async Task SetSidebarToggleState(bool state)
+        /// <param name="suppressStateHasChanged">
+        /// Optional boolean value indicating if the method should suppress invocation
+        /// of the <see cref="ComponentBase.StateHasChanged"/> method (<c>true</c>).
+        /// The default value is <c>false</c>.
+        /// </param>
+        public async Task SetSidebarToggleStateAsync(bool state, bool suppressStateHasChanged = false)
         { 
             isOpen = state;
-            await InvokeAsync(StateHasChanged);
+            if (suppressStateHasChanged is false) await InvokeAsync(StateHasChanged);
         }
 
         #endregion

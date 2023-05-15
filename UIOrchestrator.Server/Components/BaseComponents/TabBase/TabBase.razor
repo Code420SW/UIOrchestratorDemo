@@ -237,7 +237,13 @@ else
         right: 0;
     }
 
-
+    @*
+    Fix for bootstrap overriding the oi setting of the font-family property
+    for the icons displayed in the tab header. 
+    *@
+    @(masterCssSelector) .e-tab-header .e-toolbar-item .e-tab-icon.oi {
+        font-family: Icons;
+    }
 
     @*
     Set the styling for the borders around the active Tab Item

@@ -364,8 +364,10 @@ namespace Code420.UIOrchestrator.Server.Pages.UIOrchestrator
         /// </remarks>
         private async Task ChangeThemeAsync(ThemeType themeType)
         {
+            var currentSidebarState = sidebar.GetSidebarState();
             themeManager.SetThemeType(themeType);
             await InvokeAsync(StateHasChanged);
+            await sidebar.SetSidebarToggleStateAsync(currentSidebarState);
         }
 
         /// <summary>
@@ -463,7 +465,7 @@ namespace Code420.UIOrchestrator.Server.Pages.UIOrchestrator
             //  Update the Sidebar and have the Sidebar Button update its state.
             //  The Sidebar is closed if the user is NOT authenticated and open if it is.
             // TODO: Set the Sidebar state based on authenticated user preferences.
-            await sidebar.SetSidebarToggleState(userCredentials.IsAuthenticated);
+            await sidebar.SetSidebarToggleStateAsync(userCredentials.IsAuthenticated);
             await buttonSidebarToggle.UpdateSidebarButtonState();
         }
 
