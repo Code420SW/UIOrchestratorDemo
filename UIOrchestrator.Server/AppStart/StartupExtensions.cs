@@ -5,9 +5,26 @@ using Code420.UIOrchestrator.Server.Code.Models.Theme;
 
 namespace Code420.UIOrchestrator.Server.AppStart
 {
+    /// <summary>
+    /// Responsible for registering all non third-party UIOrchestrator
+    /// dependencies in DI
+    /// </summary>
     public static class StartupExtensions
     {
-        public static IServiceCollection RegisterCanxtracServerClasses(this IServiceCollection services, IConfiguration configuration)
+        /// <summary>
+        /// Extension method to the <see cref="IServiceCollection"/> for registering
+        /// dependencies.
+        /// </summary>
+        /// <param name="services">
+        /// Reference to the <see cref="IServiceCollection"/> object.
+        /// </param>
+        /// <param name="configuration">
+        /// Reference to the <see cref="IConfiguration"/> object.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IServiceCollection"/> object.
+        /// </returns>
+        public static IServiceCollection RegisterUIOrchestratorClasses(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IUserCredentials, UserCredentials>();
             services.AddTransient<ICssUtilities, CssUtilities>();

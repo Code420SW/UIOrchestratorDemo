@@ -1,5 +1,12 @@
-﻿namespace Code420.UIOrchestrator.Server.Code.Enums
+﻿using Code420.UIOrchestrator.Server.Code.Models.MyCustomSpinner;
+
+namespace Code420.UIOrchestrator.Server.Code.Enums
 {
+    /// <summary>
+    /// Defines a set of standard custom spinner types used with the
+    /// <see cref="MyCustomSpinner"/> component to set the
+    /// <see cref="ButtonBase.ButtonStyle"/> parameter.
+    /// </summary>
     public enum CustomSpinners
     {
         SwingingBall = 0,

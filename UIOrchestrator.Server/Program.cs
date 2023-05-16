@@ -4,6 +4,7 @@ using MediatR;
 using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
@@ -12,7 +13,7 @@ builder.Services
     .AddSyncfusionBlazor()
     .AddMediatR(typeof(Program))
     .AddValidatorsFromAssembly(typeof(Program).Assembly)
-    .RegisterCanxtracServerClasses(builder.Configuration);
+    .RegisterUIOrchestratorClasses(builder.Configuration);
 
 
 var app = builder.Build();
