@@ -4,17 +4,14 @@ using Microsoft.JSInterop;
 
 namespace Code420.UIOrchestrator.Server.Code.Models.CssUtilities
 {
+    /// <summary>
+    /// Responsible for providing a set of utility functions to convert
+    /// different ways of specifying a CSS color value into an RGBA value.
+    /// </summary>
     public class CssUtilities : ICssUtilities
     {
         private readonly IJSRuntime jsRuntime;
 
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="jSRuntime">
-        /// Injected <see cref="IJSRuntime"/> dependency.
-        /// </param>
         public CssUtilities(IJSRuntime jSRuntime)
         {
             jsRuntime = jSRuntime;
@@ -91,7 +88,7 @@ namespace Code420.UIOrchestrator.Server.Code.Models.CssUtilities
         /// <returns>
         /// String value containing the RGBA color value.
         /// </returns>
-        public string GenerateRgba(string backgroundColor, decimal backgroundOpacity)
+        private string GenerateRgba(string backgroundColor, decimal backgroundOpacity)
         {
             decimal opacity = backgroundOpacity;
             if (backgroundOpacity < 0.0m) opacity = 0.0m;

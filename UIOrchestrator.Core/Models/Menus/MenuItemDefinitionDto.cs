@@ -2,6 +2,10 @@
 
 namespace Code420.UIOrchestrator.Core.Models.Menus
 {
+    /// <summary>
+    /// Responsible for transferring menu item definitions from the repository
+    /// to the menu manager model.
+    /// </summary>
     public class MenuItemDefinitionDto
     {
         /// <summary>
@@ -55,7 +59,7 @@ namespace Code420.UIOrchestrator.Core.Models.Menus
         /// <see cref="MenuItemPackedPermissions"/> property. For this demo, the
         /// MenuItemDefinitionsQueryHandler will build this DTO.
         /// </remarks>
-        public List<string> MenuItemRequiredPermissions { get; set; } = new();
+        public List<string> MenuItemRequiredPermissions { get; init; } = new();
 
         /// <summary>
         /// String value containing the CSS specifier for an icon displayed to the left of the

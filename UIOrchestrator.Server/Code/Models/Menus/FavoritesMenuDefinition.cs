@@ -1,8 +1,11 @@
 ﻿namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 {
     /// <summary>
-    /// Model for the Favorites Menu that encapsulates the general menu
-    /// parameters as well as a list of the menu items.
+    /// Model for the Favorites Menu that encapsulates the general favorites
+    /// menu parameters as well as a list of the favorites menu items.
+    /// <remarks>
+    /// The class is constructed in the <see cref="MenuManager.BuildFavoritesMenu"/> method.
+    /// </remarks>
     /// </summary>
     
     internal sealed class FavoritesMenuDefinition
@@ -21,7 +24,7 @@
 
         /// <summary>
         /// String value that defines the path to the image displayed in the
-        /// center of the Favorites Menu in the normals state.
+        /// center of the Favorites Menu in the normal state.
         /// </summary>
         public string PrimaryCenterImage { get; init; } = "./images/code420-white.jpg";
 
@@ -50,7 +53,7 @@
         public string MenuMinimumHeight { get; init; } = "700px";
 
         /// <summary>
-        /// String value containing the height of the Favorites Menu vcenter image in pixels.
+        /// String value containing the height of the Favorites Menu center image in pixels.
         /// Default value is 200px.
         /// </summary>
         public string CenterImageSize { get; init; } = "200px";
@@ -73,7 +76,8 @@
         /// The transition-duration CSS property sets the length of time a transition animation should take to complete.
         /// Default value is 500ms.
         /// <remarks>
-        /// A value of 50ms means that the center image will transition from the primary to
+        /// A value of 500ms means that the center image will transition from the
+        /// <see cref="PrimaryCenterImage"/> primary image to the <see cref="SecondaryCenterImage"/>
         /// secondary image in half a second when the center image is hovered.
         /// </remarks>
         /// </summary>
@@ -91,11 +95,11 @@
         /// The transition-duration CSS property sets the length of time a transition animation should take to complete.
         /// Default value is 500ms.
         /// <remarks>
-        /// A value of 50ms means that a menu item will transition from displaying its icon
+        /// A value of 500ms means that a menu item will transition from displaying its icon
         /// to displaying its text in half a second when the menu item is hovered.
         /// </remarks>
         /// </summary>
-        public string MenuItemTransitionSpeed { get; set; } = "500ms";
+        public string MenuItemTransitionSpeed { get; init; } = "500ms";
 
         /// <summary>
         /// A <see cref="List{T}"/> of <see cref="FavoritesMenuItem"/> objects that define

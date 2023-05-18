@@ -12,6 +12,7 @@ namespace Code420.UIOrchestrator.Server.Validators
                 .NotNull()
                 .NotEmpty()
                 .EmailAddress()
+                .MaximumLength(Core.Models.UIOrchestratorConstants.UIOrchestratorConstants.EmailSize)
                 .WithName("Email Address")
                 .WithMessage("An valid {PropertyName} is required.");
 

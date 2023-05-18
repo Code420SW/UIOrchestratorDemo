@@ -4,13 +4,11 @@ namespace Code420.UIOrchestrator.Core.Models.UserCredentials;
 
 public interface IUserCredentials
 {
-    //  Directed properties
     string Token { get; }
     string RefreshToken { get; }
     bool TokenRefreshNeeded { get; }
     string Tenant { get; }
 
-    //  Derived properties
     bool IsAuthenticated { get; }
     bool IsValid { get; }
     bool HasErrors { get; }
@@ -18,7 +16,6 @@ public interface IUserCredentials
     IReadOnlyList<string> UserPermissions { get; }
     IReadOnlyList<string> Errors { get; }
 
-    //  Methods
     void UpdateTokens(string token, string refreshToken);
     void UpdateUserRoles(List<string> roles);
     void UpdateUserPermissions(List<string> permissions);
