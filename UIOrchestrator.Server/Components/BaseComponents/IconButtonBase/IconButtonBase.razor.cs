@@ -8,7 +8,7 @@ using Syncfusion.Blazor.Buttons;
 namespace Code420.UIOrchestrator.Server.Components.BaseComponents.IconButtonBase
 {
     /// <summary>
-    /// Responsible for rendering a button that contains only and icon.<br />
+    /// Responsible for rendering a button that contains only an icon.<br />
     /// <para>
     /// The consuming component must specify the <see cref="IconCss"/> parameter and should
     /// specify a value for <see cref="CssClass"/> to ensure proper CSS isolation when multiple
@@ -303,7 +303,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.IconButtonBase
         #endregion
 
 
-
         #region Instance Variables
 
         private SfButton sfButton;
@@ -314,10 +313,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.IconButtonBase
         #endregion
 
 
-
         #region Injected Dependencies
-
-        // Injected Dependencies
 
         [Inject] private ICssUtilities cssUtilities { get; set; }
 
@@ -327,14 +323,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.IconButtonBase
 
         #region Constructors
 
-        // ==================================================
-        // Constructors
-        // ==================================================
-
-        // This method will be executed immediately after OnInitializedAsync if this is a new
-        //  instance of a component. If it is an existing component that is being re-rendered because
-        //  its parent is re-rendering then the OnInitialized* methods will not be executed, and this
-        //  method will be executed immediately after SetParametersAsync instead
         protected override void OnParametersSet()
         {
             // Build the master selector
@@ -358,19 +346,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.IconButtonBase
             }
         }
 
-        // This is the first place that the State should be changed
-        //
-        // This method is executed every time Blazor has re-generated the component’s RenderTree.
-        //  This can be as a result of the component’s parent re-rendering, the user interacting with the component
-        //  (e.g. a mouse-click), or if the component executes its StateHasChanged method to invoke a re-render.
-        // This method has a single parameter named firstRender. This parameter is true only the first time the
-        //  method is called on the current component, from there onwards it will always be false. In cases where
-        //  additional component hook-up is required (for example, via JavaScript) it is useful to know this is the
-        //  first render.
-        // It is not until after the OnAfterRender method have executed that it is safe to use any references to
-        //  components set via the @ref directive. And it is not until after the OnAfterRender method have been
-        //  executed with firstRender set to true that it is safe to use any references to HTML elements set via
-        //  the @ref directive
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
@@ -410,11 +385,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.IconButtonBase
         /// </summary>
         public async Task FocusAsync() => await sfButton.FocusAsync();
 
-        #endregion
-
-
-
-        #region Private Methods for Internal Use Only
         #endregion
 
     }

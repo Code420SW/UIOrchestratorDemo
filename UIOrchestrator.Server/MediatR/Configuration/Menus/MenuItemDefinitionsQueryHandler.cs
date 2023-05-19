@@ -37,7 +37,9 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
         /// <see cref="MenuItemDefinitionDto"/> objects in the Result property. The 
         /// <see cref="StatusGenericHandler{T}"/> object contains status information.
         /// </returns>
-        public async Task<StatusGenericHandler<List<MenuItemDefinitionDto>>> Handle(MenuItemDefinitionsQueryRequest request, CancellationToken cancellationToken)
+        public async Task<StatusGenericHandler<List<MenuItemDefinitionDto>>> Handle(
+            MenuItemDefinitionsQueryRequest request, 
+            CancellationToken cancellationToken = default)
         {
             //  Typically this handler would invoke and orchestrator responsible for coordinating
             //  the services required to get the menu items (e.g., status = await menuOrchestrator.GetMenuItemDefinitionsAsync();)
@@ -71,7 +73,6 @@ namespace Code420.UIOrchestrator.Server.MediatR.Configuration.Menus
                     MenuItemScope = MenuItemScope.AllMenus,
                     MenuItemRequiredPermissions = new List<string>()
                     {
-                        "Permission_1",
                         "AccessAll"
                     },
                     MenuItemIconCss = "oi oi-badge",

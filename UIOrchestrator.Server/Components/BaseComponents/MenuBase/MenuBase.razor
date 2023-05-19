@@ -35,19 +35,19 @@
 
 <style>
 
-    /* Set the styling for all Menu container children */
+    @* Set the styling for all Menu container children *@
     @(masterCssSelector) * {
         box-sizing: border-box;
     }
 
-    /* Set the styling for the Menu Items */
+    @* Set the styling for the Menu Items *@
     @(masterCssSelector) .e-menu-parent .e-menu-item:not(.e-separator) {
         height: @MenuItemHeight;
         line-height: @MenuItemLineHeight;
         padding: @MenuItemPadding;
     }
 
-    /* Set the styling for the Menu Items Icons */
+    @* Set the styling for the Menu Items Icons *@
     @(masterCssSelector) .e-menu-parent .e-menu-item .e-menu-icon {
         color: @MenuIconFontColor;
         font-size: @MenuIconFontSize;
@@ -59,7 +59,7 @@
         vertical-align: @MenuIconVerticalAlign;
     }
 
-    /* Set the styling for the Menu Items Caret  */
+    @* Set the styling for the Menu Items Caret  *@
     @(masterCssSelector) .e-menu-parent .e-menu-item .e-caret {
         color: @MenuCaretFontColor;
         font-size: @MenuCaretFontSize;
@@ -70,14 +70,14 @@
         top: @MenuCaretTop;
     }
 
-    /* Set the styling for the Menu Items when selected */
+    @* Set the styling for the Menu Items when selected *@
     @(masterCssSelector) .e-menu-parent .e-menu-item.e-selected,
     @(masterCssSelector) .e-menu-parent .e-menu-item.e-focused {
         color: @MenuItemSelectedFontColor;
         background-color: @MenuItemSelectedBackgroundColor;
     }
 
-    /* Set the styling for the Menu Separator */
+    @* Set the styling for the Menu Separator *@
     @(masterCssSelector) .e-menu-parent .e-menu-item.e-separator {
         border: @SeparatorBorder;
         height: @SeparatorHeight;
@@ -85,7 +85,7 @@
         line-height: @SeparatorLineHeight;
     }
 
-    /* Set styling for popup menu container */
+    @* Set styling for popup menu container *@
     @(masterCssSelector):is(.e-menu-popup) ul {
         color: @MenuPopupFontColor; 
         font-size: @MenuPopupFontSize;
@@ -97,14 +97,14 @@
         margin-left: @MenuPopupLeftMargin;
     }
 
-    /* Set the styling for the Menu wrapper */
+    @* Set the styling for the Menu wrapper *@
     @(masterCssSelector):not(.e-menu-popup) {
         border: @MenuBorder;
         border-radius: @MenuBorderRadius;
         width: @MenuWidth;
     }
 
-    /* Set the styling for the Menu */
+    @* Set the styling for the Menu *@
     @(masterCssSelector):not(.e-menu-popup) .e-menu.e-menu-parent.e-vertical,
     @(masterCssSelector):not(.e-menu-popup) .e-menu.e-menu-parent {
         color: @MenuFontColor;

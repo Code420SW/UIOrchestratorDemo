@@ -49,25 +49,27 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Theme
         /// A <see cref="Dictionary{TKey,TValue}"/> containing the CSS mappings for
         /// the active theme.
         /// </summary>
-        public Dictionary<string, string> ActiveTheme { get; set; }
+        private Dictionary<string, string> ActiveTheme { get; set; }
 
-        
         
         /// <summary>
         /// Class constructor.
         /// </summary>
+        /// <param name="initialThemeType">
+        /// One of the <see cref="ThemeType"/> enum elements.
+        /// If omitted the default value is <see cref="ThemeType.Light"/>.
+        /// </param>
         /// <remarks>
         /// Ensures the <see cref="colorPalette"/>, <see cref="lightTheme"/> and'
         /// <see cref="darkTheme"/>properties are initialized.
         /// Sets the <see cref="ActiveTheme"/> to the light theme.
         /// </remarks>
-        public ThemeManager()
+        public ThemeManager(ThemeType initialThemeType = ThemeType.Light)
         {
             LoadColorPalette();
             InitializeThemes();
-            ActiveTheme = lightTheme;
+            ActiveTheme = (initialThemeType is ThemeType.Light) ? lightTheme : darkTheme;
         }
-
 
         /// <summary>
         /// Responsible for setting the active theme.
@@ -89,7 +91,6 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Theme
             };
         }
 
-        
         /// <summary>
         /// Retrieves the CSS element associated with the passed CSS class for the
         /// active theme.

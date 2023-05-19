@@ -166,17 +166,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.LabelBase
 
         #region Constructors
 
-        // ==================================================
-        // Constructors
-        // ==================================================
-
-        // This method will be executed immediately after OnInitializedAsync if this is a new
-        //  instance of a component. If it is an existing component that is being re-rendered because
-        //  its parent is re-rendering then the OnInitialized* methods will not be executed, and this
-        //  method will be executed immediately after SetParametersAsync instead
         protected override void OnParametersSet()
         {
-            // Build the master selector
             elementClass = (CssClass == string.Empty) ? "label__" : CssClass;
             masterCssSelector = $".{ elementClass }";
         }

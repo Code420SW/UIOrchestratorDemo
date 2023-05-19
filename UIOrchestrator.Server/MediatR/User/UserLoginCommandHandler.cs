@@ -47,7 +47,9 @@ namespace Code420.UIOrchestrator.Server.MediatR.User
         /// <exception cref="Exception">
         /// An exception will be thrown if no validators can be found. This is a developer error.
         /// </exception>
-        public async Task<StatusGenericHandler> Handle(UserLoginCommandRequest request, CancellationToken cancellationToken = default)
+        public async Task<StatusGenericHandler> Handle(
+            UserLoginCommandRequest request, 
+            CancellationToken cancellationToken = default)
         {
             //  Ensure that at least one validator has been discovered
             //  If not, throw since this is a developer error
@@ -61,8 +63,10 @@ namespace Code420.UIOrchestrator.Server.MediatR.User
             var context = new ValidationContext<LoginUserModel>(request.loginUserModel);
             var validationResults = await Task.WhenAll(validators
                 .Select(v => v.ValidateAsync(context, cancellationToken)));
-            var errors = validationResults.SelectMany(r => r.Errors)
-                .Where(f => f != null).ToList();
+            var errors = validationResults
+                .SelectMany(r => r.Errors)
+                .Where(f => f != null)
+                .ToList();
 
             //  Capture any errors and bail
             if (errors.Any())
@@ -82,7 +86,7 @@ namespace Code420.UIOrchestrator.Server.MediatR.User
             StatusGenericHandler status = new();
             
             // For demo only...See comments below
-            await Task.Delay(1_000);
+            await Task.Delay(1_000, cancellationToken);     // Simulate a delay
             BuildUserCredentials(request.loginUserModel);
             
             return status;

@@ -44,7 +44,7 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 
         /// <summary>
         /// One of the <see cref="MenuItemScope"/> enum members specifying
-        /// which menu(s) in which the menu item is available.
+        /// the menu(s) in which the menu item is available.
         /// Default value is <see cref="MenuItemScope.AllMenus"/>.
         /// </summary>
         public MenuItemScope MenuItemScope { get; set; } = MenuItemScope.AllMenus;

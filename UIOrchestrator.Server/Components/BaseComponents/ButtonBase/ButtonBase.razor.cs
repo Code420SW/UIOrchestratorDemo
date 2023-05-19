@@ -7,6 +7,34 @@ using Syncfusion.Blazor.Buttons;
 
 namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ButtonBase
 {
+    /// <summary>
+    /// Responsible for rendering a simple button.<br />
+    /// <para>
+    /// The consuming component must specify the <see cref="ContentFragment"/> parameter and should
+    /// specify a value for <see cref="CssClass"/> to ensure proper CSS isolation when multiple
+    /// buttons derived from the SfButton component are present on the same page.
+    /// </para>
+    /// <para>
+    /// A series of parameters are exposed that allow the consumer to specify the styling for the button
+    /// element itself, and the the styling for the icon element contained by the button. All parameters
+    /// have default values. Update the ones necessary.
+    /// </para>
+    /// <para>
+    /// Exposes two <see cref="EventCallback"/> methods that handle events from the underlying SfButton
+    /// component. <see cref="OnClick"/> is triggered when the button is clicked, and <see cref="OnCreated"/>
+    /// which is triggered after the SfButton component is first rendered.
+    /// </para>
+    /// <para>
+    /// Exposes three methods. <see cref="DisableAsync"/> to disable the button, <see cref="EnableAsync"/> to
+    /// enable the button, and <see cref="FocusAsync"/> to move the focus to the button.
+    /// </para>
+    /// <remarks>
+    /// The component provides the <see cref="ButtonNormalBackgroundColor"/>, <see cref="ButtonHoverBackgroundColor"/>,
+    /// and <see cref="ButtonActiveBackgroundColor"/> parameters that specify the styling. The SfButton component
+    /// exposes an IsPrimary parameter that enforces default styling when set to true. This component exposes the
+    /// <see cref="IsPrimary"/> parameters which is passed to the SfButton component.
+    /// </remarks>
+    /// </summary>
     public partial class ButtonBase : ComponentBase
     {
 

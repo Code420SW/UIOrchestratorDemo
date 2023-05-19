@@ -16,7 +16,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
     /// </para>
     ///<para>
     /// Note that only one of these menu definition schemes should be used. I don't know that they
-    /// be intermixed.
+    /// can be intermixed.
     /// </para>
     ///<para>
     /// The <c>MenuEvents</c> component should not be defined. Use this components event parameters instead.
@@ -55,14 +55,16 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         public bool HamburgerMode { get; set; }
 
         /// <summary>
-        /// A <see cref="List{T}"/> where T is <see cref="TValue"/> containing the menu items with their properties to be rendered in the Menu.
+        /// A <see cref="List{T}"/> where T is <see cref="TValue"/> containing the menu items
+        /// with their properties to be rendered in the Menu.
         /// The default value is null.
         /// </summary>
         [Parameter]
         public List<TValue> Items { get; set; }
 
         /// <summary>
-        /// One of the <see cref="Syncfusion.Blazor.Navigations.Orientation"/> enums specifying the orientation of the Menu.
+        /// One of the <see cref="Syncfusion.Blazor.Navigations.Orientation"/> enums specifying
+        /// the orientation of the Menu.
         /// The default value is Horizontal.
         /// </summary>
         [Parameter]
@@ -77,15 +79,17 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         public bool ShowItemOnClick { get; set; } = true;
 
         /// <summary>
-        /// String value specifying the CSS class whose HTML element the Menu will open/close when <see cref="HamburgerMode"/> is enabled.
-        /// This must be a full CSS class specification (e.g., .sidebar__menu).
+        /// String value specifying the CSS class whose HTML element the Menu will open/close
+        /// when <see cref="HamburgerMode"/> is enabled.
+        /// This must be a full CSS class specification (e.g., <c>.sidebar__menu</c>).
         /// Default value is string.Empty.
         /// </summary>
         [Parameter]
         public string Target { get; set; } = string.Empty;
 
         /// <summary>
-        /// String value specifying the title text displayed when <see cref="HamburgerMode"/> is enabled.
+        /// String value specifying the title text displayed when <see cref="HamburgerMode"/>
+        /// is enabled.
         /// Default value is string.Empty.
         /// </summary>
         [Parameter]
@@ -97,47 +101,53 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         #region Event Callback Parameters
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when closing the menu.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when
+        /// closing the menu.
         /// </summary>
         [Parameter]
         public EventCallback<OpenCloseMenuEventArgs<TValue>> Closed { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked once the Menu rendering is completed.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked once
+        /// the Menu rendering is completed.
         /// </summary>
         [Parameter]
         public EventCallback<object> Created { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked while selecting menu item.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked while
+        /// selecting menu item.
         /// </summary>
         [Parameter]
         public EventCallback<MenuEventArgs<TValue>> ItemSelected { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked before closing the menu.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked before
+        /// closing the menu.
         /// </summary>
         [Parameter]
         public EventCallback<BeforeOpenCloseMenuEventArgs<TValue>> OnClose { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked while rendering each menu item.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked while
+        /// rendering each menu item.
         /// </summary>
         [Parameter]
         public EventCallback<MenuEventArgs<TValue>> OnItemRender { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked before opening the menu item.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked before
+        /// opening the menu item.
         /// </summary>
         [Parameter]
         public EventCallback<BeforeOpenCloseMenuEventArgs<TValue>> OnOpen { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked while opening the menu item.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked while
+        /// opening the menu item.
         /// </summary>
         [Parameter]
         public EventCallback<OpenCloseMenuEventArgs<TValue>> Opened { get; set; }
-
 
         #endregion
 
@@ -145,8 +155,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         #region CSS Parameters
 
         /// <summary>
-        /// String value containing CSS class definition(s) that will be injected in the root HTML div element
-        /// of the Menu container and the Popup container.
+        /// String value containing CSS class definition(s) that will be injected in the root
+        /// HTML div element of the Menu container and the Popup container.
         /// Default value is string.Empty.
         /// </summary>
         [Parameter]
@@ -206,7 +216,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">text-align</a>
         /// value applied to the text element of each Menu Item.
-        /// The text-align CSS property sets the horizontal alignment of the content inside a block element or table-cell box.
+        /// The text-align CSS property sets the horizontal alignment of the content inside a
+        /// block element or table-cell box.
         /// Default value is left.
         /// </summary>
         [Parameter]
@@ -295,8 +306,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color</a>
         /// value applied to the icon element of each Menu Item.
-        /// The color CSS property sets the foreground color value of an element's text and text decorations, and sets
-        /// the currentcolor value.
+        /// The color CSS property sets the foreground color value of an element's text
+        /// and text decorations, and sets the currentcolor value.
         /// Default value is #007BFF.
         /// </summary>
         [Parameter]
@@ -341,7 +352,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">text-align</a>
         /// value applied to the icon element of each Menu Item.
-        /// The text-align CSS property sets the horizontal alignment of the content inside a block element or table-cell box.
+        /// The text-align CSS property sets the horizontal alignment of the content inside a
+        /// block element or table-cell box.
         /// Default value is center.
         /// </summary>
         [Parameter]
@@ -372,7 +384,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color</a>
         /// value applied to the caret element of each Menu Item.
-        /// The color CSS property sets the foreground color value of an element's text and text decorations, and sets the currentcolor value.
+        /// The color CSS property sets the foreground color value of an element's text and text
+        /// decorations, and sets the currentcolor value.
         /// Default value is #007BFF.
         /// </summary>
         [Parameter]
@@ -426,7 +439,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/top">top</a>
         /// value applied to the caret element of each Menu Item.
-        /// The top CSS property participates in specifying the vertical position of a positioned element.
+        /// The top CSS property participates in specifying the vertical position of a
+        /// positioned element.
         /// Default value is 0px.
         /// </summary>
         [Parameter]
@@ -439,7 +453,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border">border</a>
         /// value used for the Menu Separator.
-        /// The border shorthand CSS property sets an element's border. It sets the values of border-width, border-style, and border-color.
+        /// The border shorthand CSS property sets an element's border. It sets the values of
+        /// border-width, border-style, and border-color.
         /// Default value is 1px solid #E9ECEF.
         /// </summary>
         [Parameter]
@@ -457,7 +472,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a>
         /// value used for the Menu Separator.
-        /// The text-align CSS property sets the horizontal alignment of the content inside a block element or table-cell box.
+        /// The text-align CSS property sets the horizontal alignment of the content inside a
+        /// block element or table-cell box.
         /// Default value is 6px 0px.
         /// </summary>
         [Parameter]
@@ -479,8 +495,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color</a>
         /// value applied to the text element of the focused/selected Menu Item.
-        /// The color CSS property sets the foreground color value of an element's text and text decorations, and
-        /// sets the currentcolor value.
+        /// The color CSS property sets the foreground color value of an element's text and
+        /// text decorations, and sets the currentcolor value.
         /// Default value is #FFF.
         /// </summary>
         [Parameter]
@@ -502,8 +518,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border">border</a>
         /// value used for the border around the Menu popup container.
-        /// The border shorthand CSS property sets an element's border. It sets the values of border-width, border-style,
-        /// and border-color.
+        /// The border shorthand CSS property sets an element's border. It sets the values of
+        /// border-width, border-style, and border-color.
         /// Default value is 1px solid rgba(0,0,0,0.15).
         /// </summary>
         [Parameter]
@@ -521,8 +537,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color</a>
         /// value applied to the text element of each Menu Item in the popup.
-        /// The color CSS property sets the foreground color value of an element's text and text decorations,
-        /// and sets the currentcolor value.
+        /// The color CSS property sets the foreground color value of an element's text and
+        /// text decorations, and sets the currentcolor value.
         /// Default value is #007BFF.
         /// </summary>
         [Parameter]
@@ -549,7 +565,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">text-align</a>
         /// value applied to the text element of each Menu Item in the popup.
-        /// The text-align CSS property sets the horizontal alignment of the content inside a block element or table-cell box.
+        /// The text-align CSS property sets the horizontal alignment of the content inside a
+        /// block element or table-cell box.
         /// Default value is left.
         /// </summary>
         [Parameter]
@@ -598,10 +615,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
 
         #region Constructors
 
-        // This method will be executed immediately after OnInitializedAsync if this is a new
-        //  instance of a component. If it is an existing component that is being re-rendered because
-        //  its parent is re-rendering then the OnInitialized* methods will not be executed, and this
-        //  method will be executed immediately after SetParametersAsync instead
         protected override void OnParametersSet()
         {
             masterCssSelector = (CssClass == string.Empty) ? ".e-menu-container" : $".{ CssClass }.e-menu-container";

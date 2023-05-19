@@ -8,6 +8,9 @@ using Code420.UIOrchestrator.Server.MediatR.Configuration.Menus;
 using MediatR;
 using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Navigations;
+using Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorMenu;
+using Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorHorizontalMenu;
+using Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase;
 
 namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 {
@@ -50,8 +53,10 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
     [SuppressMessage("Usage", "BL0005:Component parameter should not be set outside of its component.")]
     internal sealed class MenuManager : IMenuManager
     {
-        //  Make sure this menu item code matches the one for the login menu item
+        //  Make sure this menu item code matches the one for the login and logout menu items
         private const string LoginMenuItemCode = "Settings_User_Login";
+        private const string LoginMenuItemText = "Login";
+        private const string LogoutMenuItemText = "Logout";
         
         private readonly IUserCredentials userCredentials;
         private readonly IMediator mediator;
@@ -69,21 +74,22 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
         }
 
 
-
         /// <summary>
-        /// Contains a hierarchical list of <see cref="IOrchestratorMenuItem"/> elements used for the
+        /// Contains a hierarchical list of <see cref="OrchestratorMenuItem"/> elements used for the
         /// sidebar menu. Consumed by the <see cref="UIOrchestratorMenu"/> component.
         /// </summary>
         public List<OrchestratorMenuItem> SidebarMenu { get; private set; }
 
         /// <summary>
-        /// Contains a hierarchical list of <see cref="IOrchestratorMenuItem"/> elements used for the
+        /// Contains a hierarchical list of <see cref="OrchestratorMenuItem"/> elements used for the
         /// horizontal menu. Consumed by the <see cref="UIOrchestratorHorizontalMenu"/> component.
         /// </summary>
         public List<OrchestratorMenuItem> HorizontalMenu { get; private set; }
 
         /// <summary>
-        /// Contains the <see cref="FavoritesMenuDefinition"/> used by the FavoritesMenu Orchestrator Tab.
+        /// Contains the <see cref="FavoritesMenuDefinition"/> consumed by the
+        /// <see cref="Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.FavoritesMenuTab.FavoritesMenu"/>
+        /// Orchestrator Tab.
         /// </summary>
         public FavoritesMenuDefinition FavoritesMenu { get; private set; }
 
@@ -95,7 +101,8 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 
         /// <summary>
         /// String value containing the <see cref="OrchestratorMenuItem.ItemId"/> assigned to the
-        /// Login Tab.
+        /// <see cref="Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.UserLoginTab.UserLogin"/>
+        /// Orchestrator tab.
         /// </summary>
         public string LoginTabItemId => GetMenuItemIdFromMenuItemCode(LoginMenuItemCode);
 
@@ -113,7 +120,6 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
         /// Boolean value that indicates if the menu system should be reloaded from the
         /// repository (true).
         /// </param>
-        /// <returns></returns>
         /// <remarks>
         /// The consumer must invoke this method prior to using the menu system.
         /// The method will use the currently loaded menu system unless the forceReload
@@ -126,7 +132,7 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
         {
             //  If needed (menus have not been previously loaded or a force-reload
             //  is requested)...
-            if (forceReload || rawMenu is null)
+            if (rawMenu is null || forceReload)
             {
                 //  Load the list of MenuItemDefinitionDto objects from the db
                 var loadMenuItemDefinitionsStatus = await LoadMenuItemDefinitionsAsync();
@@ -245,7 +251,6 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
             return (index is -1) ? null : rawMenu[index].TabDefinition;
         }
 
-
         /// <summary>
         /// Load the list of <see cref="MenuItemDefinitionDto"/> objects from the repository.
         /// </summary>
@@ -256,8 +261,8 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
         /// </returns>
         private async Task<IStatusGeneric<List<MenuItemDefinitionDto>>> LoadMenuItemDefinitionsAsync()
         {
-            var returnedStatus = await mediator.Send(new MenuItemDefinitionsQueryRequest());
-            return returnedStatus;
+            var status = await mediator.Send(new MenuItemDefinitionsQueryRequest());
+            return status;
         }
         
         /// <summary>
@@ -290,7 +295,8 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
                 {
                     //  Try to resolve the MenuItemComponentName
                     //  If it can't be resolves, this is developer error so throw.
-                    var componentNameType = Type.GetType($"{UIOrchestratorConstants.OrchestratorTabBaseNamespace}{menuItemDefinition.MenuItemComponentName}");
+                    var componentNameType = 
+                        Type.GetType($"{UIOrchestratorConstants.OrchestratorTabBaseNamespace}{menuItemDefinition.MenuItemComponentName}");
                     if (componentNameType is null)
                     {
                         throw new ArgumentException($"The component {UIOrchestratorConstants.OrchestratorTabBaseNamespace}{menuItemDefinition.MenuItemComponentName} can not be resolved.");
@@ -340,12 +346,13 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
         /// Security-trims the menu system.
         /// <remarks>
         /// <para>
-        /// Compares the <see cref="UserCredentials.UserPermissions"/> list to the <see cref="OrchestratorMenuItem.RequiredPermissions"/>
-        /// list and, if the user does not have the proper permissions, sets the <see cref="OrchestratorMenuItem.IsHidden"/> property
-        /// to true.
+        /// Compares the <see cref="UserCredentials.UserPermissions"/> list to the
+        /// <see cref="OrchestratorMenuItem.RequiredPermissions"/> list and, if the
+        /// user does not have the proper permissions, sets the <see cref="OrchestratorMenuItem.IsHidden"/>
+        /// property to true.
         /// </para>
         /// <para>
-        /// The BuildRawMenu method must be invoked prior to invoking this method.
+        /// The <see cref="BuildRawMenu"/> method must be invoked prior to invoking this method.
         /// </para>
         /// </remarks>
         /// </summary>
@@ -367,13 +374,15 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
                 //  The OrchestratorMenuItem IsHidden property is a good candidate for indicating the
                 //  application of a menu item based on user permissions since its mutation has no side
                 //  effects. This does require additional filtering in BuildMenuHierarchy().
-                menuItem.IsHidden = (menuItem.RequiredPermissions.Any(x => userCredentials.UserPermissions.Contains(x)) is false);
+                menuItem.IsHidden = (menuItem
+                    .RequiredPermissions
+                    .Any(x => userCredentials.HasPermission(x)) is false);
             }
 
             //  Set the IsHidden property of the Login and Logout menu items based on user authentication state
-            var temp = rawMenu.FindIndex(x => x.MenuText == "Login");
+            var temp = rawMenu.FindIndex(x => x.MenuText == LoginMenuItemText);
             if (temp is not -1) rawMenu[temp].IsHidden = userCredentials.IsAuthenticated;
-            temp = rawMenu.FindIndex(x => x.MenuText == "Logout");
+            temp = rawMenu.FindIndex(x => x.MenuText == LogoutMenuItemText);
             if (temp is not-1) rawMenu[temp].IsHidden = (userCredentials.IsAuthenticated is false);
         }
 
@@ -381,7 +390,8 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
         /// Converts the flat rawMenu menu system into the hierarchical menu structure
         /// required by the <see cref="MenuBase{TValue}"/> component.
         /// <remarks>
-        /// The ApplyPermissionsToRawMenu method must be invoked prior to invoking this method.
+        /// The <see cref="ApplyPermissionsToRawMenu"/> method must be invoked prior to
+        /// invoking this method.
         /// </remarks>
         /// </summary>
         /// <param name="menuItemScope">
@@ -414,9 +424,8 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
                      Url = menuItem.Url
                  })
                  .Where(x => 
-                            (x.MenuItemScope == MenuItemScope.AllMenus || 
-                             x.MenuItemScope == menuItemScope) &&
-                            (x.IsHidden is false)
+                            (x.MenuItemScope == MenuItemScope.AllMenus || x.MenuItemScope == menuItemScope) 
+                            && x.IsHidden is false
                         )
                 .ToList();
 
@@ -447,10 +456,10 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
         /// </param>
         /// <remarks>
         /// <para>
-        /// The <see cref="UIOrchestratorMenu.MyItemSelectedHandler(Syncfusion.Blazor.Navigations.MenuEventArgs{OrchestratorMenuItem})"/> and
-        /// <see cref="UIOrchestratorHorizontalMenu.MyItemSelectedHandler(Syncfusion.Blazor.Navigations.MenuEventArgs{OrchestratorMenuItem})"/>
-        /// methods will invoke this method when a menu item is clicked and will extract the <see cref="OrchestratorMenuItem.ItemId"/> property
-        /// for the selected menu item and pass it to this method as an <see cref="object"/>.
+        /// The <see cref="UIOrchestratorMenu.ItemSelectedHandler(Syncfusion.Blazor.Navigations.MenuEventArgs{OrchestratorMenuItem})"/> and
+        /// <see cref="UIOrchestratorHorizontalMenu.ItemSelectedHandler(Syncfusion.Blazor.Navigations.MenuEventArgs{OrchestratorMenuItem})"/>
+        /// methods will invoke this method when a menu item is clicked and will extract the <see cref="OrchestratorMenuItem.ItemId"/>
+        /// property for the selected menu item and pass it to this method as an <see cref="object"/>.
         /// </para>
         /// <para>
         /// The <see cref="UIOrchestrator"/> processes all menu item selections and will register its own
@@ -677,7 +686,7 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 
             // Calculate the X- and Y-offsets for each menu item
             // Store results in the menu item's record as a CSS value
-            for (int i = 0; i < FavoritesMenu.MenuItemCount; i++)
+            for (var i = 0; i < FavoritesMenu.MenuItemCount; i++)
             {
                 var tempY = Math.Sin(i * angularSpacing) * FavoritesMenu.MenuRadius;
                 var tempX = Math.Cos(i * angularSpacing) * FavoritesMenu.MenuRadius;
@@ -691,7 +700,7 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
             if (FavoritesMenu.MenuItemCount == 8) return;
 
             // Back-fill the FavoritesMenuItems list with default menu items until it has eight elements
-            for (int i = FavoritesMenu.MenuItemCount + 1; i <= 8; i++)
+            for (var i = FavoritesMenu.MenuItemCount + 1; i <= 8; i++)
             {
                 FavoritesMenu.FavoritesMenuItems.Add(new());
             }

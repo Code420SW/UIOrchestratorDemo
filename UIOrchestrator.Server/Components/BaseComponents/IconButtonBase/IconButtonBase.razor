@@ -20,7 +20,7 @@
 
 <style>
 
-    /* Applies to all icon buttons */
+    @* Applies to all icon buttons *@
     @(masterCssSelector)
     {
         text-align: center;
@@ -46,7 +46,7 @@
     }
 
 
-    /* To customize the button on focus */
+    @* To customize the button on focus *@
     @(masterCssSelector).e-icon-only:focus,
     @(masterCssSelector).e-round:focus {
     
@@ -58,7 +58,7 @@
     }
 
 
-    /* To customize the button on hover and focus-visible */
+    @* To customize the button on hover and focus-visible *@
     @(masterCssSelector).e-icon-only:hover,
     @(masterCssSelector).e-icon-only:focus-visible,
     @(masterCssSelector).e-round:hover,
@@ -75,7 +75,7 @@
     }
 
 
-    /* To customize the button on active */
+    @* To customize the button on active *@
     @(masterCssSelector).e-icon-only:active,
     @(masterCssSelector).e-round:active {
         border-color: @ButtonActiveBorderColor;
@@ -86,7 +86,7 @@
     }
 
 
-    /* To customize the button when disabled */
+    @* To customize the button when disabled *@
     @(masterCssSelector).e-icon-only:disabled,
     @(masterCssSelector).e-icon-only:disabled:hover,
     @(masterCssSelector).e-round:disabled,
@@ -100,7 +100,7 @@
     }
 
 
-    /* Applies to the span in all icon button types (square and round) */
+    @* Applies to the span in all icon button types (square and round) *@
     @(masterCssSelector).e-round .e-btn-icon,
     @(masterCssSelector).e-icon-only .e-btn-icon {
         text-align: @IconFontTextAlign;
@@ -111,7 +111,7 @@
     }
 
 
-    /* Applies to the span in all round icon buttons */
+    @* Applies to the span in all round icon buttons *@
     @(masterCssSelector).e-round .e-btn-icon {
         top: 0;
     }

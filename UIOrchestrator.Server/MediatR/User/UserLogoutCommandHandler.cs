@@ -21,14 +21,15 @@ namespace Code420.UIOrchestrator.Server.MediatR.User
     {
         private readonly IUserCredentials userCredentials;  // For demo only
         
-        // ReSharper disable once EmptyConstructor
         public UserLogoutCommandHandler(IUserCredentials userCredentials)
         {
             this.userCredentials = userCredentials;
             // Inject orchestrator, logging
         }
 
-        public async Task<StatusGenericHandler> Handle(UserLogoutCommandRequest request, CancellationToken cancellationToken)
+        public async Task<StatusGenericHandler> Handle(
+            UserLogoutCommandRequest request, 
+            CancellationToken cancellationToken = default)
         {
             //  Typically this will contain the results of the call to the orchestrator
             //  responsible for de-authenticating the user. For the demo we will simply
