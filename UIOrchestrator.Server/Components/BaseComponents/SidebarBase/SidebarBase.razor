@@ -35,24 +35,24 @@
 
 <style>
 
-    /* Set the styling for all children */
+    @* Set the styling for all children *@
     @(masterCssSelector) * {
         box-sizing: border-box;
     }
 
-    /* Set the styling for the Sidebar element */
+    @* Set the styling for the Sidebar element *@
     @(masterCssSelector) {
         background: @SidebarBackgroundColor;
         overflow: hidden;
     }
 
 
-    /* Set the styling for the Right Sidebar element */
+    @* Set the styling for the Right Sidebar element *@
     @(masterCssSelector).e-right {
         border-left: @SidebarBorderWidth @SidebarBorderStyle @SidebarBorderColor;
     }
 
-    /* Set the styling for the Right Sidebar transition */
+    @* Set the styling for the Right Sidebar transition *@
     @(masterCssSelector).e-right.e-close.e-dock {
         transition: @SidebarCloseTransition;
     }
@@ -62,12 +62,12 @@
     }
 
 
-    /* Set the styling for the Left Sidebar element */
+    @* Set the styling for the Left Sidebar element *@
     @(masterCssSelector).e-left {
         border-right: @SidebarBorderWidth @SidebarBorderStyle @SidebarBorderColor;
     }
 
-    /* Set the styling for the Left Sidebar transition */
+    @* Set the styling for the Left Sidebar transition *@
     @(masterCssSelector).e-left.e-close.e-dock {
         transition: @SidebarCloseTransition;
     }
@@ -77,7 +77,7 @@
     }
 
 
-    /* Set the styling for the Sidebar overlay element */
+    @* Set the styling for the Sidebar overlay element *@
     @(masterCssSelector) ~ .e-content-animation > .e-sidebar-overlay {
         background-color: @BackdropBackgroundColor;
         opacity: @BackdropOpacity;

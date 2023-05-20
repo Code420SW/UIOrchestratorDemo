@@ -32,7 +32,7 @@
     /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a> 
     /// value used for the spinner margin.
     /// The margin CSS shorthand property sets the margin area on all four sides of an element
-    /// Default value is 0px 0px 0px 0px.
+    /// Default value is: <c>0px 0px 0px 0px</c>.
     /// </summary>
     [Parameter]
     public string Margin { get; set; } = "0px 0px 0px 0px";
@@ -54,8 +54,8 @@
     }
 
     .ball {
-        --s: 100px; /* control the size */
-        --c: red; /* the color */
+        --s: 100px; @* control the size *@
+        --c: red; @* the color *@
 
         width: var(--s);
         aspect-ratio: 1;

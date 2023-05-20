@@ -20,7 +20,23 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TabBase
     /// Note that only one of these methods can be used. If the <see cref="TabItems"/> parameter is
     /// defined (not null) it will take precedence over the <see cref="ChildContent"/> parameter.
     /// </para>
+    /// <para>
+    /// The <see cref="SelectedItemChanged"/> event callback handler is overridden by the component.
+    /// If the consumer does not handle this event, the component will update the <see cref="SelectedItem"/>
+    /// parameter when a tab is selected.
+    /// </para>
     /// </summary>
+    /// <remarks>
+    /// The following parameters must be set:<br />
+    /// <see cref="TabItems"/> -- A <see cref="List{T}"/> of <see cref="TabItem"/> objects defining
+    /// the tabs.<br />
+    /// <b>OR</b><br />
+    /// <see cref="ChildContent"/> -- A <c>TabItems</c> component defining the tabs.<br />
+    /// </remarks>
+    /// <remarks>
+    /// Consider setting the following parameters:<br />
+    /// <see cref="CssClass"/> -- Provides CSS isolation.
+    /// </remarks>
     
     // TODO: Understand why the various OverflowMode settings aren't working
     public partial class TabBase : ComponentBase
@@ -83,6 +99,10 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TabBase
         /// Boolean value specifying the persistence of the component's state between page reloads. 
         /// If enabled, the tab’s selected item will be persisted.
         /// Default value is false.
+        /// <remarks>
+        /// The <see cref="CssId"/> parameter is used as the key in the browser local storage.
+        /// Best practice is to set the CssId parameter if persistence is enabled.
+        /// </remarks>
         /// </summary>
         [Parameter]
         public bool EnablePersistence { get; set; }
@@ -257,6 +277,10 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TabBase
         /// of the Tab container.
         /// Default value is string.Empty.
         /// </summary>
+        /// <remarks>
+        /// The <see cref="CssId"/> parameter is used as the key in the browser local storage.
+        /// Best practice is to set the CssId parameter if <see cref="EnablePersistence"/> is true.
+        /// </remarks>
         [Parameter]
         public string CssId { get; set; } = string.Empty;
 
@@ -637,10 +661,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TabBase
 
         #region Constructors
 
-        // This method will be executed immediately after OnInitializedAsync if this is a new
-        //  instance of a component. If it is an existing component that is being re-rendered because
-        //  its parent is re-rendering then the OnInitialized* methods will not be executed, and this
-        //  method will be executed immediately after SetParametersAsync instead
         [SuppressMessage("Usage", "BL0005:Component parameter should not be set outside of its component.")]
         protected override void OnParametersSet()
         {
@@ -709,7 +729,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TabBase
         }
 
         #endregion
-
 
 
         #region Public Methods Providing Access to the Underlying Components to the Consumer

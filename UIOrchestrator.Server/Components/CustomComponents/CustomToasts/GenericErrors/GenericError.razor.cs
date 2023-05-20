@@ -100,6 +100,19 @@ namespace Code420.UIOrchestrator.Server.Components.CustomComponents.CustomToasts
             args.Options.Target = Target;
         }
         
+        /// <summary>
+        /// Handles the OnClick event from <see cref="ToastBase"/>.
+        /// Responsible for closing the Toast when the user clicks on it.
+        /// </summary>
+        /// <param name="args">
+        /// A <see cref="ToastClickEventArgs"/> object whose Options property contains the current settings
+        /// for some of the ToastBase (SfToast) parameters.
+        /// </param>
+        private void OnClickHandler(ToastClickEventArgs args)
+        {
+            InvokeAsync(async() => await toast.HideAsync());
+        }
+        
         #endregion
 
 

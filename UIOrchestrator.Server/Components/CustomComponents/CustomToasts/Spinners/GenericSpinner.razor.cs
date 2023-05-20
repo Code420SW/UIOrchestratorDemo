@@ -43,10 +43,6 @@ namespace Code420.UIOrchestrator.Server.Components.CustomComponents.CustomToasts
 
         #region Base Parameters
 
-        // ==================================================
-        // Base Parameters
-        // ==================================================
-
         /// <summary>
         /// A <see cref="RenderFragment"/> that specifies the content to be displayed on the Toast. 
         /// Accepts selectors, string values and HTML elements.

@@ -15,6 +15,17 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
     /// content at the bottom of the screen or at a specific target and disappears automatically after a f
     /// ew seconds (time-out) with different animation effects.
     /// </para>
+    /// <para>
+    /// The <see cref="OnClick"/> event callback handler is overridden by the component.
+    /// If the consumer does not handle this event, the component will take care of closing the toast
+    /// when clicked based on the <see cref="CloseToastOnClick"/> parameter
+    /// </para>
+    /// <para>
+    /// The <see cref="OnOpen"/> event callback handler is overridden by the component.
+    /// If the consumer does not handle this event, the component will use the markup in the
+    /// <see cref="Content"/> or <see cref="ContentTemplate"/> parameter based on the
+    /// <see cref="UseContentTemplate"/> parameter.
+    /// </para>
     /// <remarks>
     /// The following parameters must be set:<br />
     /// <see cref="Content"/> or <see cref="ContentTemplate"/> -- Content of the toast<br />
@@ -365,7 +376,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         /// The background shorthand CSS property sets all background style properties at once, such
         /// as color, image, origin and size, or repeat method.
         /// This is the background for the entire toast element.
-        /// Default value is rgba(255,255,255,0.85) (background color).
+        /// Default value is: <c>rgba(255,255,255,0.85)</c> (background color).
         /// </summary>
         [Parameter]
         public string ToastBackground { get; set; } = "rgba(255,255,255,0.85)";
@@ -376,7 +387,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         /// The border shorthand CSS property sets an element's border. It sets the values of border-width,
         /// border-style, and border-color.
         /// This is the border around the entire toast element.
-        /// Default value is 1px solid rgba(0,0,0,0.1).
+        /// Default value is: <c>1px solid rgba(0,0,0,0.1)</c>.
         /// </summary>
         [Parameter]
         public string ToastBorder { get; set; } = "1px solid rgba(0,0,0,0.1)";
@@ -389,7 +400,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         /// A box shadow is described by X and Y offsets relative to the element, blur and spread radius,
         /// and color.
         /// This is the shadow around the entire toast element.
-        /// Default value is 0 4px 5px 0 rgba(0,0,0,0.1).
+        /// Default value is: <c>0 4px 5px 0 rgba(0,0,0,0.1)</c>.
         /// </summary>
         [Parameter]
         public string ToastBoxShadow { get; set; } = "0 4px 5px 0 rgba(0,0,0,0.1)";
@@ -409,7 +420,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         /// value used for the toast element.
         /// The margin CSS shorthand property sets the margin area on all four sides of an element.
         /// Typically the margin bottom is used to set the gap between toasts.
-        /// Default value is 0px 0px 10px 0px.
+        /// Default value is: <c>0px 0px 10px 0px</c>.
         /// </summary>
         [Parameter]
         public string ToastMargin { get; set; } = "0px 0px 10px 0px";
@@ -491,7 +502,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color</a>
         /// value used for the icon element defined by the <see cref="Icon"/> parameter.
         /// The color CSS property sets the foreground color value of an element's text and text decorations.
-        /// Default value is rgba(0,0,0,0.5).
+        /// Default value is: <c>rgba(0,0,0,0.5)</c>.
         /// </summary>
         [Parameter]
         public string ToastIconFontColor { get; set; } = "rgba(0,0,0,0.5)";
@@ -512,7 +523,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         /// value used for the icon element defined by the <see cref="Icon"/> parameter.
         /// The margin CSS shorthand property sets the margin area on all four sides of an element.
         /// Typically the margin right is used to set the gap between the icon and other toast elements.
-        /// Default value is 0px 8px 0px 0px.
+        /// Default value is: <c>0px 8px 0px 0px</c>.
         /// </summary>
         [Parameter]
         public string ToastIconMargin { get; set; } = "0px 8px 0px 0px";
@@ -611,7 +622,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         /// value used for the content element defined (between the first and last) by the
         /// <see cref="Content"/> parameter.
         /// The padding CSS shorthand property sets the padding area on all four sides of an element at once.
-        /// Default value is 10px 0px 5px 0px.
+        /// Default value is: <c>10px 0px 5px 0px</c>.
         /// </summary>
         [Parameter]
         public string ToastContentPadding { get; set; } = "10px 0px 5px 0px";
@@ -629,7 +640,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">padding</a>
         /// value used for the last content element defined by the <see cref="Content"/> parameter.
         /// The padding CSS shorthand property sets the padding area on all four sides of an element at once.
-        /// Default value is 10px 0px 5px 0px.
+        /// Default value is: <c>10px 0px 5px 0px</c>.
         /// </summary>
         [Parameter]
         public string ToastContentPaddingLastChild { get; set; } = "10px 0px 5px 0px";
@@ -651,7 +662,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color</a>
         /// value used for the close button element (if enabled by the <see cref="ShowCloseButton"/> parameter).
         /// The color CSS property sets the foreground color value of an element's text and text decorations.
-        /// Default value is rgba(0,0,0,0.5).
+        /// Default value is: <c>rgba(0,0,0,0.5)</c>.
         /// </summary>
         [Parameter]
         public string ToastCloseButtonFontColor { get; set; } = "rgba(0,0,0,0.5)";
@@ -671,7 +682,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         /// value used for the close button element (if enabled by the <see cref="ShowCloseButton"/> parameter).
         /// The margin CSS shorthand property sets the margin area on all four sides of an element.
         /// Typically the margin left is used to set the gap between the close button and other toast elements.
-        /// Default value is 0px 0px 0px auto.
+        /// Default value is: <c>0px 0px 0px auto</c>.
         /// </summary>
         [Parameter]
         public string ToastCloseMargin { get; set; } = "0px 0px 0px auto";
@@ -742,7 +753,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         #endregion
 
 
-
         #region Callback Events Invoked from Underlying Components
 
         private async Task OnClickHandler(ToastClickEventArgs args)
@@ -782,7 +792,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         #endregion
 
 
-
         #region Instance Variables
 
         private SfToast toast;
@@ -791,7 +800,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         private ToastAnimationSettings animationSettings;
 
         #endregion
-
 
 
         #region Constructors
@@ -822,7 +830,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         }
 
         #endregion
-
 
 
         #region Public Methods Providing Access to the Underlying Components to the Consumer

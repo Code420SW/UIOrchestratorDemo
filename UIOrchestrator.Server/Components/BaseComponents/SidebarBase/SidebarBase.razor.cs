@@ -5,6 +5,30 @@ using EventArgs = Syncfusion.Blazor.Navigations.EventArgs;
 
 namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
 {
+    /// <summary>
+    /// <para>
+    /// Responsible for rendering a SfSidebar component in the element identified
+    /// by the <see cref="Target"/> parameter. The contents of the sidebar is defined
+    /// by the <see cref="ChildContent"/> parameter.
+    /// </para>
+    /// <para>
+    /// The component exposes a number of parameters that can be used to style the
+    /// sidebar and control its behavior. All provide default values that can be overridden.
+    /// </para>
+    /// <para>
+    /// The <see cref="IsOpenChanged"/> event callback handler is overridden by the component.
+    /// If the consumer does not handle this event, the component will update the <see cref="IsOpen"/>
+    /// parameter when the sidebar is opened or closed.
+    /// </para>
+    /// </summary>
+    /// <remarks>
+    /// The following parameters must be set:<br />
+    /// <see cref="ChildContent"/> -- The content rendered inside the sidebar.<br />
+    /// </remarks>
+    /// <remarks>
+    /// Consider setting the following parameters:<br />
+    /// <see cref="Target"/> -- Identifies the HTML element in which the sidebar is rendered.
+    /// </remarks>
     public partial class SidebarBase : ComponentBase
     {
 
@@ -13,7 +37,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
         #region Base Parameters
 
         /// <summary>
-        /// Boolean value specifying if animation transitions when expanding or collapsing the Sidebar are enabled.
+        /// Boolean value specifying if animation transitions when expanding or collapsing
+        /// the Sidebar are enabled.
         /// Default value is true.
         /// </summary>
         [Parameter]
@@ -24,6 +49,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
         /// The default value is null.
         /// </summary>
         [Parameter]
+        [EditorRequired]
         public RenderFragment ChildContent { get; set; }
 
         /// <summary>
@@ -35,30 +61,39 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
 
         /// <summary>
         /// Boolean value specifying the docking state of the Sidebar. 
-        /// When disabled, the Sidebar is not visible on the page in the closed state. A mechanism must be provided to change the Sidebar state,
-        /// When enabled, a portion of the Sidebar, specified by the <see cref="DockSize"/> parameter, is visible on the page.
+        /// When disabled, the Sidebar is not visible on the page in the closed state. A mechanism
+        /// must be provided to change the Sidebar state,
+        /// When enabled, a portion of the Sidebar, specified by the <see cref="DockSize"/> parameter,
+        /// is visible on the page.
         /// Default value is true.
         /// </summary>
         [Parameter]
         public bool EnableDock { get; set; } = true;
 
         /// <summary>
-        /// Boolean value specifying if swiping gestures to expand/collapse the Sidebar on touch devices are enabled.
+        /// Boolean value specifying if swiping gestures to expand/collapse the Sidebar on touch
+        /// devices are enabled.
         /// Default value is false.
         /// </summary>
         [Parameter]
         public bool EnableGestures { get; set; }
 
         /// <summary>
-        /// Boolean value specifying if the Sidebar's opened/closed state is persisted between page reloads.
+        /// Boolean value specifying if the Sidebar's opened/closed state is persisted between
+        /// page reloads.
         /// Default value is false.
         /// </summary>
+        /// <remarks>
+        /// The <see cref="CssId"/> parameter is used as the key in the browser local storage.
+        /// Best practice is to set the CssId parameter if persistence is enabled.
+        /// </remarks>
         [Parameter]
         public bool EnablePersistence { get; set; }
 
         /// <summary>
         /// Boolean value specifying if the Sidebar is open or closed.
-        /// When the Sidebar type is set to Auto, the component will be expanded in the desktop and collapsed in the mobile mode regardless of the IsOpen property.
+        /// When the Sidebar type is set to Auto, the component will be expanded in the desktop
+        /// and collapsed in the mobile mode regardless of the IsOpen property.
         /// Default value is false.
         /// </summary>
         [Parameter]
@@ -72,7 +107,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
         public SidebarPosition Position { get; set; } = SidebarPosition.Left;
 
         /// <summary>
-        /// Boolean value specifying whether to display the overlay the main content when the Sidebar is open.
+        /// Boolean value specifying whether to display an overlay on the main content when the
+        /// Sidebar is open.
         /// Default value is false.
         /// </summary>
         [Parameter]
@@ -80,14 +116,16 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
 
         /// <summary>
         /// String value specifying the CSS class whose HTML element the Sidebar will be placed within.
-        /// This must be a full CSS class specification (e.g., .sidebar__target).
-        /// Default value is string.Empty indicating the Sidebar will associated with the main CSS element.
+        /// This must be a full CSS class specification (e.g., <c>.sidebar__target</c>).
+        /// Default value is string.Empty indicating the Sidebar will associated with the <c>body</c>
+        /// HTML element.
         /// </summary>
         [Parameter]
         public string Target { get; set; } = string.Empty;
 
         /// <summary>
-        /// One of the <see cref="SidebarType"/> values specifying the interaction of the Sidebar and other HTML elements when open/closed.
+        /// One of the <see cref="SidebarType"/> values specifying the interaction of the Sidebar
+        /// and other HTML elements when open/closed.
         /// Default value is Auto.
         /// </summary>
         [Parameter]
@@ -99,19 +137,22 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
         #region Event Callback Parameters
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the state (expand/collapse) of the Sidebar is changed.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the state
+        /// (expand/collapse) of the Sidebar is changed.
         /// </summary>
         [Parameter]
         public EventCallback<ChangeEventArgs> Changed { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the Sidebar is created.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the
+        /// Sidebar is created.
         /// </summary>
         [Parameter]
         public EventCallback<object> Created { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the Sidebar is destroyed.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the
+        /// Sidebar is destroyed.
         /// </summary>
         [Parameter]
         public EventCallback<object> Destroyed { get; set; }
@@ -120,19 +161,22 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
         /// An <see cref="EventCallback{TValue}"/> where TValue is an <see cref="bool"/>.
         /// The consumer's method is invoked when the Sidebar's open/closed state changes.
         /// The parameter is an boolean value which indicates the state of the Sidebar.
-        /// Handling this callback adds the responsibility of updating the IsOpen parameter.
+        /// Handling this callback adds the responsibility of updating the <see cref="IsOpen"/>
+        /// parameter.
         /// </summary>
         [Parameter]
         public EventCallback<bool> IsOpenChanged { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the Sidebar is ready to close.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the
+        /// Sidebar is ready to close.
         /// </summary>
         [Parameter]
         public EventCallback<EventArgs> OnClose { get; set; }
 
         /// <summary>
-        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the Sidebar is ready to open.
+        /// An <see cref="EventCallback"/> containing the consumer's method invoked when the
+        /// Sidebar is ready to open.
         /// </summary>
         [Parameter]
         public EventCallback<EventArgs> OnOpen { get; set; }
@@ -155,6 +199,10 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
         /// of the Sidebar container.
         /// Default value is string.Empty.
         /// </summary>
+        /// <remarks>
+        /// The <see cref="CssId"/> parameter is used as the key in the browser local storage.
+        /// Best practice is to set the CssId parameter if <see cref="EnablePersistence"/> is true.
+        /// </remarks>
         [Parameter]
         public string CssId { get; set; } = string.Empty;
 
@@ -183,10 +231,11 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">media query</a>
         /// used to specify the media query string for the resolution when the Sidebar opens.
-        /// Media queries are useful when you want to modify your site or app depending on a device's general type 
-        /// (such as print vs. screen) or specific characteristics and parameters (such as screen resolution or browser viewport width).
-        /// For example: setting the parameter to '(min-width: 600px)' will open the Sidebar only when the provided resolution 
-        /// is met else the Sidebar will be in closed state.
+        /// Media queries are useful when you want to modify your site or app depending on a device's
+        /// general type (such as print vs. screen) or specific characteristics and parameters (such as
+        /// screen resolution or browser viewport width).
+        /// For example: setting the parameter to '(min-width: 600px)' will open the Sidebar only when
+        /// the provided resolution is met else the Sidebar will be in closed state.
         /// Default value is string.Empty.
         /// </summary>
         [Parameter]
@@ -207,7 +256,9 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
         /// Integer value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index">z-index</a>
         /// value of the Sidebar. 
         /// The z-index CSS property sets the z-order of a positioned element and its descendants or flex items.
-        /// It is applicable only when sidebar act as the overlay type.
+        /// It is applicable only when sidebar act as the overlay type (e.g., <see cref="Type"/> is
+        /// <see cref="SidebarType.Over"/> in any application, or <see cref="SidebarType.Auto"/> in a mobile
+        /// application).
         /// Default value is 0.
         /// </summary>
         [Parameter]
@@ -256,9 +307,9 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">transition</a>
         /// value used for the Sidebar when opening.
-        /// The transition CSS property is a shorthand property for transition-property, transition-duration, transition-timing-function,
-        /// and transition-delay.
-        /// Default value is transform .5s ease.
+        /// The transition CSS property is a shorthand property for transition-property, transition-duration,
+        /// transition-timing-function, and transition-delay.
+        /// Default value is: <c>transform .5s ease</c>.
         /// </summary>
         [Parameter]
         public string SidebarOpenTransition { get; set; } = "transform .5s ease";
@@ -266,9 +317,9 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">transition</a>
         /// value used for the Sidebar when closing.
-        /// The transition CSS property is a shorthand property for transition-property, transition-duration, transition-timing-function,
-        /// and transition-delay.
-        /// Default value is width .5s ease, visibility 500ms.
+        /// The transition CSS property is a shorthand property for transition-property, transition-duration,
+        /// transition-timing-function, and transition-delay.
+        /// Default value is: <c>width .5s ease, visibility 500ms</c>.
         /// </summary>
         [Parameter]
         public string SidebarCloseTransition { get; set; } = "width .5s ease, visibility 500ms";
@@ -277,7 +328,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-color">background-color</a>
         /// value used for the backdrop (overlay).
         /// The background-color CSS property sets the background color of an element.
-        /// Default value is rgba(0, 0, 0, 0.5).
+        /// Default value is: <c>rgba(0, 0, 0, 0.5)</c>.
         /// </summary>
         [Parameter]
         public string BackdropBackgroundColor { get; set; } = "rgba(0, 0, 0, 0.5)";
@@ -301,7 +352,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
 
         private async Task IsOpenChangedHandler(bool state)
         {
-            //Debug.WriteLine("IsOpenChangedHandler method invoked.");
             if (IsOpenChanged.HasDelegate) await IsOpenChanged.InvokeAsync(state);
             else IsOpen = state;
         }
@@ -321,10 +371,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.SidebarBase
 
         #region Constructors
 
-        // This method will be executed immediately after OnInitializedAsync if this is a new
-        //  instance of a component. If it is an existing component that is being re-rendered because
-        //  its parent is re-rendering then the OnInitialized* methods will not be executed, and this
-        //  method will be executed immediately after SetParametersAsync instead
         protected override void OnParametersSet()
         {
             // Build the master selectors

@@ -367,7 +367,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a> 
         /// value used for the textbox margin.
         /// The margin CSS shorthand property sets the margin area on all four sides of an element
-        /// Default value is 24px 0px 0px 0px.
+        /// Default value is: <c>24px 0px 0px 0px</c>.
         /// <remarks>
         /// When the <see cref="FloatLabelType"/> parameter is set to
         /// <see cref="Syncfusion.Blazor.Inputs.FloatLabelType.Auto"/>
@@ -479,7 +479,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
         /// value used for the close button's <see cref="ShowClearButton"/> icon..
         /// The color CSS property sets the foreground color value of an element's text and
         /// text decorations.
-        /// Default value is rgba(0,0,0,0.5).
+        /// Default value is: <c>rgba(0,0,0,0.5)</c>.
         /// </summary>
         [Parameter]
         public string ClearButtonIconColor { get; set; } = "rgba(0,0,0,0.5)";
@@ -561,10 +561,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
 
         #region Constructors
 
-        // This method will be executed immediately after OnInitializedAsync if this is a new
-        //  instance of a component. If it is an existing component that is being re-rendered because
-        //  its parent is re-rendering then the OnInitialized* methods will not be executed, and this
-        //  method will be executed immediately after SetParametersAsync instead
         protected override void OnParametersSet()
         {
             // Build the master selector
@@ -574,19 +570,6 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
             InputAttributes ??= new();
         }
 
-        // This is the first place that the State should be changed
-        //
-        // This method is executed every time Blazor has re-generated the component’s RenderTree.
-        //  This can be as a result of the component’s parent re-rendering, the user interacting with the component
-        //  (e.g. a mouse-click), or if the component executes its StateHasChanged method to invoke a re-render.
-        // This method has a single parameter named firstRender. This parameter is true only the first time the
-        //  method is called on the current component, from there onwards it will always be false. In cases where
-        //  additional component hook-up is required (for example, via JavaScript) it is useful to know this is the
-        //  first render.
-        // It is not until after the OnAfterRender method have executed that it is safe to use any references to
-        //  components set via the @ref directive. And it is not until after the OnAfterRender method have been
-        //  executed with firstRender set to true that it is safe to use any references to HTML elements set via
-        //  the @ref directive
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             // Pre-calculate the box-shadow RGBA values used when the textbox is active
