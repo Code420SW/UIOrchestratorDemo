@@ -6,7 +6,8 @@ using Code420.UIOrchestrator.Server.Code.Models.Menus;
 namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorMenu
 {
     /// <summary>
-    /// Provides the menu system used by the Orchestrator and containerizes the MenuBase component.
+    /// Provides the menu system used by the Orchestrator and containerizes the <see cref="MenuBase{T}"/>
+    /// component.
     /// Handles events (menu selections) by invoking the <see cref="OrchestratorMenuItem.MenuItemCallback"/>
     /// associated with the menu item.
     /// The menu is tied to the OrchestratorSidebar in that its SidebarCssClass is used to
@@ -22,7 +23,7 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
     /// font size for the menu icons.<br />
     /// The <see cref="DockedMenuWidth"/> is directly passed to the component and sets the
     /// width of the menu when the Sidebar is in the closed state.<br />
-    /// The <see cref="SidebarCssClass"/> is directly passed to the component and uis used
+    /// The <see cref="SidebarCssClass"/> is directly passed to the component and is used
     /// to build the master CSS selector to address the menu for styling.
     /// </para>
     /// <para>
@@ -48,11 +49,21 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         /// <summary>
         /// Contains the reference to the <see cref="UIOrchestrator"/> parent.
         /// Used to access methods provided by the parent.
+        /// This is a required parameter.
         /// </summary>
         [Parameter]
         [EditorRequired]
         public Pages.UIOrchestrator.UIOrchestrator OrchestratorRef { get; set; }
 
+        /// <summary>
+        /// String value containing CSS class of the Sidebar container.
+        /// Used to build the master CSS selector needed to handle menu customizations.
+        /// This is a required parameter.
+        /// </summary>
+        [Parameter]
+        [EditorRequired]
+        public string SidebarCssClass { get; set; }
+        
         /// <summary>
         /// String value that specifies the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size">font-size</a>
         /// value used for the menu icons when the Sidebar is in the docked (closed) state.
@@ -71,14 +82,6 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         /// </summary>
         [Parameter]
         public string DockedMenuWidth { get; set; } = "50px";
-
-        /// <summary>
-        /// String value containing CSS class of the Sidebar container.
-        /// Used to build the master CSS selector needed to handle menu customizations.
-        /// Default value is string.Empty.
-        /// </summary>
-        [Parameter]
-        public string SidebarCssClass { get; set; } = string.Empty;
 
         #endregion
 
@@ -104,7 +107,7 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         private void ItemSelectedHandler(MenuEventArgs<OrchestratorMenuItem> args)
         {
             if (args.Item.SubMenu is null)  
-                args.Item.MenuItemCallback.Invoke(args.Item.ItemId);
+                args.Item.MenuItemCallback?.Invoke(args.Item.ItemId);
         } 
 
         #endregion
@@ -121,10 +124,6 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
 
         #region Constructors
 
-        // This method will be executed immediately after OnInitializedAsync if this is a new
-        //  instance of a component. If it is an existing component that is being re-rendered because
-        //  its parent is re-rendering then the OnInitialized* methods will not be executed, and this
-        //  method will be executed immediately after SetParametersAsync instead
         protected override void OnParametersSet()
         {
             masterCssSelector = (SidebarCssClass == string.Empty) ?

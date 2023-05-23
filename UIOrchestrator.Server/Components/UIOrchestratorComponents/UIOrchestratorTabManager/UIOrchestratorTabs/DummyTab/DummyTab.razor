@@ -1,6 +1,7 @@
 ﻿@namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.DummyTab
 
 @using Code420.UIOrchestrator.Server.Code.Models.Menus;
+@using Code420.UIOrchestrator.Core.Models.UIOrchestratorConstants;;
 
 
 <!--suppress SpellCheckingInspection -->
@@ -26,10 +27,24 @@
 
 
 @code{
-    
+    /// <summary>
+    /// Provides the a simple tab with no code-behind.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This component <b>must</b> exist in the namespace defined by
+    /// <see cref="UIOrchestratorConstants.OrchestratorTabBaseNamespace"/> otherwise
+    /// an exception will be thrown when the application constructs the <see cref="RenderFragment"/>.
+    /// </para>
+    /// </remarks>
 
     /// <summary>
     /// String value containing the <see cref="OrchestratorMenuItem.ItemId"/> for this Tab.
+    /// Parameter is not used.
+    /// <remarks>
+    /// As with all UIOrchestratorTabs, this parameter is set when the <see cref="RenderFragment"/>
+    /// (encapsulated in the OrchestratorMenuItem.TabDefinition.ContentTemplate property) is built.
+    /// </remarks>
     /// </summary>
     [Parameter]
     public string MenuItemId { get; set; }

@@ -16,7 +16,7 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
     /// to coordinate events.
     /// </para>
     /// <para>
-    /// Exposes two base parameters. 
+    /// Exposes one base parameter. 
     /// The <see cref="OrchestratorRef"/> parameter is cascaded down and is also available to all 
     /// child Tab components to provide access to the <see cref="UIOrchestrator"/>.
     /// </para>
@@ -71,6 +71,9 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         private void RemovingHandler(RemoveEventArgs args)
         {
             //  Prevent an unauthenticated user from closing the Login Tab
+            //  by cancelling the event.
+            //  Remember: The component sets the ShowCloeButton property for the
+            //  TabBase component to true which is applied to all tabs.
             var isUserLoginTab = (tabbase.TabItems[args.RemovedIndex].CssClass == initialMenuItemId);
             args.Cancel =  isUserLoginTab && OrchestratorRef.UserIsAuthenticated() is false;
         }
@@ -91,16 +94,6 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         private string initialMenuItemId => OrchestratorRef.LoginTabItemId;
     
         #endregion
-
-        protected override void OnInitialized()
-        {
-            Debug.WriteLine("TabManager OnInitialized hit");
-        }
-
-        protected override void OnAfterRender(bool firstRender)
-        {
-            Debug.WriteLine($"TabManager OnAfterRender hit: {firstRender}");
-        }
 
         #region Public Methods Providing Access to the Underlying Components to the Consumer
 

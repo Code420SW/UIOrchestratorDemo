@@ -250,12 +250,12 @@ namespace Code420.UIOrchestrator.Server.Pages.UIOrchestrator
         /// String value containing the <see cref="OrchestratorMenuItem.ItemId"/> for the
         /// menu item associated with the Login command.
         /// </returns>
-        private string GetLoginTabItemId() => LoginTabItemId;
+        // ReSharper disable once MemberCanBePrivate.Global
+        public string GetLoginTabItemId() => LoginTabItemId;
 
         #endregion
 
         #endregion
-
 
 
         #region Private Methods for Internal Use Only
@@ -284,6 +284,10 @@ namespace Code420.UIOrchestrator.Server.Pages.UIOrchestrator
         {
             //  TODO: This can be generalized better so the switch statement doesn't mutate
             //  every time a non-tab-based menu item is added.
+            //  Perhaps a dictionary of menu item codes and delegates that are initialized
+            //  in the OnInitializedAsync constructor and then replace the switch statement
+            //  with a lookup in the dictionary. If the menu item code is not found in the
+            //  dictionary, then invoke the MenuItemSelectedAsync method.
             
             //  Determine how to handle the selected menu item...
             //  The case statements handle menu items that DO NOT load an Orchestrator Tab

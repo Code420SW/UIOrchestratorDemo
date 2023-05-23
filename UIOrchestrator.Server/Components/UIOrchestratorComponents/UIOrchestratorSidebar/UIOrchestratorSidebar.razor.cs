@@ -23,9 +23,6 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
     /// The component handles none of the event callbacks from the <see cref="SidebarBase"/> component.
     /// </para>
     /// <para>
-    /// The icons used by the button are hard-coded.
-    /// </para>
-    /// <para>
     /// The <see cref="UIOrchestratorMenu.UIOrchestratorMenu"/> component is injected as a child of this
     /// component and passed the <see cref="OrchestratorRef"/> parameter. This component does
     /// interact with the menu component.
@@ -35,7 +32,7 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
     /// <see cref="ToggleSidebarAsync"/> provides a method for the parent component to open/close
     /// the sidebar.<br />
     /// <see cref="GetSidebarState"/> provides a method to report the current state of the sidebar.<br />
-    /// <see cref="SetSidebarToggleState"/> provides a method to explicitly set the state of the sidebar
+    /// <see cref="SetSidebarToggleStateAsync"/> provides a method to explicitly set the state of the sidebar
     /// (as opposed to simply toggling the state).
     /// </para>
     /// </remarks>
@@ -81,10 +78,6 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
 
         #region Constructors
 
-        // This method will be executed immediately after OnInitializedAsync if this is a new
-        //  instance of a component. If it is an existing component that is being re-rendered because
-        //  its parent is re-rendering then the OnInitialized* methods will not be executed, and this
-        //  method will be executed immediately after SetParametersAsync instead
         protected override void OnParametersSet()
         {
             isOpen = InitialSidebarIsOpen;

@@ -11,6 +11,7 @@ using Code420.UIOrchestrator.Server.MediatR.User;
 using MediatR;
 using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Inputs;
+using Code420.UIOrchestrator.Core.Models.UIOrchestratorConstants;
 
 namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.UserLoginTab
 {
@@ -20,12 +21,21 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
     /// </summary>
     /// <remarks>
     /// <para>
+    /// This component <b>must</b> exist in the namespace defined by
+    /// <see cref="UIOrchestratorConstants.OrchestratorTabBaseNamespace"/> otherwise
+    /// an exception will be thrown when the application constructs the <see cref="RenderFragment"/>.
+    /// </para>
+    /// <para>
     /// This is the default Tab element loaded when the application starts.
     /// </para>
     /// <para>
     /// Other than the <see cref="OrchestratorRef"/>parameter, a reference to the
     /// <see cref="UIOrchestrator"/> passed though a <see cref="CascadingParameterAttribute"/>,
-    /// the component has no parameters.
+    /// the component has no parameters set by the consumer.
+    /// </para>
+    /// <para>
+    /// The <see cref="MenuItemId"/> parameter is set by the application when the <see cref="RenderFragment"/>
+    /// for the tab is constructed. This parameter <b>must</b> exist or an error will be generated.
     /// </para>
     /// <para>
     /// The <see cref="IMediator"/> object injected through DI.

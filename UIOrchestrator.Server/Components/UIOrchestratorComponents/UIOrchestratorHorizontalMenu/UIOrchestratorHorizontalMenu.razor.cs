@@ -9,13 +9,16 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
     /// Provides the menu system used by the Orchestrator and containerizes the MenuBase component.
     /// Handles events (menu selections) by invoking the <see cref="OrchestratorMenuItem.MenuItemCallback"/>
     /// associated with the menu item.
-    /// The menu is injected in the <see cref="UIOrchestrator"/> page__header-2 div.
+    /// The menu is injected in the <see cref="UIOrchestrator"/> <c>page__header-2</c> div.
     /// </summary>
     /// <remarks>
     /// <para>
-    /// The component exposes one base parameter. 
+    /// The component exposes two base parameters. 
     /// The <see cref="UIOrchestrator"/> is directly passed from the parent component.
-    /// The parameter is not currently used.
+    /// The parameter is not currently used.<br />
+    /// The component exposes two base parameters. 
+    /// The <see cref="TargetCssClass"/> is directly passed from the parent component
+    /// and specifies the CSS class of the HTML element containing the component.
     /// </para>
     /// <para>
     /// The component does not expose any event callback or CSS parameters.
@@ -86,7 +89,7 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         private void ItemSelectedHandler(MenuEventArgs<OrchestratorMenuItem> args)
         {
             if (args.Item.SubMenu is null)  
-                args.Item.MenuItemCallback.Invoke(args.Item.ItemId);
+                args.Item.MenuItemCallback?.Invoke(args.Item.ItemId);
         } 
 
         #endregion

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor;
 using Syncfusion.Blazor.Navigations;
 using Code420.UIOrchestrator.Server.Code.Models.Menus;
+using Code420.UIOrchestrator.Core.Models.UIOrchestratorConstants;
 
 namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.ConfigurationTab
 {
@@ -11,6 +12,26 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
     /// component as a child tab. There is a lot of crappy code here that
     /// needs to be cleaned up -- another day.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The real point of this component show/test CSS isolation for a TabBase component
+    /// that is a child of another TabBase component. Note the styling of this component
+    /// is isolated from its parent.
+    /// </para>
+    /// <para>
+    /// This component <b>must</b> exist in the namespace defined by
+    /// <see cref="UIOrchestratorConstants.OrchestratorTabBaseNamespace"/> otherwise
+    /// an exception will be thrown when the application constructs the <see cref="RenderFragment"/>.
+    /// </para>
+    /// <para>
+    /// Though not demonstrated, the idea is this component's child tabs should be in the
+    /// Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.ConfigurationTab.ConfigurationChildTabs
+    /// namespace. This component would add the child components to the <see cref="tabItem"/> property and load
+    /// them all at once. If needed, child tabs can be disabled/hidden as needed by the workflow.
+    /// Another approach is to have a "master" child tab that is responsible for loading/unloading
+    /// additional child tabs as needed by the workflow.
+    /// </para>
+    /// </remarks>
     public partial class Configuration : ComponentBase
     {
 
@@ -18,12 +39,12 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
 
         #region Base Parameters
 
-        // ==================================================
-        // Base Parameters
-        // ==================================================
-
         /// <summary>
         /// Contains the reference to the <see cref="UIOrchestrator"/> parent.
+        /// <remarks>
+        /// Note that this is a [CascadingParameter] passed down through the
+        /// <see cref="UIOrchestratorTabManager"/>.
+        /// </remarks>
         /// </summary>
         [CascadingParameter(Name = "OrchestratorRef")]
         public Pages.UIOrchestrator.UIOrchestrator OrchestratorRef { get; set; }
@@ -64,10 +85,6 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
 
         #region Constructors
 
-        // This method will be executed immediately after OnInitializedAsync if this is a new
-        //  instance of a component. If it is an existing component that is being re-rendered because
-        //  its parent is re-rendering then the OnInitialized* methods will not be executed, and this
-        //  method will be executed immediately after SetParametersAsync instead
         protected override void OnParametersSet()
         {
             //  Get the Tab Item associated with the passed InitialMenuItemId parameter
