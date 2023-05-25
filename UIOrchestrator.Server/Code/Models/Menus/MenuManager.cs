@@ -520,15 +520,15 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
             FavoritesMenu = new FavoritesMenuDefinition()
             {
                 MenuItemCount = 0,
-                MenuRadius = 225,
+                MenuRadius = 185,   //225,
                 PrimaryCenterImage = "./images/code420-white.jpg",
                 SecondaryCenterImage = "./images/code420-black.jpg",
                 ThrobScale = "1.05",
-                MenuMinimumHeight = "700px",
-                CenterImageSize = "200px",
+                MenuMinimumHeight = "600px",    //"700px",
+                CenterImageSize = "175px", //"200px",
                 MenuItemRotationSpeed = "30s",
                 CenterImageTransitionSpeed = "500ms",
-                MenuItemSize = "80px",
+                MenuItemSize = "70px",  //"80px",
                 MenuItemTransitionSpeed = "500ms",
 
                 FavoritesMenuItems = new()
@@ -539,7 +539,7 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
                         MenuItemCallback = MenuItemCallbackHandler,
                         OffsetX = "",
                         OffsetY = "",
-                        IconCss = "oi oi-basket",
+                        IconCss = "oi oi-bug",
                         IconFontSize = "24px",
                         IconColor = "hsl(0deg, 0%, 100%)",
                         HoverText = "Dummy Tab",
@@ -551,14 +551,14 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 
                     new()
                     {
-                        ItemId = "10001",
+                        ItemId = "5510",
                         MenuItemCallback = MenuItemCallbackHandler,
                         OffsetX = "",
                         OffsetY = "",
                         IconCss = "oi oi-bell",
                         IconFontSize = "24px",
                         IconColor = "hsl(0deg, 0%, 100%)",
-                        HoverText = "Time & Attendance",
+                        HoverText = "Application",
                         HoverTextFontSize = "12px",
                         HoverTextColor = "hsl(0deg, 0%, 100%)",
                         MenuItemIconBackgroundColor = "hsl(210deg, 47%, 74%)",
@@ -567,14 +567,14 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 
                     new()
                     {
-                        ItemId = "10002",
+                        ItemId = "5720",
                         MenuItemCallback = MenuItemCallbackHandler,
                         OffsetX = "",
                         OffsetY = "",
-                        IconCss = "oi oi-calendar",
+                        IconCss = "oi oi-account-logout",
                         IconFontSize = "24px",
                         IconColor = "hsl(0deg, 0%, 100%)",
-                        HoverText = "Onboarding",
+                        HoverText = "Logout",
                         HoverTextFontSize = "12px",
                         HoverTextColor = "hsl(0deg, 0%, 100%)",
                         MenuItemIconBackgroundColor = "hsl(34deg, 93%, 77%)",
@@ -583,14 +583,14 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 
                     new()
                     {
-                        ItemId = "10003",
+                        ItemId = "5810",
                         MenuItemCallback = MenuItemCallbackHandler,
                         OffsetX = "",
                         OffsetY = "",
-                        IconCss = "oi oi-clock",
+                        IconCss = "oi oi-sun",
                         IconFontSize = "24px",
                         IconColor = "hsl(0deg, 0%, 100%)",
-                        HoverText = "HR Information System",
+                        HoverText = "Light Theme",
                         HoverTextFontSize = "12px",
                         HoverTextColor = "hsl(0deg, 0%, 100%)",
                         MenuItemIconBackgroundColor = "hsl(231deg, 44%, 76%)",
@@ -599,14 +599,14 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 
                     new()
                     {
-                        ItemId = "10004",
+                        ItemId = "5820",
                         MenuItemCallback = MenuItemCallbackHandler,
                         OffsetX = "",
                         OffsetY = "",
-                        IconCss = "oi oi-envelope-open",
+                        IconCss = "oi oi-moon",
                         IconFontSize = "24px",
                         IconColor = "hsl(0deg, 0%, 100%)",
-                        HoverText = "Leaves & Holidays",
+                        HoverText = "Dark Theme",
                         HoverTextFontSize = "12px",
                         HoverTextColor = "hsl(0deg, 0%, 100%)",
                         MenuItemIconBackgroundColor = "hsl(54deg, 76%, 79%)",
@@ -615,14 +615,14 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 
                     new()
                     {
-                        ItemId = "10005",
+                        ItemId = "5900",
                         MenuItemCallback = MenuItemCallbackHandler,
                         OffsetX = "",
                         OffsetY = "",
-                        IconCss = "oi oi-fire",
+                        IconCss = "oi oi-circle-x",
                         IconFontSize = "24px",
                         IconColor = "hsl(0deg, 0%, 100%)",
-                        HoverText = "Exit & Off-boarding",
+                        HoverText = "Do Nothing",
                         HoverTextFontSize = "12px",
                         HoverTextColor = "hsl(0deg, 0%, 100%)",
                         MenuItemIconBackgroundColor = "hsl(20deg, 41%, 69%)",
@@ -631,14 +631,14 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 
                     new()
                     {
-                        ItemId = "10006",
+                        ItemId = "5900",
                         MenuItemCallback = MenuItemCallbackHandler,
                         OffsetX = "",
                         OffsetY = "",
-                        IconCss = "oi oi-image",
+                        IconCss = "oi oi-circle-x",
                         IconFontSize = "24px",
                         IconColor = "hsl(0deg, 0%, 100%)",
-                        HoverText = "Travel & Requisitions",
+                        HoverText = "Do Nothing",
                         HoverTextFontSize = "12px",
                         HoverTextColor = "hsl(0deg, 0%, 100%)",
                         MenuItemIconBackgroundColor = "hsl(0deg, 59%, 76%)",
@@ -647,14 +647,14 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Menus
 
                     new()
                     {
-                        ItemId = "10007",
+                        ItemId = "5900",
                         MenuItemCallback = MenuItemCallbackHandler,
                         OffsetX = "",
                         OffsetY = "",
-                        IconCss = "oi oi-pie-chart",
+                        IconCss = "oi oi-circle-x",
                         IconFontSize = "24px",
                         IconColor = "hsl(0deg, 0%, 100%)",
-                        HoverText = "Disciplinary",
+                        HoverText = "Do Nothing",
                         HoverTextFontSize = "12px",
                         HoverTextColor = "hsl(0deg, 0%, 100%)",
                         MenuItemIconBackgroundColor = "hsl(295deg, 42%, 72%)",
