@@ -146,6 +146,7 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Theme
                 {"fg-100", "rgb(236, 245, 242)" },      //  lighter green
 
                 {"bg-900", "rgb(141, 101, 0)" },        //  darker brown
+                {"bg-900-40", "rgba(141, 101, 0, 40)" },
                 {"bg-700", "rgb(189, 154, 99)" },
                 {"bg-500", "rgb(210, 182, 142)" },
                 {"bg-300", "rgb(229, 211, 186)" },
@@ -172,6 +173,7 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Theme
                 {"white-900", "rgb(246,246,246)" },     // darker white
                 {"white-700", "rgb(249,249,249)" },
                 {"white-500", "rgb(250,250,250)" },
+                {"white-500-40", "rgba(250,250,250,40)" },
                 {"white-300", "rgb(252,252,252)" },
                 {"white-100", "rgb(254,254,254)" },     //  lighter white
 
@@ -256,7 +258,19 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Theme
                 
                 ["button-help__normal--border-color"] = colorPalette["bg-900"],
                 ["button-help__normal--background-color"] = colorPalette["white-900"],
-                ["button-help__icon--font-color"] = colorPalette["fg-900"]
+                ["button-help__icon--font-color"] = colorPalette["fg-900"],
+                ["button-help__icon--drop-shadow-color"] = colorPalette["bg-900-40"],
+                
+                ["tooltip-help__background-color"] = colorPalette["fg-900"],
+                ["tooltip-help__header-font-color"] = colorPalette["white-900"],
+                ["tooltip-help__bottom-border-color"] = colorPalette["bg-700"],
+                ["tooltip-help__title-font-color"] = colorPalette["fg-900"],
+                
+                ["dialog-help__background-color"] = colorPalette["bg-300"],
+                ["dialog-help__title-font-color"] = colorPalette["bg-900"],
+                ["dialog-help__subtitle-font-color"] = colorPalette["bg-900"],
+                ["dialog-help__header-background-color"] = colorPalette["fg-300"],
+                ["dialog-help__icon-font-color"] = colorPalette["white-500"]
             };
 
 
@@ -320,7 +334,19 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Theme
                 
                 ["button-help__normal--border-color"] = colorPalette["accent2-700"],
                 ["button-help__normal--background-color"] = colorPalette["black-900"],
-                ["button-help__icon--font-color"] = colorPalette["white-500"]
+                ["button-help__icon--font-color"] = colorPalette["white-500"],
+                ["button-help__icon--drop-shadow-color"] = colorPalette["bg-900-40"],
+                
+                ["tooltip-help__background-color"] = colorPalette["white-500"],
+                ["tooltip-help__header-font-color"] = colorPalette["black-900"],
+                ["tooltip-help__bottom-border-color"] = colorPalette["black-500"],
+                ["tooltip-help__title-font-color"] = colorPalette["white-500"],
+                
+                ["dialog-help__background-color"] = colorPalette["black-300"],
+                ["dialog-help__title-font-color"] = colorPalette["white-500"],
+                ["dialog-help__subtitle-font-color"] = colorPalette["white-500"],
+                ["dialog-help__header-background-color"] = colorPalette["white-500"],
+                ["dialog-help__icon-font-color"] = colorPalette["white-500"]
             };
         }
     }

@@ -77,23 +77,18 @@
         
     }
 
-
 </SfDialog>
 
 
 <style>
 
-    /*
-        Customize modal dialog overlay
-    */
+    @* Customize modal dialog overlay *@
     .e-dlg-overlay {
         background-color: @OverlayBackgroundColor;
         opacity: @OverlayOpacity;
     }
 
-    /*
-        Customize the Dialog Container
-    */
+    @* Customize the Dialog Container *@
     @(masterCssSelector) {
         border: @DialogBorder;
         border-radius: @DialogBorderRadius;
@@ -102,9 +97,7 @@
         position: @dialogPositionValue;
     }
 
-    /*
-        Customize the dialog header background
-    */
+    @* Customize the dialog header background *@
     @(masterCssSelector) .e-dlg-header-content {
         background-color: @HeaderBackgroundColor;
         padding: @HeaderPadding;
@@ -112,27 +105,21 @@
         border-radius: @HeaderBorderRadius;
     }
 
-    /*
-        Customize the dialog close button (SF)
-    */
+    @* Customize the dialog close button *@
     @(masterCssSelector) .e-btn .e-btn-icon.e-icon-dlg-close {
         font-size: @CloseButtonFontSize;
         color: @CloseButtonColor;
         opacity: 1.0;
     }
 
-    /*
-        Customize the dialog header
-    */
+    @* Customize the dialog header *@
     @(masterCssSelector) .e-dlg-header {
         color: @HeaderFontColor;
         font-size: @HeaderFontSize;
         font-weight: @HeaderFontWeight;
     }
 
-    /*
-        Customize the dialog content
-    */
+    @* Customize the dialog content *@
     @(masterCssSelector) .e-dlg-content {
         color: @ContentFontColor;
         font-size: @ContentFontSize;
@@ -142,9 +129,7 @@
         padding: @ContentPadding;
     }
 
-    /* 
-        Customize the dialog footer background 
-    */
+    @* Customize the dialog footer background *@
     @(masterCssSelector) .e-footer-content {
         background-color: @FooterBackgroundColor;
         opacity: 1.0;

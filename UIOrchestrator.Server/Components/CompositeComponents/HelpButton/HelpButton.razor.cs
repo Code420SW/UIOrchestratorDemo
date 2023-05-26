@@ -22,6 +22,10 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButto
     /// reference theming elements as appropriate.
     /// </para>
     /// <para>
+    /// The styling for the <see cref="TooltipContent"/> should be defined in the
+    /// consuming component since the content is specific to the consuming component.
+    /// </para>
+    /// <para>
     /// The <see cref="CssClass"/> parameter is provided to mitigate styling conflicts
     /// in the situation when the consuming component also contains one of this component's
     /// children (e.g., <see cref="IconButtonBase"/>). The suffixes <c>__button</c> and
@@ -58,15 +62,6 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButto
         /// </summary>
         [Parameter]
         public bool ButtonDisabled { get; set; }
-
-        /// <summary>
-        /// Boolean value indicating if the Tooltip is displayed in an open state until
-        /// it is closed manually via the close button which is rendered when this
-        /// parameter is set to <c>true</c>.
-        /// Default value is false.
-        /// </summary>
-        [Parameter]
-        public bool TooltipIsSticky { get; set; }
 
         /// <summary>
         /// Contains the <see cref="RenderFragment" /> composing the tooltip contents.
@@ -114,57 +109,6 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButto
         /// </summary>
         [Parameter]
         public string ButtonPadding { get; set; } = "0px";
-
-        /// <summary>
-        /// String value specifying the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border">border</a>
-        /// value set used for the tooltip border.
-        /// The border shorthand CSS property sets an element's border. It sets the values of border-width,
-        /// border-style, and border-color.
-        /// Default value is <c>1px solid #000</c>.
-        /// </summary>
-        [Parameter]
-        public string TooltipBorder { get; set; } = "1px solid #000";
-
-        /// <summary>
-        /// String value specifying the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius">border-radius</a>
-        /// value used for the tooltip border radius.
-        /// The border-radius CSS property rounds the corners of an element's outer border edge.
-        /// Default value is <c>4px</c>.
-        /// </summary>
-        [Parameter]
-        public string TooltipBorderRadius { get; set; } = "4px";
-
-        /// <summary>
-        /// String value specifying the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size">font-size</a>
-        /// value used for the tooltip content.
-        /// The font-size CSS property sets the size of the font. Changing the font size also updates the
-        /// sizes of the font size-relative length units, such as em, ex, and so forth.
-        /// This becomes the base em unit (=1em) for the tooltip contents and can be used to size child
-        /// elements proportionally.
-        /// Default value is <c>12px</c>.
-        /// </summary>
-        [Parameter]
-        public string TooltipContentFontSize { get; set; } = "12px";
-
-        /// <summary>
-        /// String value specifying the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">padding</a>
-        /// value used for the tooltip content.
-        /// The padding CSS shorthand property sets the padding area on all four sides of an element at once.
-        /// Specify the padding in top, right, bottom, left order.
-        /// Default value is: <c>4px 8px 4px 8px</c>.
-        /// </summary>
-        [Parameter]
-        public string TooltipContentPadding { get; set; } = "4px 8px 4px 8px";
-
-        /// <summary>
-        /// String value specifying the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter">filter</a>
-        /// value applied to the tooltip HTML element.
-        /// The filter CSS property applies graphical effects like blur or color shift to an element.
-        /// Filters are commonly used to adjust the rendering of images, backgrounds, and borders.
-        /// Default value is <c>none</c>.
-        /// </summary>
-        [Parameter]
-        public string TooltipFilter { get; set; } = "none";
 
         #endregion
         

@@ -1,6 +1,6 @@
 ﻿using Code420.UIOrchestrator.Server.Components.BaseComponents.ButtonBase;
+using Code420.UIOrchestrator.Server.Components.BaseComponents.DialogBoxBase;
 using Microsoft.AspNetCore.Components;
-using Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase;
 using Microsoft.AspNetCore.Components.Web;
 using Syncfusion.Blazor.Notifications;
 
@@ -72,7 +72,7 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSyste
 
         private HelpButton.HelpButton helpButtonComponent;
         private ButtonBase buttonLearnMore;
-        private ToastBase toastLearnMore;
+        private DialogBoxBase dialogLearnMore;
 
         #endregion
 
@@ -172,8 +172,12 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSyste
         private async Task LearnMoreButtonClickAsync(MouseEventArgs _)
         {
             await helpButtonComponent.CloseTooltipAsync();
-            await toastLearnMore.ShowAsync();
+            await dialogLearnMore.ShowAsync();
         }
+        
+        private async Task OnDialogCloseAsync() => 
+            await dialogLearnMore.SetVisibilityAsync(false); //await dialogLearnMore.HideAsync(); Seems to crash application
+
 
         #endregion
 
