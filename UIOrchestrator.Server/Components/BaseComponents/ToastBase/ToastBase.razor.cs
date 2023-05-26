@@ -847,7 +847,8 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
         /// OnOpenHandler whose args.Options properties are reflective of this component's
         /// parameters, and then update the ones needed.
         /// </remarks>
-        public async Task ShowAsync(ToastModel toastModel = null) => await toast.ShowAsync(toastModel);
+        public async Task ShowAsync(ToastModel toastModel = null) => 
+            await toast.ShowAsync(toastModel);
 
         /// <summary>
         /// Responsible for hiding the Toast element.

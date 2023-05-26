@@ -252,7 +252,11 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Theme
                 ["element__normal--border-color"] = colorPalette["bg-900"],
                 ["element__active--border-color"] = colorPalette["bg-500"],
                 ["element__normal--font-color"] = colorPalette["fg-900"],
-                ["element__disabled--font-color"] = colorPalette["fg-500"]
+                ["element__disabled--font-color"] = colorPalette["fg-500"],
+                
+                ["button-help__normal--border-color"] = colorPalette["bg-900"],
+                ["button-help__normal--background-color"] = colorPalette["white-900"],
+                ["button-help__icon--font-color"] = colorPalette["fg-900"]
             };
 
 
@@ -312,7 +316,11 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Theme
                 ["element__normal--border-color"] = colorPalette["accent2-700"],
                 ["element__active--border-color"] = colorPalette["black-500"],
                 ["element__normal--font-color"] = colorPalette["white-500"],
-                ["element__disabled--font-color"] = colorPalette["white-100"]
+                ["element__disabled--font-color"] = colorPalette["white-100"],
+                
+                ["button-help__normal--border-color"] = colorPalette["accent2-700"],
+                ["button-help__normal--background-color"] = colorPalette["black-900"],
+                ["button-help__icon--font-color"] = colorPalette["white-500"]
             };
         }
     }

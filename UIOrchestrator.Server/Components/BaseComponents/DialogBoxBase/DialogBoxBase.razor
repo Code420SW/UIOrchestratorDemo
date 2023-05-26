@@ -1,0 +1,156 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.BaseComponents.DialogBoxBase
+
+@using Syncfusion.Blazor.Popups
+
+<SfDialog   @ref=@sfDialog
+            AllowDragging=@AllowDragging
+            AllowPrerender=@AllowPrerender
+            CloseOnEscape=@CloseOnEscape
+            EnableResize=@EnableResize
+            EnableRtl=@EnableRtl
+            Height=@Height
+            IsModal=@IsModal
+            ResizeHandles=@ResizeHandles
+            ShowCloseIcon=@ShowCloseIcon
+            Target=@Target
+            Visible=@Visible
+            Width=@Width
+            ZIndex=@ZIndex
+
+            ID=@CssId
+            CssClass=@CssClass
+            MinHeight=@MinHeight
+            
+            VisibleChanged=@VisibleChanged
+            >
+
+    <DialogPositionData X=@PositionX
+                        Y=@PositionY>
+    </DialogPositionData>
+
+    <DialogEvents Closed=@Closed
+                  Created=@Created
+                  Destroyed=@Destroyed
+                  OnClose=@OnClose
+                  OnDrag=@OnDrag
+                  OnDragStart=@OnDragStart
+                  OnDragStop=@OnDragStop
+                  OnOpen=@OnOpen
+                  OnOverlayModalClick=@OnOverlayModalClick
+                  OnResizeStart=@OnResizeStart
+                  OnResizeStop=@OnResizeStop
+                  Opened=@Opened
+                  Resizing=@Resizing
+                  >
+    </DialogEvents>
+
+    <DialogAnimationSettings Effect=@AnimationEffect
+                             Duration=@AnimationDuration
+                             Delay=@AnimationDelay>
+    </DialogAnimationSettings>
+
+    @if (@DialogButtons is not null)
+    {
+        <DialogButtons>
+            @DialogButtons
+        </DialogButtons>
+        
+    }
+
+    <DialogTemplates>
+        <Header>
+            @HeaderFragment
+        </Header>
+        
+        <Content>
+            @ContentFragment
+        </Content>
+    </DialogTemplates>
+    
+    @if (@FooterFragment is not null)
+    {
+        <DialogTemplates>
+            <FooterTemplate>
+                @FooterFragment
+            </FooterTemplate>
+        </DialogTemplates>
+        
+    }
+
+
+</SfDialog>
+
+
+<style>
+
+    /*
+        Customize modal dialog overlay
+    */
+    .e-dlg-overlay {
+        background-color: @OverlayBackgroundColor;
+        opacity: @OverlayOpacity;
+    }
+
+    /*
+        Customize the Dialog Container
+    */
+    @(masterCssSelector) {
+        border: @DialogBorder;
+        border-radius: @DialogBorderRadius;
+        box-shadow: @DialogBoxShadow;
+        font-size: @DialogBaseFontSize;
+        position: @dialogPositionValue;
+    }
+
+    /*
+        Customize the dialog header background
+    */
+    @(masterCssSelector) .e-dlg-header-content {
+        background-color: @HeaderBackgroundColor;
+        padding: @HeaderPadding;
+        border-bottom: @HeaderBottomBorder;
+        border-radius: @HeaderBorderRadius;
+    }
+
+    /*
+        Customize the dialog close button (SF)
+    */
+    @(masterCssSelector) .e-btn .e-btn-icon.e-icon-dlg-close {
+        font-size: @CloseButtonFontSize;
+        color: @CloseButtonColor;
+        opacity: 1.0;
+    }
+
+    /*
+        Customize the dialog header
+    */
+    @(masterCssSelector) .e-dlg-header {
+        color: @HeaderFontColor;
+        font-size: @HeaderFontSize;
+        font-weight: @HeaderFontWeight;
+    }
+
+    /*
+        Customize the dialog content
+    */
+    @(masterCssSelector) .e-dlg-content {
+        color: @ContentFontColor;
+        font-size: @ContentFontSize;
+        font-weight: @ContentFontWeight;
+        line-height: @ContentFontWeight;
+        background-color: @ContentBackgroundColor;
+        padding: @ContentPadding;
+    }
+
+    /* 
+        Customize the dialog footer background 
+    */
+    @(masterCssSelector) .e-footer-content {
+        background-color: @FooterBackgroundColor;
+        opacity: 1.0;
+        padding: @FooterPadding;
+        border-top: @FooterTopBorder;
+        border-radius: @FooterBorderRadius;
+    }
+
+</style>

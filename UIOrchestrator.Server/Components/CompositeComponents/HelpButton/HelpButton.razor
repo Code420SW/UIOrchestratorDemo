@@ -5,71 +5,45 @@
 @using Code420.UIOrchestrator.Server.Code.Enums
 @using Syncfusion.Blazor.Popups
 
-@*
-    This is a round icon button with a question mark icon used to invoke
-    the underlying tooltip.
-
-    User Parameters:
-    1.  HelpButtonDisable in case the user wants to disable the help button--don't know why
-    2.  Margin: Sets space outside outside the help button
-    3.  Padding: Sets space inside the help button
-*@
-@* ReSharper disable once AsyncVoidLambda *@
 <IconButtonBase @ref=helpIconButton
-                IsDisabled=@HelpButtonDisabled
+                IsDisabled=@ButtonDisabled
                 IconButtonStyle=IconButtonStyle.Round
 
-                OnClick=@(async() => await OnHelpButtonClickAsync())
-
-                CssClass="button__help"
+                CssClass=@($"{ CssClass }__button")
                 IconCss="oi oi-question-mark"
+                Margin=@ButtonMargin
+                Padding=@ButtonPadding
 
                 ButtonHeight="24px"
-                ButtonNormalBackgroundColor="whitesmoke"
-                ButtonNormalBorder="2px solid var(--mydarkbrown)"
-                ButtonHoverBackgroundColor="whitesmoke"
-                ButtonHoverBorder="3px solid var(--mydarkbrown)"
-                ButtonActiveBackgroundColor="whitesmoke"
-                ButtonActiveBorderColor="var(--mydarkbrown)"
+                ButtonNormalBackgroundColor="var(--button-help__normal--background-color)"
+                ButtonNormalBorder="2px solid var(--button-help__normal--border-color)"
+                ButtonHoverBackgroundColor="var(--button-help__normal--background-color)"
+                ButtonHoverBorder="3px solid var(--button-help__normal--border-color)"
+                ButtonActiveBackgroundColor="var(--button-help__normal--background-color)"
+                ButtonActiveBorderColor="var(--button-help__normal--border-color)"
                 ButtonDisabledOpacity="1.0"
                 HoverScale=1.1m
 
                 IconFontSize=".75em"
-                IconFontColor="var(--mydarkgreen)"
+                IconFontColor="var(--button-help__icon--font-color)"
                 IconFontTextAlign="center"
                 IconFontVerticalAlign="top"
                 IconFontLineHeight="1.0"
-
-                Margin=@Margin
-                Padding=@Padding
                 >
 </IconButtonBase>
 
-<!--
-    Tooltip
-
-    UserParameters:
-    1.  IsSticky: Determines if the tooltip will stay displayed until its close button is clicked.
-    2.  ContentFontSize: Sets the base font-size for the tooltip contents
-    3.  ContentPadding: Sets the space inside the tooltip
-    4.  TooltipFilter: Apply any special effects (e.g., box shadow)
-    5.  TooltipBorderRadius: Set the border radius
-    6.  TooltipBorder: Set the border around the tooltip
-
-    The user must provide the TooltipContent
--->
 <ToolTipBase    @ref=@tooltipBase
-                IsSticky=@IsSticky
+                IsSticky=@TooltipIsSticky
                 OpensOn="Hover"
-                CloseDelay=0.0
+                CloseDelay=100.0
                 OpenDelay=500.0
                 Position=Position.BottomCenter
 
-                CssClass="tooltip__help-button"
-                Target=".button__help"
+                CssClass=@($"{ CssClass }__tooltip")
+                Target=@($".{ CssClass }__button")
                 
-                ContentFontSize=@ContentFontSize
-                ContentPadding=@ContentPadding
+                ContentFontSize=@TooltipContentFontSize
+                ContentPadding=@TooltipContentPadding
 
                 TooltipFilter=@TooltipFilter
                 TooltipBorderRadius=@TooltipBorderRadius

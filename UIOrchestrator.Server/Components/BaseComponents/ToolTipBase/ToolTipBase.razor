@@ -33,11 +33,13 @@
             
             Container=@Container
             EnableRtl=@EnableRtl
+            Content=@Content
             >
 
             <TooltipTemplates>
                 <Content>
-                    @((@Content == string.Empty) ? @ContentFragment : @Content)
+                    @ContentFragment
+                    @* @((@Content == string.Empty) ? @ContentFragment : @Content) *@
                 </Content>
             </TooltipTemplates>
 </SfTooltip>

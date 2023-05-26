@@ -70,10 +70,10 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToolTipBase
         /// This property is the primary source for the tooltip content. 
         /// If this property is not set, the <see cref="ContentFragment"/> parameter
         /// will be used.
-        /// Default value is string.Empty.
+        /// Default value is null.
         /// </summary>
         [Parameter]
-        public string Content { get; set; } = string.Empty;
+        public string Content { get; set; }
 
         /// <summary>
         /// Contains the <see cref="RenderFragment" /> composing the tooltip contents.
