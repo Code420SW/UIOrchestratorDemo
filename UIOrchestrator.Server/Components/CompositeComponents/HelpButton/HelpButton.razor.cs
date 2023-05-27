@@ -110,6 +110,25 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButto
         [Parameter]
         public string ButtonPadding { get; set; } = "0px";
 
+        /// <summary>
+        /// String value specifying the CSS height value of the Tooltip.
+        /// When the Tooltip content gets overflowed due to the height value, 
+        /// then the scroll mode will be enabled. When set to auto, the Tooltip 
+        /// height gets auto adjusted to display its content within the viewable screen.
+        /// Default value is <c>auto</c>.
+        /// </summary>
+        [Parameter]
+        public string TooltipHeight { get; set; } = "auto";
+
+        /// <summary>
+        /// String value specifying the CSS width value of the Tooltip.
+        /// When set to <c>auto</c>, the Tooltip width gets auto adjusted to display its content
+        /// within the viewable screen.
+        /// Default value is <c>auto</c>.
+        /// </summary>
+        [Parameter]
+        public string TooltipWidth { get; set; } = "auto";
+
         #endregion
         
         #endregion

@@ -12,6 +12,7 @@ using MediatR;
 using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Inputs;
 using Code420.UIOrchestrator.Core.Models.UIOrchestratorConstants;
+using Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButton;
 
 namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.UserLoginTab
 {
@@ -110,6 +111,7 @@ namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOr
         private ButtonBase loginButton;
         private GenericError toastUserLoginError;
         private GenericSpinner toastUserLoginExecute;
+        private HelpButton passwordHelpButton;
 
         private readonly LoginUserModel loginUserModel = new();
 

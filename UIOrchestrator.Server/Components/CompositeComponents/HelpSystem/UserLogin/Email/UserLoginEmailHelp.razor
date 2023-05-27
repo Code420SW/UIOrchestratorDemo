@@ -1,64 +1,47 @@
-﻿@namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSystem.UserLogin.Password
+﻿@namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSystem.UserLogin.Email
 
 @using Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButton;
 @using Code420.UIOrchestrator.Server.Components.BaseComponents.ButtonBase;
 @using Code420.UIOrchestrator.Server.Components.BaseComponents.DialogBoxBase;
 
+<!--suppress ALL -->
 <HelpButton @ref=helpButtonComponent
-            ButtonDisabled=@HelpButtonDisabled
-            ButtonMargin="2.5em 0px 0px 1em"
-            ButtonPadding="0px"
-            CssClass="help__user-login-password"
-            >
+            CssClass="user-login-email-help"
+            ButtonMargin="2.5em 0 0 1em"
+            TooltipHeight="auto"
+            TooltipWidth="250px">
+    
     <TooltipContent>
-        @* 
-        The HelpButton component provides standardized base stying.
-        If additional styling is required for the tooltip contents,
-        it is best to do so using inline styles though using a <style /> 
-        section is also possible.
+        @*
+        The HelpButton component provides basic styling for its ToolTipBase child component.
+        As needed, additional styling can be provided in-line within the TooltipContent
+        property. Using <style> tags will work too as long as you manage CSS isolation
+        issues appropriately.
         *@
-        <div class="container__tooltip-rmt">
-            <div class="header__tooltip-rmt">
-                <p class="header-title__tooltip-rmt"> Register Metrc Tags</p>
-                <p class="header-subtitle__tooltip-rmt"> Specify a range of consecutive Metrc tag numbers to be registered in the database</p>
-            </div>
-            <div class="content__tooltip-rmt">
-                <article class="card__tooltip-rmt">
-                    <h3 class="content-title__tooltip-rmt">Beginning Tag</h3>
-                    <p>Enter the 24-digit number of the first tag in the series of Metrc tags to be registered in the database.</p>
-                </article>
-                <article class="card__tooltip-rmt">
-                    <h3 class="content-title__tooltip-rmt">Ending Tag</h3>
-                    <p>Enter the 24-digit number of the last tag in the series of Metrc tags to be registered in the database.</p>
-                </article>
-                <article class="card__tooltip-rmt">
-                    <h3 class="content-title__tooltip-rmt"><span class="icon__tooltip-rmt oi oi-cog"></span>Metrc Tag Configuration</h3>
-                    <p>Hover over the icon to access additional information. </p>
-                </article>
-                <article class="card__tooltip-rmt">
-                    <h3 class="content-title__tooltip-rmt">Register Tags As</h3>
-                    <p>Indicates if the Metrc tags will be registered as active (available for use) or inactive.</p>
-                </article>
-            </div>
-            <div class="footer__tooltip-rmt">
+        <div class="user-login-email-help__tooltip-content"
+             style="font-size: 12px; 
+             color: var(--tooltip-help__title-font-color);
+             margin: 1em;">
+            <p style="font-size: 14px; 
+                color: var(--tooltip-help__body-font-color);">
+                <b>Enter the Email Assigned to Your Account.</b>
+            </p>
+            <div class="user-login-email-help__button">
                 <ButtonBase @ref=buttonLearnMore
                             IsPrimary=true
                             TextFontSize="1em"
-
-                            OnClick=@(async (e) => await LearnMoreButtonClickAsync(e))
-                                
-                            CssClass="button__tooltip-rmt"
+                            CssClass="user-login-email-help__button-learn-more"
                             Padding="4px 8px"
-                            >
+                            OnClick=@(async (e) => await LearnMoreButtonClickAsync(e))
+                >
                     <ContentFragment>
                         Learn More
                     </ContentFragment>
                 </ButtonBase>
             </div>
         </div>
-
     </TooltipContent>
-
+    
 </HelpButton>
 
 <!--

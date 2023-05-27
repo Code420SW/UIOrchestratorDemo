@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Syncfusion.Blazor.Notifications;
 
-namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSystem.UserLogin.Password
+namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSystem.UserLogin.Email
 {
 
     /// <summary>
@@ -13,7 +13,7 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSyste
     /// provides the base help icon, customized tooltip contents and modal dialog
     /// which is displayed when the Learn More button in the tooltip is clicked. 
     /// </summary>
-    public partial class UserLoginPasswordHelp : ComponentBase
+    public partial class UserLoginEmailHelp : ComponentBase
     {
 
         #region Component Parameters

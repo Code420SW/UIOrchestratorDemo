@@ -6,11 +6,12 @@
 @using Code420.UIOrchestrator.Server.Components.CustomComponents.CustomToasts.GenericErrors
 @using Code420.UIOrchestrator.Server.Components.CustomComponents.CustomToasts.Spinners
 @using Code420.UIOrchestrator.Server.Components.CustomComponents.CustomSpinners
-@using Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSystem.UserLogin.Password
+@using Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButton;
 @using Syncfusion.Blazor.Inputs
 
 
 @* START-- Layout Grid *@
+<!--suppress CssUnresolvedCustomProperty -->
 <div id="grid-main__user-login" class="grid__main">
 
     @* Page Title *@
@@ -88,7 +89,40 @@
                         PlaceholderFloatingColor="var(--element__normal--font-color)"
         />
         
-        <UserLoginPasswordHelp />
+        <HelpButton @ref=passwordHelpButton
+                    CssClass="user-login-password-help"
+                    ButtonMargin="2.5em 0 0 1em"
+                    TooltipHeight="auto"
+                    TooltipWidth="250px">
+            
+            <TooltipContent>
+                @*
+                The HelpButton component provides basic styling for its ToolTipBase child component.
+                As needed, additional styling can be provided in-line within the TooltipContent
+                property. Using <style> tags will work too as long as you manage CSS isolation
+                issues appropriately.
+                *@
+                <div class="user-login-password-help__tooltip-content"
+                     style="font-size: 12px; 
+                     color: var(--tooltip-help__title-font-color);
+                     margin: 1em;">
+                    <p style="font-size: 14px; 
+                        color: var(--tooltip-help__body-font-color);">
+                        <b>Enter the Password Assigned to Your Account.</b>
+                    </p>
+                    <p style="margin-bottom: 0;">
+                        The password must meet the following requirements:
+                    </p>
+                    <ul style="padding-left: 1.5em;">
+                        <li>At least six characters in length,</li>
+                        <li>One lowercase character,</li>
+                        <li>One uppercase character,</li>
+                        <li>One number,</li>
+                        <li>One special character</li>
+                    </ul>
+                </div>
+            </TooltipContent>
+        </HelpButton>
 
     </div>
 
