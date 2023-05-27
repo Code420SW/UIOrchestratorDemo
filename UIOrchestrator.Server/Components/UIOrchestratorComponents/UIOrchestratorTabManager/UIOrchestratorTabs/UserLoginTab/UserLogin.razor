@@ -8,6 +8,7 @@
 @using Code420.UIOrchestrator.Server.Components.CustomComponents.CustomSpinners
 @using Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButton;
 @using Syncfusion.Blazor.Inputs
+@using Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSystem.UserLogin.Email;
 
 
 @* START-- Layout Grid *@
@@ -33,7 +34,7 @@
     </div>
 
     @* User Email textbox *@
-    <div class="flex__row">
+    <div class="flex__row input__user-email">
 
         <TextBoxBase    @ref=@emailTextBoxBase
                         FloatLabelType=@emailFloatLabelType
@@ -58,7 +59,10 @@
                         PlaceholderFloatingFontWeight="500"
                         PlaceholderFloatingColor="var(--element__normal--font-color)"
         />
-
+        <UserLoginEmailHelp @ref=emailHelpComponent
+                            Target=".page__main"
+        />
+        
     </div>
 
     @* User Password text box *@

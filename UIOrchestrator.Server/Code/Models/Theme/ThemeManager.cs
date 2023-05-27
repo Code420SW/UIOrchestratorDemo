@@ -263,8 +263,9 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Theme
                 
                 ["tooltip-help__background-color"] = colorPalette["fg-300"],
                 ["tooltip-help__title-font-color"] = colorPalette["black-700"],
-                ["tooltip-help__bottom-border-color"] = colorPalette["bg-700"],
+                ["tooltip-help__border-color"] = colorPalette["bg-700"],
                 ["tooltip-help__body-font-color"] = colorPalette["bg-900"],
+                ["tooltip-help__tip-color"] = colorPalette["bg-900"],
                 
                 ["dialog-help__background-color"] = colorPalette["bg-300"],
                 ["dialog-help__title-font-color"] = colorPalette["bg-900"],
@@ -339,8 +340,9 @@ namespace Code420.UIOrchestrator.Server.Code.Models.Theme
                 
                 ["tooltip-help__background-color"] = colorPalette["white-500"],
                 ["tooltip-help__title-font-color"] = colorPalette["black-900"],
-                ["tooltip-help__bottom-border-color"] = colorPalette["black-500"],
+                ["tooltip-help__border-color"] = colorPalette["black-500"],
                 ["tooltip-help__body-font-color"] = colorPalette["white-500"],
+                ["tooltip-help__tip-color"] = colorPalette["white-500"],
                 
                 ["dialog-help__background-color"] = colorPalette["black-300"],
                 ["dialog-help__title-font-color"] = colorPalette["white-500"],

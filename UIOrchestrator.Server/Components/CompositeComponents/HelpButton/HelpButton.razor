@@ -33,7 +33,7 @@
 </IconButtonBase>
 
 <ToolTipBase    @ref=@tooltipBase
-                IsSticky=true
+                IsSticky=false
                 OpensOn="Hover"
                 CloseDelay=100.0
                 OpenDelay=500.0
@@ -41,6 +41,7 @@
                 Width=@TooltipWidth
                 Height=@TooltipHeight
 
+                CssId=@($"id-{ CssClass }__tooltip")
                 CssClass=@($"{ CssClass }__tooltip")
                 Target=@($".{ CssClass }__button")
                 
@@ -50,7 +51,8 @@
                 TooltipFilter="drop-shadow(3px 3px 5px var(--button-help__icon--drop-shadow-color))"
                 TooltipBackgroundColor="var(--tooltip-help__background-color)"
                 TooltipBorderRadius="4px"
-                TooltipBorder="1px solid #000"
+                TooltipBorder="1px solid va(--tooltip-help__border-color)"
+                TipColor="var(--tooltip-help__tip-color)"
                 >
                 <ContentFragment>
                     @TooltipContent

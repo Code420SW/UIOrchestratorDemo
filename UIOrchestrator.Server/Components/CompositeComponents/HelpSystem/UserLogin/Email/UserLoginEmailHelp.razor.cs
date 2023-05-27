@@ -1,5 +1,6 @@
-﻿using Code420.UIOrchestrator.Server.Components.BaseComponents.ButtonBase;
-using Code420.UIOrchestrator.Server.Components.BaseComponents.DialogBoxBase;
+﻿using System.Diagnostics;
+using Code420.UIOrchestrator.Server.Components.BaseComponents.ButtonBase;
+using Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpDialog;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Syncfusion.Blazor.Notifications;
@@ -51,7 +52,6 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSyste
         #endregion
 
 
-
         #region Callback Events Invoked from Underlying Components
 
         // ==================================================
@@ -63,7 +63,6 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSyste
         #endregion
 
 
-
         #region Instance Variables
 
         // ==================================================
@@ -72,10 +71,9 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSyste
 
         private HelpButton.HelpButton helpButtonComponent;
         private ButtonBase buttonLearnMore;
-        private DialogBoxBase dialogLearnMore;
+        private HelpDialog.HelpDialog dialogLearnMore;
 
         #endregion
-
 
 
         #region Injected Dependencies
@@ -88,7 +86,6 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSyste
 
 
         #endregion
-
 
 
         #region Constructors
@@ -155,7 +152,6 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSyste
         #endregion
 
 
-
         #region Public Methods Providing Access to the Underlying Components to the Consumer
 
         // ==================================================
@@ -166,18 +162,15 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSyste
         #endregion
 
 
-
         #region Private Methods for Internal Use Only
 
-        private async Task LearnMoreButtonClickAsync(MouseEventArgs _)
+        private async Task LearnMoreButtonClickAsync(MouseEventArgs args)
         {
-            await helpButtonComponent.CloseTooltipAsync();
+            if (helpButtonComponent.IsTooltipSticky()) 
+                await helpButtonComponent.CloseTooltipAsync();
+            
             await dialogLearnMore.ShowAsync();
         }
-        
-        private async Task OnDialogCloseAsync() => 
-            await dialogLearnMore.SetVisibilityAsync(false); //await dialogLearnMore.HideAsync(); Seems to crash application
-
 
         #endregion
 

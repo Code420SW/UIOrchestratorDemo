@@ -206,6 +206,15 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButto
             /// </summary>
             public async Task FocusIconButtonAsync() => 
                 await helpIconButton.FocusAsync();
+            
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns>
+            /// Boolean value containing the current setting of the
+            /// <see cref="tooltipBase.IsSticky"/> parameter.
+            /// </returns>
+            public bool IsTooltipSticky() => tooltipBase.IsSticky;
 
             #endregion
 

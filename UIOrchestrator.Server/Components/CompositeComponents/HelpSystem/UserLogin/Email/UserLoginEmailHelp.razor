@@ -2,14 +2,16 @@
 
 @using Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButton;
 @using Code420.UIOrchestrator.Server.Components.BaseComponents.ButtonBase;
-@using Code420.UIOrchestrator.Server.Components.BaseComponents.DialogBoxBase;
+@using Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpDialog;
+@using Syncfusion.Blazor.Popups
 
 <!--suppress ALL -->
 <HelpButton @ref=helpButtonComponent
             CssClass="user-login-email-help"
             ButtonMargin="2.5em 0 0 1em"
             TooltipHeight="auto"
-            TooltipWidth="250px">
+            TooltipWidth="250px"
+            >
     
     <TooltipContent>
         @*
@@ -26,13 +28,14 @@
                 color: var(--tooltip-help__body-font-color);">
                 <b>Enter the Email Assigned to Your Account.</b>
             </p>
-            <div class="user-login-email-help__button">
+            <div class="user-login-email-help__button" style="display: flex; margin-top: 1em;">
                 <ButtonBase @ref=buttonLearnMore
                             IsPrimary=true
                             TextFontSize="1em"
                             CssClass="user-login-email-help__button-learn-more"
                             Padding="4px 8px"
-                            OnClick=@(async (e) => await LearnMoreButtonClickAsync(e))
+                            Margin="auto"
+                            OnClick=LearnMoreButtonClickAsync
                 >
                     <ContentFragment>
                         Learn More
@@ -44,147 +47,75 @@
     
 </HelpButton>
 
-<!--
-    The DialogBoxBase component is shown when the user clicks the Learn More button in the
-    tooltip. The HeaderFragment, FooterFragment and ContentFragment are customized for the help system.
-
-    1:  The Target parameter must match the CSS Id of an HTML element (usually a div) on the page and
-        the dialog box will be sized to fit in the element.
-    2:  Display of the dialog is controlled by the LearnMoreButtonClick() event handler and the 
-        OnDialogClose() event handler. Each will invoke the dial box's SetVisibility() method to
-        show/hide the dialog box.
-    3.  This is a modal dialog box using the default OverlayBackgroundColor and OverlayOpacity
-    4.  Suppress the default DialogBorder and override the DialogBorderRadius
-    5.  Set the header, footer and content styling to match the CodePen
--->
-<DialogBoxBase  @ref=dialogLearnMore
-                    
-                IsModal=true
-
-                OnClose=@(async () => await OnDialogCloseAsync())
-
-                CssClass="dialog-rmt"
-                Height="300px"
-                Width="500px"
-
-                DialogBaseFontSize="12px"
-                DialogBorder="none"
-                DialogBorderRadius="4px"
-
-                HeaderFontSize="1.25em"
-                HeaderFontWeight="bold"
-                HeaderLineHeight="1.25"
-                HeaderFontColor="var(--dialog-help__title-font-color)"
-                HeaderPadding="0.5em 1em"
-                HeaderBackgroundColor="var(--dialog-help__header-background-color)"
-                HeaderBottomBorder="none"
-                HeaderBorderRadius="4px 4px 0px 0px"
-
-                ContentFontSize="1em"
-                ContentPadding="0px"
-                ContentBackgroundColor="var(--dialog-help__background-color)"
-
-                FooterPadding=".5em"
-                FooterBackgroundColor="var(--dialog-help__header-background-color)"
-                FooterTopBorder="none"
-                FooterBorderRadius="0px 0px 4px 4px"
-                >
+<HelpDialog @ref=dialogLearnMore
+            Target=".page__main"
+            >
     <HeaderFragment>
-        Register Metrc Tags
+        User Email Help
     </HeaderFragment>
     <ContentFragment>
-        <!--
-            The dialog content section HTML is comprised of:
-                1:  A container class encapsulating the content.
-                    The ContentFontSize parameter is relative to the DialogBaseFontSize parameter and is used by child elements.
-                2:  A series of articles are defined that encapsulate the the main content sections.
-                    The sections are: Overview, Best Practices and Details
-                    Each article contains a title and paragraph.
-                3.  Some Details article contain child elements subsections providing information for discrete topics
-                4.  All articles are styled by the <style /> section below
-        -->
-        <div class="content__dialog-rmt">
-                <article class="card__dialog-rmt">
-                    <h3 class="content-title__dialog-rmt">Overview</h3>
+        <div class="content__user-login-email-help">
+                <article class="card__user-login-email-help">
+                    <h3 class="card-title__user-login-email-help">
+                        Overview
+                    </h3>
                     <p>
-                        Allows the user to register a consecutive series of Metrc tags in the database.
-                        The tags can be registered as active, meaning they are available for use, or inactive,
-                        meaning they are recorded in the database but will not be available for use until activated.
+                        Enter the email used to register your account. The email
+                        must be valid or an error message will be displayed.
                     </p>
                 </article>
-                <article class="card__dialog-rmt">
-                    <h3 class="content-title__dialog-rmt">Best Practice</h3>
+                <article class="card__user-login-email-help">
+                    <h3 class="card-title__user-login-email-help">Best Practice</h3>
                     <p>
-                        It is recommended that Metrc tags are registered as inactive until needed for use.
-                        A list of available tags (active and not previously used) is presented to a user
-                        when a produced item is recorded in the program. To keep this list manageable for
-                        the user, it is best to register a series of Metrc tags as inavtive until needed.
+                        For this demo, two email addresses are defined. Each has different
+                        permission sets assigned. Any email address other than the predefined
+                        ones will be assigned a limited permission set.
                     </p>
                 </article>
-                <article class="card__dialog-rmt">
-                    <h3 class="content-title__dialog-rmt">Details</h3>
-                    <article class="card-section__dialog-rmt">
-                        <h3 class="content-section-title__dialog-rmt">Beginning/Ending Tag</h3>
+                <article class="card__user-login-email-help">
+                    <h3 class="card-title__user-login-email-help">Predefined Email Addresses</h3>
+                    <article class="card-section__user-login-email-help">
+                        <h3 class="card-section-title__user-login-email-help">accessall@test.com</h3>
                         <p>
-                            Enter the 24-character Metrc tag number for the first and last tags in the
-                            series of tags to be recorded in the database. Depending on the setting of
-                            the Metrc Tag Configuration, the full 24-character tag number may be needed,
-                            of just the last few characters.
+                            Granted the AccessAll permission set which exposes all menu items.
                         </p>
                     </article>
-                    <article class="card-section__dialog-rmt">
-                        <h3 class="content-section-title__dialog-rmt">Metrc Tag Configuration</h3>
+                    <article class="card-section__user-login-email-help">
+                        <h3 class="card-section-title__user-login-email-help">permission1@test.com</h3>
                         <p>
-                            Click the icon to open a dialog in which the settings controlling how Metrc
-                            tag are entered. The icon is available on various screens and display the
-                            current settings. Changes are retained and applied from this point forward.
-                            Hover over the icon to access the help system decribing the available settings.
+                            Granted the Permission_1 permission set which exposes the following menu items:
                         </p>
+                        <ul style="margin-bottom:0;">
+                            <li>Dummy Tab</li>
+                            <li>Settings->Configuration->Application</li>
+                            <li>Settings->User->Logout</li>
+                            <li>Settings->Switch Theme->Light</li>
+                            <li>Settings->Switch Theme->Dark</li>
+                        </ul>
                     </article>
-                    <article class="card-section__dialog-rmt">
-                        <h3 class="content-section-title__dialog-rmt">Register Tags As</h3>
+                    <article class="card-section__user-login-email-help">
+                        <h3 class="card-section-title__user-login-email-help">Any other email address</h3>
                         <p>
-                            The toggle switch aloows you to specify if the series of Metrc tags are saved
-                            in the database as active or inactive.
+                            Granted the Permission_2 permission set which exposes the following menu items:
                         </p>
-                    </article>
-                    <article class="card-section__dialog-rmt">
-                        <h3 class="content-section-title__dialog-rmt">Register Tags Button</h3>
-                        <p>
-                            Execute the process of registering the consecutive series of Metrc tags in the
-                            database.
-                        </p>
-                    </article>
-                    <article class="card-section__dialog-rmt">
-                        <h3 class="content-section-title__dialog-rmt">Undo Tag Registration</h3>
-                        <p>
-                            Execute the process of reversing the last tag registration process. The button
-                            is diabled until a tag registration process is successfully completed.
-                        </p>
+                        <ul style="margin-bottom:0;">
+                            <li>Dummy Tab</li>
+                            <li>Settings->User->Logout</li>
+                            <li>Settings->Do Nothing</li>
+                        </ul>
                     </article>
                 </article>
         </div>
     </ContentFragment>
     <FooterFragment>
-        <!--
-            The footer is a simple div that is styled by the <style /> below
-        -->
-        <div class="footer__dialog-rmt"></div>
+        <div class="footer__user-login-email-help" style="height: 1em;">
+        </div>
     </FooterFragment>
 
-</DialogBoxBase>
+</HelpDialog>
 
 
 <style>
-
-    /* 
-        Styling for the tooltip render fragments.
-        Use em units in styling so that font sizes are controlled by the
-            HelpButtonComponent's ContentFontSize parameter which is applied
-            to the container__tooltip-rmt class.
-        Use the container__tooltip-rmt width to set the width of the tooltip.
-
-    */
 
     p {
         line-height: 1.1;
@@ -192,85 +123,12 @@
         margin-bottom: 0;
     }
 
-    .container__tooltip-rmt {
-        width: 300px;           /* dictates size of the tooltip */
-        overflow: hidden;
-    }
-
-    .header__tooltip-rmt {
-        padding: 0.5em 1em;
-        background-color: var(--tooltip-help__background-color);
-        border-radius: 4px 4px 0 0;
-    }
-
-    .header-title__tooltip-rmt {
-        font-size: 1.25em;
-        font-weight: bold;
-        line-height: 1.25;
-        color: var(--tooltip-help__header-font-color);
-        margin-bottom: .5em;
-    }
-
-    .header-subtitle__tooltip-rmt {
-        font-size: 1em;
-        line-height: 1.25;
-        color: var(--tooltip-help__header-font-color);
-    }
-
-    .card__tooltip-rmt {
-        padding: 0.75em 1em;
-        background-color: var(--tooltip-help__background-color);
-        border-bottom: 1px solid var(--tooltip-help__bottom-border-color);
-    }
-
-    .card__tooltip-rmt:last-child {
-        border-bottom: none;
-    }
-
-    .content-title__tooltip-rmt {
-        font-size: 1.25em;
-        font-weight: 600;
-        color: var(--tooltip-help__title-font-color);
-        margin-bottom: 0.5em;
-    }
-
-    .card__tooltip-rmt p {
-        font-size: 1em;
-    }
-
-    .icon__tooltip-rmt {
-        display: inline-block;
-        height: 1.5em;
-        width: 1.5em;
-        font-size: 1em;
-        color: var(--dialog-help__icon-font-color);
-        margin-right: 0.25em;
-        padding: .25em 0 0 .25em;
-        background-color: var(--button-std__normal--background-color);
-        border-radius: 50%;
-    }
-
-    .footer__tooltip-rmt {
-        display: flex;
-        justify-content: center;
-        padding: .75em;
-        background-color: var(--tooltip-help__background-color);
-        border-radius: 0 0 4px 4px;
-    }
-
-
-    /* 
-        Styling for the dialog box render fragments.
-
-    */
-
-
-    .card__dialog-rmt {
+    .card__user-login-email-help {
         padding: 0.75em 1em;
         background-color: var(--dialog-help__background-color);
     }
 
-    .content-title__dialog-rmt {
+    .card-title__user-login-email-help {
         display: flex;
         align-items: flex-start;
         text-align: left;
@@ -280,7 +138,7 @@
         margin-bottom: 0.5em;
     }
 
-    .content-title__dialog-rmt::after {
+    .card-title__user-login-email-help::after {
         content: "";
         flex-grow: 1;
         height: 1px;
@@ -289,16 +147,16 @@
         margin: auto auto auto 0.5em;
     }
 
-    .card__dialog-rmt p {
+    .card__user-login-email-help p {
         font-size: 1em;
     }
 
-    .card-section__dialog-rmt {
+    .card-section__user-login-email-help {
         padding: 0 1em 0.75em 1em;
         background-color: var(--dialog-help__background-color);
     }
 
-    .content-section-title__dialog-rmt {
+    .card-section-title__user-login-email-help {
         display: flex;
         align-items: flex-start;
         text-align: left;
@@ -307,7 +165,7 @@
         color: var(--dialog-help__subtitle-font-color);
     }
 
-    .content-section-title__dialog-rmt::after {
+    .card-section-title__user-login-email-help::after {
         content: "";
         flex-grow: 1;
         height: 1px;
@@ -316,12 +174,8 @@
         margin: auto auto auto 0.5em;
     }
 
-    .card-section__dialog-rmt p {
+    .card-section__user-login-email-help p {
         font-size: 1em;
-    }
-
-    .footer__dialog-rmt {
-        height: 1em;
     }
 
 </style>

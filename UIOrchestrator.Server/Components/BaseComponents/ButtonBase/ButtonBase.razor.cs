@@ -360,7 +360,7 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ButtonBase
 
         #endregion
 
-
+        
         #region Instance Variables
 
         private SfButton sfButton;
