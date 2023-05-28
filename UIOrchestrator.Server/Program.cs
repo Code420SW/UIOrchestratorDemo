@@ -19,7 +19,7 @@ builder.Services
 var app = builder.Build();
 
 // Add your Syncfusion license key for Blazor platform with corresponding Syncfusion NuGet version referred in project. For more information about license key see https://help.syncfusion.com/common/essential-studio/licensing/license-key.
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTAxMDA1MUAzMjMwMmUzNDJlMzBXWWtwVlljcWN6cHNSSVBySnl6MVYrY29CeE41bTlTZk83YW03TzE3NFZ3PQ==");
+// Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("");
 
 if (!app.Environment.IsDevelopment())
 {

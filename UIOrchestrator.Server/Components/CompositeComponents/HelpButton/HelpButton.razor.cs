@@ -212,7 +212,7 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButto
             /// </summary>
             /// <returns>
             /// Boolean value containing the current setting of the
-            /// <see cref="tooltipBase.IsSticky"/> parameter.
+            /// <see cref="ToolTipBase.IsSticky"/> parameter.
             /// </returns>
             public bool IsTooltipSticky() => tooltipBase.IsSticky;
 
