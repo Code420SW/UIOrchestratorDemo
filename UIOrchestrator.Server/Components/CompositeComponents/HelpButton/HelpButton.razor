@@ -1,0 +1,61 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButton
+
+@using Code420.UIOrchestrator.Server.Components.BaseComponents.IconButtonBase;
+@using Code420.UIOrchestrator.Server.Components.BaseComponents.ToolTipBase;
+@using Code420.UIOrchestrator.Server.Code.Enums
+@using Syncfusion.Blazor.Popups
+
+<IconButtonBase @ref=helpIconButton
+                IsDisabled=@ButtonDisabled
+                IconButtonStyle=IconButtonStyle.Round
+
+                CssClass=@($"{ CssClass }__button")
+                IconCss="oi oi-question-mark"
+                Margin=@ButtonMargin
+                Padding=@ButtonPadding
+
+                ButtonHeight="24px"
+                ButtonNormalBackgroundColor="var(--button-help__normal--background-color)"
+                ButtonNormalBorder="2px solid var(--button-help__normal--border-color)"
+                ButtonHoverBackgroundColor="var(--button-help__normal--background-color)"
+                ButtonHoverBorder="3px solid var(--button-help__normal--border-color)"
+                ButtonActiveBackgroundColor="var(--button-help__normal--background-color)"
+                ButtonActiveBorderColor="var(--button-help__normal--border-color)"
+                ButtonDisabledOpacity="1.0"
+                HoverScale=1.1m
+
+                IconFontSize=".75em"
+                IconFontColor="var(--button-help__icon--font-color)"
+                IconFontTextAlign="center"
+                IconFontVerticalAlign="top"
+                IconFontLineHeight="1.0"
+                >
+</IconButtonBase>
+
+<ToolTipBase    @ref=@tooltipBase
+                IsSticky=false
+                OpensOn="Hover"
+                CloseDelay=100.0
+                OpenDelay=500.0
+                Position=Position.BottomCenter
+                Width=@TooltipWidth
+                Height=@TooltipHeight
+
+                CssId=@($"id-{ CssClass }__tooltip")
+                CssClass=@($"{ CssClass }__tooltip")
+                Target=@($".{ CssClass }__button")
+                
+                ContentFontSize="12px"
+                ContentPadding="4px"
+
+                TooltipFilter="drop-shadow(3px 3px 5px var(--button-help__icon--drop-shadow-color))"
+                TooltipBackgroundColor="var(--tooltip-help__background-color)"
+                TooltipBorderRadius="4px"
+                TooltipBorder="1px solid va(--tooltip-help__border-color)"
+                TipColor="var(--tooltip-help__tip-color)"
+                >
+                <ContentFragment>
+                    @TooltipContent
+                </ContentFragment>
+
+</ToolTipBase>

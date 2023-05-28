@@ -1,0 +1,204 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.UserLoginTab
+
+@using Code420.UIOrchestrator.Server.Components.BaseComponents.LabelBase
+@using Code420.UIOrchestrator.Server.Components.BaseComponents.TextBoxBase
+@using Code420.UIOrchestrator.Server.Components.BaseComponents.ButtonBase
+@using Code420.UIOrchestrator.Server.Components.CustomComponents.CustomToasts.GenericErrors
+@using Code420.UIOrchestrator.Server.Components.CustomComponents.CustomToasts.Spinners
+@using Code420.UIOrchestrator.Server.Components.CustomComponents.CustomSpinners
+@using Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpButton;
+@using Syncfusion.Blazor.Inputs
+@using Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSystem.UserLogin.Email;
+
+
+@* START-- Layout Grid *@
+<!--suppress CssUnresolvedCustomProperty -->
+<div id="grid-main__user-login" class="grid__main">
+
+    @* Page Title *@
+    <div class="flex__row">
+
+        <LabelBase  @ref=@labelPageHeader
+                    LabelText="User Login"
+                    
+                    CssClass="label__page-header"
+                    FontColor="inherit"
+                    FontSize="1.5rem"
+                    FontWeight="600"
+                    TextTransform="capitalize"
+                    LabelBackgroundColor="inherit"
+                    LabelMargin="1rem 0 0 0"
+                    LabelPadding="0px 1rem 0px 0px"
+        />
+            
+    </div>
+
+    @* User Email textbox *@
+    <div class="flex__row input__user-email">
+
+        <TextBoxBase    @ref=@emailTextBoxBase
+                        FloatLabelType=@emailFloatLabelType
+                        Placeholder=@emailPlaceholderPrompt
+                        ShowClearButton=true 
+                        TabIndex=1
+                        Value=@loginUserModel.Email
+                                    
+                        Blur=@((e) => OnEmailBlurAsync(e.Value))
+                        Focus=@((e) => OnEmailFocusAsync(e.Value))
+                        ValueChange=@OnEmailValueChange
+
+                        CssId="user__email" 
+                        CssClass="user-email"
+                        Width="300px"
+                        TextboxBackgroundColor="var(--element__normal--background-color)"
+                        TextboxBorderColor="var(--element__normal--border-color)"
+                        TextboxActiveBorderColor="var(--element__active--border-color)"
+                        TextboxFontColor="var(--element__normal--font-color)"
+                        TextboxMargin="2rem 0px 0 0px"
+                        PlaceholderNormalColor="var(--element__disabled--font-color)"
+                        PlaceholderFloatingFontWeight="500"
+                        PlaceholderFloatingColor="var(--element__normal--font-color)"
+        />
+        <UserLoginEmailHelp @ref=emailHelpComponent
+                            Target=".page__main"
+        />
+        
+    </div>
+
+    @* User Password text box *@
+    <div class="flex__row">
+
+        <TextBoxBase    @ref=@passwordTextBoxBase
+                        FloatLabelType=@passwordFloatLabelType
+                        Placeholder=@passwordPlaceholderPrompt 
+                        ShowClearButton=true 
+                        TabIndex=2
+                        Type=InputType.Password
+                        Value=@loginUserModel.Password 
+                                    
+                        Blur=@((e) => OnPasswordBlurAsync(e.Value))
+                        Focus=@((e) => OnPasswordFocusAsync(e.Value))
+                        ValueChange=@OnPasswordValueChange
+
+                        CssId="user__password" 
+                        CssClass="user-password"
+                        Width="300px"
+                        TextboxBackgroundColor="var(--element__normal--background-color)"
+                        TextboxBorderColor="var(--element__normal--border-color)"
+                        TextboxActiveBorderColor="var(--element__active--border-color)"
+                        TextboxFontColor="var(--element__normal--font-color)"
+                        TextboxMargin="2rem 0px 0 0px"
+                        PlaceholderNormalColor="var(--element__disabled--font-color)"
+                        PlaceholderFloatingFontWeight="500"
+                        PlaceholderFloatingColor="var(--element__normal--font-color)"
+        />
+        
+        <HelpButton @ref=passwordHelpButton
+                    CssClass="user-login-password-help"
+                    ButtonMargin="2.5em 0 0 1em"
+                    TooltipHeight="auto"
+                    TooltipWidth="250px">
+            
+            <TooltipContent>
+                @*
+                The HelpButton component provides basic styling for its ToolTipBase child component.
+                As needed, additional styling can be provided in-line within the TooltipContent
+                property. Using <style> tags will work too as long as you manage CSS isolation
+                issues appropriately.
+                *@
+                <div class="user-login-password-help__tooltip-content"
+                     style="font-size: 12px; 
+                     color: var(--tooltip-help__title-font-color);
+                     margin: 1em;">
+                    <p style="font-size: 14px;
+                        margin-bottom: 1em; 
+                        color: var(--tooltip-help__body-font-color);">
+                        <b>Enter the Password Assigned to Your Account.</b>
+                    </p>
+                    <p style="margin-bottom: 0;">
+                        The password must meet the following requirements:
+                    </p>
+                    <ul style="padding-left: 1.5em;">
+                        <li>At least six characters in length,</li>
+                        <li>One lowercase character,</li>
+                        <li>One uppercase character,</li>
+                        <li>One number,</li>
+                        <li>One special character</li>
+                    </ul>
+                </div>
+            </TooltipContent>
+        </HelpButton>
+
+    </div>
+
+
+    @* Command buttons *@
+    @* var(--button-std__active--background-color) *@
+    <div class="flex__row">
+        <ButtonBase @ref=@loginButton
+                    IsPrimary=false
+
+                    OnClick=@OnSubmit 
+
+                    CssClass="button__login"
+                    TextFontColor="var(--button-std__normal--font-color)"
+                    TextFontWeight="normal"
+                    ButtonNormalBackgroundColor="var(--button-std__normal--background-color)"
+                    ButtonNormalBorderColor="var(--button-std__active--border-color)"
+                    ButtonHoverBackgroundColor="var(--button-std__active--background-color)"
+                    ButtonHoverBorderColor="var(--button-std__active--border-color)"
+                    ButtonActiveBackgroundColor="var(--button-std__active--background-color)"
+                    ButtonActiveBorderColor="var(--button-std__active--border-color)"
+                    Margin="1rem 0 0 0"
+                    Padding="4px 8px"
+                    HoverScale=1.1m
+        >
+
+            <ContentFragment>Login</ContentFragment>
+
+        </ButtonBase>
+    </div>
+    
+</div>
+@* END-- Grid Layout *@
+
+
+@* 
+========================
+Supporting Custom Toasts
+======================== 
+*@
+
+@* Toast uses to display validation errors *@
+<GenericError   @ref=@toastUserLoginError
+                Target=@toastTarget
+                />
+
+
+@* The "Please Wait" Toast *@
+@* Using ThreeBarLoader custom spinner *@
+@* Added a dummy toast button as a test *@
+
+<GenericSpinner @ref=@toastUserLoginExecute 
+                Target=@toastTarget 
+                Title="Logging in Title"
+                >
+    <ContentTemplate>
+        <ThreeBarLoader></ThreeBarLoader>
+    </ContentTemplate>
+</GenericSpinner>
+
+
+<style>
+
+    #grid-main__user-login {
+        display: grid;
+        margin: 1rem 2rem;
+    }
+
+    .flex__row {
+        display: flex;
+        flex-direction: row;
+    }
+
+</style>

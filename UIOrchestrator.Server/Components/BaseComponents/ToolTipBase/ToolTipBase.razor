@@ -1,0 +1,136 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToolTipBase
+
+@using Syncfusion.Blazor.Popups
+
+<SfTooltip  @ref=@sfTooltip
+            Animation=@Animation
+            CloseDelay=@CloseDelay
+            Container=@Container
+            EnableRtl=@EnableRtl
+            Height=@Height
+            IsSticky=@IsSticky
+            MouseTrail=@MouseTrail
+            OffsetX=@OffsetX
+            OffsetY=@OffsetY
+            OpenDelay=@OpenDelay
+            OpensOn=@OpensOn
+            Position=@Position
+            ShowTipPointer=@ShowTipPointer
+            Target=@Target
+            TipPointerPosition=@TipPointerPosition
+            Width=@Width
+            WindowCollision=@WindowCollision
+
+            Closed=@Closed
+            Created=@Created
+            Destroyed=@Destroyed
+            OnClose=@OnClose
+            OnCollision=@OnCollision
+            OnOpen=@OnOpen
+            OnRender=@OnRender
+            Opened=@Opened
+
+            ID=@CssId
+            CssClass=@CssClass
+            
+            Content=@Content
+            >
+
+            <TooltipTemplates>
+                <Content>
+                    @ContentFragment
+                    @* @((@Content == string.Empty) ? @ContentFragment : @Content) *@
+                </Content>
+            </TooltipTemplates>
+</SfTooltip>
+
+<style>
+
+    @(masterCssSelector) {
+        background-color: @TooltipBackgroundColor;
+        border: @TooltipBorder;
+        border-radius: @TooltipBorderRadius;
+        filter: @TooltipFilter;
+    }
+
+
+    @* Set the styling for the Tooltip content div *@
+    @(masterCssSelector) .e-tip-content {
+        color: @ContentFontColor;
+        font-size: @ContentFontSize;
+        line-height: @ContentLineHeight;
+        padding: @ContentPadding;
+    }
+
+   @* Set the styling for the Tooltip close icon div *@
+    @(masterCssSelector).e-tooltip-close {
+        background-color: @CloseButtonBackgroundColor;
+        border-radius: 50%;
+        color: @CloseButtonIconColor;
+        border: @CloseButtonBorder;
+        right: calc( ((@CloseButtonIconSize / 2) + 1) * -1px );
+        top: calc( ((@CloseButtonIconSize / 2) + 1) * -1px );
+    }
+
+    @* Set the styling for the Tooltip close icon font *@
+    @(masterCssSelector).e-tooltip-close::before {
+        font-size: @CloseButtonIconSize;
+        border-radius: 50%;
+        border: @CloseButtonIconBorder;
+    }
+
+    @* Set the styling for the Tooltip close icon div when hovered *@
+    @(masterCssSelector).e-tooltip-close:hover {
+        background-color: @CloseButtonHoverBackgroundColor;
+        color: @CloseButtonHoverIconColor;
+    }
+
+    @*
+    Set the styling for the Tip arrow
+    e-tip-top and e-tip-bottom use the height/width settings below
+    e-tip-left and e-tip-right reverse the settings
+    *@
+    @(masterCssSelector) .e-arrow-tip.e-tip-top,
+    @(masterCssSelector) .e-arrow-tip.e-tip-bottom {
+        height: 8px;
+        width: 16px;
+    }
+
+    @(masterCssSelector) .e-arrow-tip.e-tip-left,
+    @(masterCssSelector) .e-arrow-tip.e-tip-right {
+        width: 8px;
+        height: 16px;
+    }
+    
+    @* Set the styling for the Inner tip arrow *@
+    @(masterCssSelector) .e-arrow-tip-inner {
+        color: @TipColor;
+    }
+
+    @* Set the styling for the Outer tip arrow *@
+    @(masterCssSelector) .e-arrow-tip-outer.e-tip-top {
+        border-bottom: 8px solid @TipColor;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+    }
+
+    @(masterCssSelector) .e-arrow-tip-outer.e-tip-bottom {
+        border-top: 8px solid @TipColor;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+    }
+
+    @(masterCssSelector) .e-arrow-tip-outer.e-tip-left {
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 8px solid @TipColor;
+    }
+
+    @(masterCssSelector) .e-arrow-tip-outer.e-tip-right {
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 8px solid @TipColor;
+    }
+
+</style>
+

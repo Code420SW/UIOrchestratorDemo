@@ -1,0 +1,186 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToastBase
+
+@using Syncfusion.Blazor.Notifications
+
+<SfToast    @ref=@toast
+            Content=@Content
+            ContentTemplate=@ContentTemplate
+            ExtendedTimeout=@ExtendedTimeout
+            Icon=@Icon
+            NewestOnTop=@NewestOnTop
+            ProgressDirection=@ProgressDirection
+            ShowCloseButton=@ShowCloseButton
+            ShowProgressBar=@ShowProgressBar
+            Target=@Target
+            Timeout=@Timeout
+            Title=@Title
+            
+            ID=@CssId
+            CssClass=@CssClass
+            Height=@Height
+            Width=@Width
+>
+
+    <ToastEvents    Closed=@Closed
+                    Created=@Created
+                    Destroyed=@Destroyed
+                    OnClick=@OnClickHandler
+                    OnClose=@OnClose
+                    OnOpen=@OnOpenHandler
+                    Opened=@Opened
+    >
+    </ToastEvents>
+    
+    <ToastPosition  X=@PositionX
+                    Y=@PositionY
+    > 
+    </ToastPosition>
+    
+    <ToastAnimationSettings HideSettings=@animationSettings.HideSettings
+                            ShowSettings=@animationSettings.ShowSettings
+    >
+    </ToastAnimationSettings> 
+    
+    @if(@ToastButtons is not null)
+    {
+        <ToastButtons>
+            @ToastButtons
+        </ToastButtons>
+    }
+
+</SfToast>
+
+<style>
+
+    @* Set the styling for the master toast container that contains all toasts. *@
+    @(masterCssIdSelector) {
+        display: inline-flex;
+        flex-direction: column;
+        
+    }
+
+    @* Set the styling for the master toast container that contains all toasts. *@
+    @(masterCssIdSelector).e-toast-top-right {
+        right: 10px;
+        top: 10px;
+    }
+
+    @* Set the styling for all toast element children *@
+    @(masterCssSelector) * {
+        box-sizing: border-box;
+    }
+
+    @* Set the styling for all toast element direct children *@
+    @(masterCssSelector) > * {
+        word-break: break-word;
+        word-wrap: break-word;
+    }
+
+    @* Set the styling for the primary toast element *@
+    @(masterCssSelector) {
+        position: relative;
+        word-break: break-word;
+        word-wrap: break-word;
+        overflow: hidden;
+
+        font-size: @ToastFontSize;
+        color: @ToastFontColor;
+        background-color: @ToastBackground;
+        border: @ToastBorder;
+        box-shadow: @ToastBoxShadow;
+	    border-radius: @ToastBorderRadius;
+        margin: @ToastMargin;
+        padding: @ToastPadding;
+    }
+
+    @* Set the styling for the primary toast element when hovered *@
+    @(masterCssSelector):hover {
+        background-color: @ToastBackground;
+        box-shadow: @ToastBoxShadow;
+    }
+
+    @* Set the styling for the progress bar element *@
+    @(masterCssSelector) .e-toast-progress {
+        position: absolute;
+
+        left: @ProgressBarLeft;
+	    bottom: @ProgressBarBottom;
+        height: @ProgressBarHeight;
+        background: @ProgressBarBackground;
+        border-radius: @ProgressBarBorderRadius;
+    }
+
+    @* Set the styling for the icon element *@
+    @(masterCssSelector) .e-toast-icon {
+        display: inline-flex;
+	    align-items: center;
+        justify-content: center;
+
+        font-size: @ToastIconFontSize;
+        color: @ToastIconFontColor;
+        height: @ToastIconSize;
+        width: @ToastIconSize;
+        margin: @ToastIconMargin;
+    }
+
+    @* Set the styling for the toast message container *@
+    @(masterCssSelector) .e-toast-message {
+        display: inline-flex;
+        flex-direction: column;
+        align-self: center;
+        overflow: hidden;
+        width: inherit;
+    }
+
+    @* Set the styling for the toast title *@
+    @(masterCssSelector) .e-toast-message .e-toast-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        font-size: @ToastTitleFontSize;
+        color: @ToastTitleFontColor;
+        font-weight: @ToastTitleFontWeight;
+        letter-spacing: @ToastTitleLetterSpacing;
+    }
+
+    @* Set the styling for the toast content *@
+    @(masterCssSelector) .e-toast-message .e-toast-content {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+        word-wrap: break-word;
+
+        font-size: @ToastContentFontSize;
+        color: @ToastContentFontColor;
+        font-weight: @ToastContentFontWeight;
+        letter-spacing: @ToastContentLetterSpacing;
+        padding: @ToastContentPadding;
+    }
+
+    @*  Set the styling for the toast close icon *@
+    @(masterCssSelector) .e-toast-close-icon.e-blazor-toast-close-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        font-size: @ToastCloseButtonFontSize;
+        color: @ToastCloseButtonFontColor;
+        height: @ToastCloseButtonSize;
+        width: @ToastCloseButtonSize;
+        background: @ToastCloseButtonBackground;
+        border: @ToastCloseButtonBorder;
+        box-shadow: @ToastCloseButtonBoxShadow;
+        margin: @ToastCloseMargin;
+    }
+
+    @* Set the styling for the toast close icon in the hovered, focused and active states *@
+    @(masterCssSelector) .e-toast-close-icon.e-blazor-toast-close-icon:hover,
+    @(masterCssSelector) .e-toast-close-icon.e-blazor-toast-close-icon:focus, 
+    @(masterCssSelector) .e-toast-close-icon.e-blazor-toast-close-icon:active {
+        background: @ToastCloseButtonHoverBackground;
+        border: @ToastCloseButtonHoverBorder;
+        box-shadow: @ToastCloseButtonHoverBoxShadow;
+    }
+
+</style>

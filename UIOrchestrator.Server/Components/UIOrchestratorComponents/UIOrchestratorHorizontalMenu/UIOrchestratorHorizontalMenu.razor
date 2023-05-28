@@ -1,0 +1,49 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorHorizontalMenu
+
+@using Syncfusion.Blazor.Navigations
+@using Code420.UIOrchestrator.Server.Code.Models.Menus
+@using Code420.UIOrchestrator.Server.Components.BaseComponents.MenuBase
+
+<MenuBase   @ref=@menubase
+            TValue=@OrchestratorMenuItem
+            EnableScrolling=true
+            Items=@OrchestratorRef.MainMenuItems
+            ShowItemOnClick=false
+            Target=@($".{ TargetCssClass }")
+
+            ItemSelected=@ItemSelectedHandler
+
+            CssClass=@menuCssClass
+
+            MenuFontColor="var(--hmenu__item-normal--font-color)"
+            MenuBackgroundColor="var(--hmenu__item-normal--background-color)"
+            MenuMinimumWidth="auto"
+            MenuMargin="0px 12px"
+            MenuPadding="3px 0px 0px 0px"
+            MenuItemPadding="0px 30px 0px 12px"
+            MenuIconFontColor="var(--hmenu__icon--font-color)"
+            MenuCaretFontColor="var(--hmenu__caret--font-color)"
+            SeparatorBorder="1px solid var(--hmenu__separator--border-color)"
+            MenuItemSelectedFontColor="var(--hmenu__item-active--font-color)"
+            MenuItemSelectedBackgroundColor="var(--hmenu__item-active--background-color)"
+            MenuPopupBorder="1px solid var(--hmenu__popup--border-color)"
+            MenuPopupFontColor="var(--hmenu__popup--font-color)"
+            MenuPopupBackgroundColor="var(--hmenu__popup--background-color)"
+            MenuPopupLeftMargin="-4px"
+            >
+    @* Inject as ChildContent in MenuBase *@
+    <MenuFieldSettings  Text=@nameof(OrchestratorMenuItem.MenuText)
+                        Children=@nameof(OrchestratorMenuItem.SubMenu)
+                        IconCss=@nameof(OrchestratorMenuItem.IconCss)
+                        ItemId=@nameof(OrchestratorMenuItem.ItemId)
+                        ParentId=@nameof(OrchestratorMenuItem.ParentId)
+                        Disabled=@nameof(OrchestratorMenuItem.IsDisabled)
+                        Hidden=@nameof(OrchestratorMenuItem.IsHidden)
+                        Separator=@nameof(OrchestratorMenuItem.IsSeparator)
+                        Url=@nameof(OrchestratorMenuItem.Url)
+                        HtmlAttributes=@nameof(OrchestratorMenuItem.HtmlAttributes)
+                        >
+    </MenuFieldSettings>
+
+</MenuBase>
+

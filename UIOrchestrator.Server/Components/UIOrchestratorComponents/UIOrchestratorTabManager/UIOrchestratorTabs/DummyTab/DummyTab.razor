@@ -1,0 +1,61 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.DummyTab
+
+@using Code420.UIOrchestrator.Server.Code.Models.Menus;
+@using Code420.UIOrchestrator.Core.Models.UIOrchestratorConstants;;
+
+
+<!--suppress SpellCheckingInspection -->
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+    labore et dolore magna aliqua. Ornare massa eget egestas purus viverra accumsan. Luctus accumsan 
+    tortor posuere ac ut consequat semper viverra nam. Porttitor massa id neque aliquam vestibulum. 
+    Cras adipiscing enim eu turpis egestas pretium aenean pharetra. Eros donec ac odio tempor orci 
+    dapibus ultrices in iaculis. Id diam vel quam elementum. Dictum varius duis at consectetur lorem 
+    donec massa. Diam vulputate ut pharetra sit amet aliquam id diam. Eget arcu dictum varius duis at 
+    consectetur lorem donec massa. Ornare arcu odio ut sem. Arcu dictum varius duis at. Arcu cursus 
+    euismod quis viverra nibh. Aenean et tortor at risus viverra adipiscing at in. Facilisi etiam 
+    dignissim diam quis enim lobortis scelerisque fermentum. Id leo in vitae turpis massa. Faucibus 
+    turpis in eu mi bibendum. Lorem donec massa sapien faucibus et molestie ac.
+</p>
+<p>
+    Tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce. Eget mi proin sed libero 
+    enim sed. Ut diam quam nulla porttitor. Eu augue ut lectus arcu. Eu lobortis elementum nibh tellus 
+    molestie nunc. At in tellus integer feugiat scelerisque varius. Tortor pretium viverra suspendisse 
+    potenti nullam ac. Aliquet nibh praesent tristique magna sit amet purus. Egestas purus viverra accumsan 
+    in nisl nisi. A arcu cursus vitae congue mauris rhoncus aenean vel elit.
+</p>
+
+
+@code{
+    /// <summary>
+    /// Provides the a simple tab with no code-behind.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This component <b>must</b> exist in the namespace defined by
+    /// <see cref="UIOrchestratorConstants.OrchestratorTabBaseNamespace"/> otherwise
+    /// an exception will be thrown when the application constructs the <see cref="RenderFragment"/>.
+    /// </para>
+    /// </remarks>
+
+    /// <summary>
+    /// String value containing the <see cref="OrchestratorMenuItem.ItemId"/> for this Tab.
+    /// Parameter is not used.
+    /// <remarks>
+    /// As with all UIOrchestratorTabs, this parameter is set when the <see cref="RenderFragment"/>
+    /// (encapsulated in the OrchestratorMenuItem.TabDefinition.ContentTemplate property) is built.
+    /// </remarks>
+    /// </summary>
+    [Parameter]
+    public string MenuItemId { get; set; }
+
+}
+
+<style>
+
+    p {
+        color: inherit;
+        padding: 1em;
+    }
+
+</style>

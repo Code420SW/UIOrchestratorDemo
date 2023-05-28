@@ -1,3 +1,39 @@
 ﻿@inherits LayoutComponentBase
 
-<main> @Body </main>
+@*
+MainLayout provides the page div for the application amd establishes a grid on the page div
+consisting of three row with one column each.The page div height is set to 100vh meaning it
+will fill the entire page The grid rows are defined as auto, 1fr, auto meaning the top and
+bottom rows will be sized based on their contents and the center row will consume the balance
+of the space.
+
+The page div is styled with a font size of 14px and a text color of #FFF (white).
+These styles will be inherited by all components that are placed in the page div.
+The font size is the base for the 1em unit of measure.
+*@
+
+<PageTitle>UIOrchestratorDemo</PageTitle>
+
+
+<div class="page">
+    @Body
+</div>
+
+<style>
+
+    /* Set styling for the page container */
+    .page {
+        position: relative;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+        column-gap: 0;
+        row-gap: 0;
+
+        height: 100vh;
+        font-size: 14px;
+        color: #FFF;
+    }
+
+</style>

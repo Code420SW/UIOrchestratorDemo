@@ -1,0 +1,48 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpDialog
+
+@using Code420.UIOrchestrator.Server.Components.BaseComponents.DialogBoxBase;
+@using Syncfusion.Blazor.Popups
+
+<DialogBoxBase  @ref=helpDialog
+                    
+                AnimationEffect=DialogEffect.None
+                IsModal=false
+
+                CssClass="dialog__help-system"
+                Height="300px"
+                Width="500px"
+                Target=@Target
+
+                DialogBaseFontSize="12px"
+                DialogBorder="none"
+                DialogBorderRadius="4px"
+
+                HeaderFontSize="1.25em"
+                HeaderFontWeight="bold"
+                HeaderLineHeight="1.25"
+                HeaderFontColor="var(--dialog-help__title-font-color)"
+                HeaderPadding="0.5em 1em"
+                HeaderBackgroundColor="var(--dialog-help__header-background-color)"
+                HeaderBottomBorder="none"
+                HeaderBorderRadius="4px 4px 0px 0px"
+
+                ContentFontSize="1em"
+                ContentPadding="0px"
+                ContentBackgroundColor="var(--dialog-help__background-color)"
+
+                FooterPadding=".5em"
+                FooterBackgroundColor="var(--dialog-help__header-background-color)"
+                FooterTopBorder="none"
+                FooterBorderRadius="0px 0px 4px 4px"
+                >
+    <HeaderFragment>
+        @HeaderFragment
+    </HeaderFragment>
+    <ContentFragment>
+        @ContentFragment
+    </ContentFragment>
+    <FooterFragment>
+        @FooterFragment
+    </FooterFragment>
+
+</DialogBoxBase>

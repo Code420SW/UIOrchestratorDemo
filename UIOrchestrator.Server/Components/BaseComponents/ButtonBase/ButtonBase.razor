@@ -1,0 +1,74 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ButtonBase
+
+@using Syncfusion.Blazor.Buttons
+
+<SfButton   @ref=@sfButton
+            IconPosition=@IconPosition
+            IsPrimary=@IsPrimary
+            IsToggle=@IsToggle
+            Disabled=@IsDisabled
+            EnableRtl=@EnableRtl
+
+            CssClass=@aggregatedCssClass
+            HtmlAttributes=@HtmlAttributes
+            IconCss=@IconCss
+
+            Created=@OnCreated
+            OnClick=@OnClick
+            >
+
+    <ChildContent>
+        @ContentFragment
+    </ChildContent>
+
+</SfButton>
+
+<style>
+
+    @* To customize the button. *@
+    @(masterCssSelector) {
+        @((ButtonHeight != string.Empty) ? $"height: { ButtonHeight };" : "")
+        @((ButtonWidth != string.Empty) ? $"width: { ButtonWidth };" : "")
+        color: @TextFontColor;
+        font-size: @TextFontSize;
+        font-weight: @TextFontWeight;
+        text-align: @TextHorizontalAlignment;
+        vertical-align: @TextVerticalAlignment;
+        line-height: @ButtonLineHeight;
+        @((ButtonNormalBackgroundColor != string.Empty) ? $"background-color: { ButtonNormalBackgroundColor };" : "")
+        border-color: @ButtonNormalBorderColor;
+        box-shadow: none;
+        @((HoverScale != 1.0m) ? "transition: transform 125ms ease-in-out;" : "")
+        margin: @Margin;
+        padding: @Padding;
+    }
+
+    @* To customize the icon for standard buttons *@
+    @(masterCssSelector) .e-btn-icon {
+        font-size: @IconFontSize;
+    }
+
+    @* To customize the button on hover *@
+    @(masterCssSelector):hover,
+    @(masterCssSelector):focus,
+    @(masterCssSelector):focus-visible {
+        border-color: @ButtonHoverBorderColor;
+        @((HoverScale != 1.0m) 
+            ? $"transform: scale({ HoverScale });" 
+            : "")
+        @((ButtonHoverBackgroundColor != string.Empty) 
+                ? $"background-color: { ButtonHoverBackgroundColor };" 
+                : ((IsPrimary) ? "" : "filter: hue-rotate(180deg);")
+        )
+    }
+
+    @* To customize the button on active. *@
+    @(masterCssSelector):active {
+        @((ButtonActiveBackgroundColor != string.Empty) 
+            ? $"background-color: { ButtonActiveBackgroundColor };" 
+            : $"background-color: { ButtonNormalBackgroundColor };")
+        border-color: @ButtonActiveBorderColor;
+        box-shadow: 0 0 0 .25rem @boxShadowRgba;
+    }
+
+</style>

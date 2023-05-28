@@ -1,0 +1,67 @@
+﻿@namespace Code420.UIOrchestrator.Server.Components.UIOrchestratorComponents.UIOrchestratorTabManager.UIOrchestratorTabs.ConfigurationTab
+
+@using Code420.UIOrchestrator.Server.Components.BaseComponents.TabBase
+@using Syncfusion.Blazor.Navigations
+
+
+<TabBase    @ref=@tabbase
+            AllowDragAndDrop=false
+            AnimationDuration=600
+            AnimationNextEffect=AnimationEffect.SlideRightIn
+            AnimationPreviousEffect=AnimationEffect.SlideLeftIn
+            EnablePersistence=true
+            HeaderPlacement=HeaderPosition.Top
+            LoadOn="ContentLoad.Demand"
+            OverflowMode=OverflowMode.Scrollable
+            ReorderActiveTab=true
+            ScrollStep=200
+            SelectedItem=@selectedItem
+            ShowCloseButton=false
+            TabItems=@tabItem
+
+            SelectedItemChanged=@MyOnSelectedItemChangedHandler
+            
+            CssClass="configuration-tab__collection"
+            CssId="configuration-tab-id"
+            
+            Height="100%"
+            Width="100%"
+
+            TabHeaderBorderWidth="2px"
+            TabHeaderBorderColor="var(--tab__secondary-header-active-border--color)"
+            TabHeaderBorderStyle="solid"
+            TabHeaderBorderRadius="0px"
+            TabHeaderBackgroundColor="var(--tab__secondary-header--bg)"
+            TabHeaderInactiveHoveredBorderWidth="1px"
+            TabHeaderInactiveHoveredBorderColor="var(--tab__secondary-header-inactive-border--color)"
+            TabHeaderInactiveHoveredBorderStyle="solid"
+            TabHeaderExtraMargin="8px"
+
+            TabItemBorderRadius="4px"
+            
+            TabItemMargin="4px"
+            TabItemHeight="36px"
+
+            TabTextActiveFontSize="12px"
+            TabTextActiveFontWeight="400"
+            TabTextActiveFontColor="var(--tab__text-active--font-color)"
+            TabTextInactiveFontSize="12px"
+            TabTextInactiveFontWeight="400"
+            TabTextInactiveFontColor="var(--tab__text-inactive--font-color)"
+            TabTextActiveHoveredFontSize="12px"
+            TabTextActiveHoveredFontWeight="400"
+            TabTextActiveHoveredFontColor="var(--tab__text-active-hover--font-color)"
+            TabTextInactiveHoveredFontSize="12px"
+            TabTextInactiveHoveredFontWeight="400"
+            TabTextInactiveHoveredFontColor="var(--tab__text-inactive-hover--font-color)"
+            TabTextPadding="2px 0px 0px 0px"
+
+            ScrollButtonFontSize="12px"
+            ScrollButtonNormalFontColor="#212529"
+            ScrollButtonNormalBackground="transparent"
+            ScrollButtonHoveredFontColor="#FFF"
+            ScrollButtonHoveredBackground="#5A6268"
+            ScrollButtonBorderRadius="4px"
+            >
+
+</TabBase>

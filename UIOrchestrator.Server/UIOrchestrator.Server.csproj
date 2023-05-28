@@ -2,11 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>54d06636-7e9b-476b-b1ae-7acc25d1d643</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
+    <RootNamespace>Code420.UIOrchestrator.Server</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,6 +41,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Code\Models\" />
+    <Folder Include="Components\CustomComponents\" />
+    <Folder Include="Components\UIOrchestratorComponents\" />
+    <Folder Include="Components\UIOrchestratorComponents\UIOrchestratorTabManager\UIOrchestratorTabs\ConfigurationTab\ConfigurationChildTabs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StatusGeneric\StatusGeneric.csproj" />
     <ProjectReference Include="..\UIOrchestrator.Core\UIOrchestrator.Core.csproj" />
   </ItemGroup>
 
