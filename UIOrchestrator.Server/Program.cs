@@ -5,6 +5,8 @@ using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var syncfusionLicense = builder.Configuration.GetSection("SyncfusionLicense").Value;
+
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
@@ -19,7 +21,7 @@ builder.Services
 var app = builder.Build();
 
 // Add your Syncfusion license key for Blazor platform with corresponding Syncfusion NuGet version referred in project. For more information about license key see https://help.syncfusion.com/common/essential-studio/licensing/license-key.
-// Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("");
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(syncfusionLicense);
 
 if (!app.Environment.IsDevelopment())
 {

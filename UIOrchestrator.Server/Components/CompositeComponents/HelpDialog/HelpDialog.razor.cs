@@ -29,10 +29,11 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpDialo
     /// </summary>
     /// <remarks>
     /// The following parameters must be set:<br />
-    /// <see cref="Target"/> -- The CSS id or class of the dialog box's parent<br />
-    /// <see cref="HeaderFragment"/> -- Define the content displayed in the header section of the dialog<br />
-    /// <see cref="ContentFragment"/> -- Define the content displayed in the content section of the dialog<br />
-    /// <see cref="FooterFragment"/> -- Define the content displayed in the footer section of the dialog
+    /// <see cref="Target"/> -- The CSS id or class of the dialog box's parent.<br />
+    /// <see cref="HeaderFragment"/> -- Define the content displayed in the header section of the dialog.<br />
+    /// <see cref="ContentFragment"/> -- Define the content displayed in the content section of the dialog.<br />
+    /// <see cref="FooterFragment"/> -- Define the content displayed in the footer section of the dialog.<br />
+    /// <see cref="CssClassSuffix"/> -- The suffix to append to the CSS class name to provide styling segregation.
     /// </remarks>
 
     public partial class HelpDialog : ComponentBase
@@ -77,7 +78,20 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpDialo
         public RenderFragment HeaderFragment { get; set; }
 
         #endregion
+        
+        #region CSS Parameters
 
+        /// <summary>
+        /// String value containing a suffix applied to the CSS class name to
+        /// provide styling segregation.
+        /// Default value is string.Empty.
+        /// </summary>
+        [Parameter]
+        [EditorRequired]
+        public string CssClassSuffix { get; set; } = string.Empty;
+        
+        #endregion
+        
         #endregion
 
 

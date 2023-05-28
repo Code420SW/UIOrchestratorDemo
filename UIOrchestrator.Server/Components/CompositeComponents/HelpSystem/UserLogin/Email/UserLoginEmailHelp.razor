@@ -61,6 +61,7 @@ The HelpDialog component extends the basic styling using the <style> tag.
 
 <HelpDialog @ref=dialogLearnMore
             Target=@Target
+            CssClassSuffix=@CssClassSuffix
             >
     <HeaderFragment>
         User Email Help
@@ -78,8 +79,8 @@ The HelpDialog component extends the basic styling using the <style> tag.
         
         Styling for the cards and their titles is provided in the <style> tag below.
         *@
-        <div class="content__user-login-email-help">
-            <article class="card__user-login-email-help">
+        <div class=@($"content__{ CssClassSuffix }")>
+            <article class=@($"card__{ CssClassSuffix }")>
                 <h3 class="card-title__user-login-email-help">
                     Overview
                 </h3>
@@ -88,24 +89,24 @@ The HelpDialog component extends the basic styling using the <style> tag.
                     must be valid or an error message will be displayed.
                 </p>
             </article>
-            <article class="card__user-login-email-help">
-                <h3 class="card-title__user-login-email-help">Best Practice</h3>
+            <article class=@($"card__{ CssClassSuffix }")>
+                <h3 class=@($"card-title__{ CssClassSuffix }")>Best Practice</h3>
                 <p>
                     For this demo, two email addresses are defined. Each has different
                     permission sets assigned. Any email address other than the predefined
                     ones will be assigned a limited permission set.
                 </p>
             </article>
-            <article class="card__user-login-email-help">
-                <h3 class="card-title__user-login-email-help">Predefined Email Addresses</h3>
-                <article class="card-section__user-login-email-help">
+            <article class=@($"card__{ CssClassSuffix }")>
+                <h3 class=@($"card-title__{ CssClassSuffix }")>Predefined Email Addresses</h3>
+                <article class=@($"card-section__{ CssClassSuffix }")>
                     <h3 class="card-section-title__user-login-email-help">accessall@test.com</h3>
                     <p>
                         Granted the AccessAll permission set which exposes all menu items.
                     </p>
                 </article>
-                <article class="card-section__user-login-email-help">
-                    <h3 class="card-section-title__user-login-email-help">permission1@test.com</h3>
+                <article class=@($"card-section__{ CssClassSuffix }")>
+                    <h3 class=@($"card-section-title__{ CssClassSuffix }")>permission1@test.com</h3>
                     <p>
                         Granted the Permission_1 permission set which exposes the following menu items:
                     </p>
@@ -117,8 +118,8 @@ The HelpDialog component extends the basic styling using the <style> tag.
                         <li>Settings->Switch Theme->Dark</li>
                     </ul>
                 </article>
-                <article class="card-section__user-login-email-help">
-                    <h3 class="card-section-title__user-login-email-help">Any other email address</h3>
+                <article class=@($"card-section__{ CssClassSuffix }")>
+                    <h3 class=@($"card-section-title__{ CssClassSuffix }")>Any other email address</h3>
                     <p>
                         Granted the Permission_2 permission set which exposes the following menu items:
                     </p>
@@ -138,67 +139,3 @@ The HelpDialog component extends the basic styling using the <style> tag.
 </HelpDialog>
 
 
-<style>
-
-    p {
-        line-height: 1.1;
-        color: black;
-        margin-bottom: 0;
-    }
-
-    .card__user-login-email-help {
-        padding: 0.75em 1em;
-        background-color: var(--dialog-help__background-color);
-    }
-
-    .card__user-login-email-help p {
-        font-size: 1em;
-    }
-
-    .card-title__user-login-email-help {
-        display: flex;
-        align-items: flex-start;
-        text-align: left;
-        font-size: 1.25em;
-        font-weight: 600;
-        color: var(--dialog-help__title-font-color);
-        margin-bottom: 0.5em;
-    }
-
-    .card-title__user-login-email-help::after {
-        content: "";
-        flex-grow: 1;
-        height: 1px;
-        background: var(--dialog-help__title-font-color);
-        min-width: 20px;
-        margin: auto auto auto 0.5em;
-    }
-
-    .card-section__user-login-email-help {
-        padding: 0 1em 0.75em 1em;
-        background-color: var(--dialog-help__background-color);
-    }
-
-    .card-section__user-login-email-help p {
-        font-size: 1em;
-    }
-
-    .card-section-title__user-login-email-help {
-        display: flex;
-        align-items: flex-start;
-        text-align: left;
-        font-size: 1.1em;
-        font-weight: 600;
-        color: var(--dialog-help__subtitle-font-color);
-    }
-
-    .card-section-title__user-login-email-help::after {
-        content: "";
-        flex-grow: 1;
-        height: 1px;
-        background: var(--dialog-help__subtitle-font-color);
-        min-width: 20px;
-        margin: auto auto auto 0.5em;
-    }
-
-</style>
