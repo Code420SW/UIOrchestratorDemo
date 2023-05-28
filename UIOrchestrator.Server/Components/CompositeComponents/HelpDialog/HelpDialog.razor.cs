@@ -11,41 +11,28 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpDialo
     /// applies so all Help System components have a consistent look and feel.
     /// </para>
     /// <para>
-    /// The help button is displayed in the parent container and when hovered,
-    /// the tooltip is displayed. The component can be used as-is but is typically
-    /// used by topic-specific Help System components.
+    /// The dialog is displayed in the container specified by the <see cref="Target"/>
+    /// parameter.
     /// </para>
     /// <para>
-    /// Styling for the child components should be consistent across the application.
+    /// Styling for the dialog should be consistent across the application.
     /// For this reason the styling is hard-coded in the component though should
     /// reference theming elements as appropriate.
-    /// </para>
-    /// <para>
-    /// The styling for the <see cref="TooltipContent"/> should be defined in the
-    /// consuming component since the content is specific to the consuming component.
-    /// </para>
-    /// <para>
-    /// The <see cref="CssClass"/> parameter is provided to mitigate styling conflicts
-    /// in the situation when the consuming component also contains one of this component's
-    /// children (e.g., <see cref="IconButtonBase"/>). The suffixes <c>__button</c> and
-    /// <c>__tooltip</c> are added to the CSSClass parameters for the <see cref="IconButtonBase"/>
-    /// and <see cref="ToolTipBase"/> child components, respectively.
     /// </para>
     /// <para>
     /// The component does not provide access to any event handlers for the child component.
     /// </para>
     /// <para>
     /// Methods are provided for basic manipulation of the child components
-    /// (e.g., <see cref="OpenTooltipAsync"/> and <see cref="EnableIconButtonAsync"/>).
+    /// (e.g., <see cref="ShowAsync"/> and <see cref="HideAsync"/>).
     /// </para>
     /// </summary>
     /// <remarks>
     /// The following parameters must be set:<br />
-    /// <see cref="TooltipContent"/> -- Define the content displayed in the tooltip<br />
-    /// </remarks>
-    /// <remarks>
-    /// Consider setting the following parameters:<br />
-    /// <see cref="CssClass"/> -- Provides CSS isolation for the toast.
+    /// <see cref="Target"/> -- The CSS id or class of the dialog box's parent<br />
+    /// <see cref="HeaderFragment"/> -- Define the content displayed in the header section of the dialog<br />
+    /// <see cref="ContentFragment"/> -- Define the content displayed in the content section of the dialog<br />
+    /// <see cref="FooterFragment"/> -- Define the content displayed in the footer section of the dialog
     /// </remarks>
 
     public partial class HelpDialog : ComponentBase
@@ -56,12 +43,13 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpDialo
         #region Base Parameters
 
         /// <summary>
-        /// String value containing the CSS Id of the dialog box's parent. 
+        /// String value containing the CSS id or class of the dialog box's parent. 
         /// The dialog box will be rendered completely within the HTML element associated with
         /// the CSS Id. The Target parameter should be a proper CSS Id selector (e.g., #target-id).
         /// Default value is <c>null</c> indicating the target element is the HTML <c>body</c> element.
         /// </summary>
         [Parameter]
+        [EditorRequired]
         public string Target { get; set; }
 
         /// <summary>
@@ -69,6 +57,7 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpDialo
         /// The default value is null.
         /// </summary>
         [Parameter]
+        [EditorRequired]
         public RenderFragment ContentFragment { get; set; }
 
         /// <summary>
@@ -76,6 +65,7 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpDialo
         /// The default value is null.
         /// </summary>
         [Parameter]
+        [EditorRequired]
         public RenderFragment FooterFragment { get; set; }
 
         /// <summary>
@@ -83,13 +73,8 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpDialo
         /// The default value is null.
         /// </summary>
         [Parameter]
+        [EditorRequired]
         public RenderFragment HeaderFragment { get; set; }
-
-        #endregion
-
-
-        #region CSS Parameters
-
 
         #endregion
 

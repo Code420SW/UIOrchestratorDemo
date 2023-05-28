@@ -6,6 +6,17 @@
 @using Syncfusion.Blazor.Popups
 
 <!--suppress ALL -->
+
+@*
+Component consists of a HelpButton component and a HelpDialog component.
+
+As noted below, the ToolTipBase child component of the HelpButton component
+extends the basic styling provided by the HelpButton component and adds
+additional styling using inlined CSS.
+
+The HelpDialog component extends the basic styling using the <style> tag.
+*@
+
 <HelpButton @ref=helpButtonComponent
             CssClass="user-login-email-help"
             ButtonMargin="2.5em 0 0 1em"
@@ -20,19 +31,20 @@
         property. Using <style> tags will work too as long as you manage CSS isolation
         issues appropriately.
         *@
-        <div class="user-login-email-help__tooltip-content"
+        <div class="tooltip-content__user-login-email-help"
              style="font-size: 12px; 
              color: var(--tooltip-help__title-font-color);
              margin: 1em;">
             <p style="font-size: 14px; 
                 color: var(--tooltip-help__body-font-color);">
-                <b>Enter the Email Assigned to Your Account.</b>
+                <b>Enter the Email Address Assigned to Your Account.</b>
             </p>
-            <div class="user-login-email-help__button" style="display: flex; margin-top: 1em;">
+            <div class="button__user-login-email-help" 
+                 style="display: flex; margin-top: 1em;">
                 <ButtonBase @ref=buttonLearnMore
                             IsPrimary=true
                             TextFontSize="1em"
-                            CssClass="user-login-email-help__button-learn-more"
+                            CssClass="button__user-login-email-help-learn-more"
                             Padding="4px 8px"
                             Margin="auto"
                             OnClick=LearnMoreButtonClickAsync
@@ -48,68 +60,79 @@
 </HelpButton>
 
 <HelpDialog @ref=dialogLearnMore
-            Target=".page__main"
+            Target=@Target
             >
     <HeaderFragment>
         User Email Help
     </HeaderFragment>
     <ContentFragment>
+        @*
+        This is an example of a "standardized" help dialog.
+        
+        The dialog is composed of three cards (class="card__*"): Overview, 
+        Best Practice, and a details section (Predefined Email Addresses) below.
+        
+        Each card contains a title (class="card-title__*") and a body. In the example
+        below, the body is either a <p> element or an additional section card 
+        (class="card-section__*"). Additional section cards can be added as needed.
+        
+        Styling for the cards and their titles is provided in the <style> tag below.
+        *@
         <div class="content__user-login-email-help">
-                <article class="card__user-login-email-help">
-                    <h3 class="card-title__user-login-email-help">
-                        Overview
-                    </h3>
+            <article class="card__user-login-email-help">
+                <h3 class="card-title__user-login-email-help">
+                    Overview
+                </h3>
+                <p>
+                    Enter the email used to register your account. The email
+                    must be valid or an error message will be displayed.
+                </p>
+            </article>
+            <article class="card__user-login-email-help">
+                <h3 class="card-title__user-login-email-help">Best Practice</h3>
+                <p>
+                    For this demo, two email addresses are defined. Each has different
+                    permission sets assigned. Any email address other than the predefined
+                    ones will be assigned a limited permission set.
+                </p>
+            </article>
+            <article class="card__user-login-email-help">
+                <h3 class="card-title__user-login-email-help">Predefined Email Addresses</h3>
+                <article class="card-section__user-login-email-help">
+                    <h3 class="card-section-title__user-login-email-help">accessall@test.com</h3>
                     <p>
-                        Enter the email used to register your account. The email
-                        must be valid or an error message will be displayed.
+                        Granted the AccessAll permission set which exposes all menu items.
                     </p>
                 </article>
-                <article class="card__user-login-email-help">
-                    <h3 class="card-title__user-login-email-help">Best Practice</h3>
+                <article class="card-section__user-login-email-help">
+                    <h3 class="card-section-title__user-login-email-help">permission1@test.com</h3>
                     <p>
-                        For this demo, two email addresses are defined. Each has different
-                        permission sets assigned. Any email address other than the predefined
-                        ones will be assigned a limited permission set.
+                        Granted the Permission_1 permission set which exposes the following menu items:
                     </p>
+                    <ul style="margin-bottom:0;">
+                        <li>Dummy Tab</li>
+                        <li>Settings->Configuration->Application</li>
+                        <li>Settings->User->Logout</li>
+                        <li>Settings->Switch Theme->Light</li>
+                        <li>Settings->Switch Theme->Dark</li>
+                    </ul>
                 </article>
-                <article class="card__user-login-email-help">
-                    <h3 class="card-title__user-login-email-help">Predefined Email Addresses</h3>
-                    <article class="card-section__user-login-email-help">
-                        <h3 class="card-section-title__user-login-email-help">accessall@test.com</h3>
-                        <p>
-                            Granted the AccessAll permission set which exposes all menu items.
-                        </p>
-                    </article>
-                    <article class="card-section__user-login-email-help">
-                        <h3 class="card-section-title__user-login-email-help">permission1@test.com</h3>
-                        <p>
-                            Granted the Permission_1 permission set which exposes the following menu items:
-                        </p>
-                        <ul style="margin-bottom:0;">
-                            <li>Dummy Tab</li>
-                            <li>Settings->Configuration->Application</li>
-                            <li>Settings->User->Logout</li>
-                            <li>Settings->Switch Theme->Light</li>
-                            <li>Settings->Switch Theme->Dark</li>
-                        </ul>
-                    </article>
-                    <article class="card-section__user-login-email-help">
-                        <h3 class="card-section-title__user-login-email-help">Any other email address</h3>
-                        <p>
-                            Granted the Permission_2 permission set which exposes the following menu items:
-                        </p>
-                        <ul style="margin-bottom:0;">
-                            <li>Dummy Tab</li>
-                            <li>Settings->User->Logout</li>
-                            <li>Settings->Do Nothing</li>
-                        </ul>
-                    </article>
+                <article class="card-section__user-login-email-help">
+                    <h3 class="card-section-title__user-login-email-help">Any other email address</h3>
+                    <p>
+                        Granted the Permission_2 permission set which exposes the following menu items:
+                    </p>
+                    <ul style="margin-bottom:0;">
+                        <li>Dummy Tab</li>
+                        <li>Settings->User->Logout</li>
+                        <li>Settings->Do Nothing</li>
+                    </ul>
                 </article>
+            </article>
         </div>
     </ContentFragment>
     <FooterFragment>
-        <div class="footer__user-login-email-help" style="height: 1em;">
-        </div>
+        <div class="footer__user-login-email-help" style="height: 1em;"></div>
     </FooterFragment>
 
 </HelpDialog>
@@ -126,6 +149,10 @@
     .card__user-login-email-help {
         padding: 0.75em 1em;
         background-color: var(--dialog-help__background-color);
+    }
+
+    .card__user-login-email-help p {
+        font-size: 1em;
     }
 
     .card-title__user-login-email-help {
@@ -147,13 +174,13 @@
         margin: auto auto auto 0.5em;
     }
 
-    .card__user-login-email-help p {
-        font-size: 1em;
-    }
-
     .card-section__user-login-email-help {
         padding: 0 1em 0.75em 1em;
         background-color: var(--dialog-help__background-color);
+    }
+
+    .card-section__user-login-email-help p {
+        font-size: 1em;
     }
 
     .card-section-title__user-login-email-help {
@@ -172,10 +199,6 @@
         background: var(--dialog-help__subtitle-font-color);
         min-width: 20px;
         margin: auto auto auto 0.5em;
-    }
-
-    .card-section__user-login-email-help p {
-        font-size: 1em;
     }
 
 </style>
