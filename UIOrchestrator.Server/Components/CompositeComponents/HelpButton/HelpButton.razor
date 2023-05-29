@@ -31,7 +31,6 @@
                 IconFontLineHeight="1.0"
                 >
 </IconButtonBase>
-                @* CssId=@($"id-{ CssClass }__tooltip") *@
 
 <ToolTipBase    @ref=@tooltipBase
                 IsSticky=false
@@ -42,6 +41,7 @@
                 Width=@TooltipWidth
                 Height=@TooltipHeight
 
+                CssId=@($"id-{ CssClass }__tooltip")
                 CssClass=@($"{ CssClass }__tooltip")
                 Target=@($".{ CssClass }__button")
                 
