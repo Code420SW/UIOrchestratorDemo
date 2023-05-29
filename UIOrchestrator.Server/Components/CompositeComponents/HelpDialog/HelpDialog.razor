@@ -3,6 +3,7 @@
 @using Code420.UIOrchestrator.Server.Components.BaseComponents.DialogBoxBase;
 @using Syncfusion.Blazor.Popups
 
+<!--suppress CssUnresolvedCustomProperty, CssUnusedSymbol -->
 <DialogBoxBase  @ref=helpDialog
                     
                 AnimationEffect=DialogEffect.None
@@ -34,7 +35,7 @@
                 FooterBackgroundColor="var(--dialog-help__header-background-color)"
                 FooterTopBorder="none"
                 FooterBorderRadius="0px 0px 4px 4px"
-                >
+>
     <HeaderFragment>
         @HeaderFragment
     </HeaderFragment>
@@ -46,3 +47,62 @@
     </FooterFragment>
 
 </DialogBoxBase>
+
+
+<style>
+
+    @($".content__{ CssClassSuffix }") p {
+        line-height: 1.1;
+        color: black;
+        margin-bottom: 0;
+        font-size: 1em;
+    }
+
+    @($".card__{ CssClassSuffix }") {
+        padding: 0.75em 1em;
+        background-color: var(--dialog-help__background-color);
+    }
+
+    @($".card-title__{ CssClassSuffix }") {
+        display: flex;
+        align-items: flex-start;
+        text-align: left;
+        font-size: 1.25em;
+        font-weight: 600;
+        color: var(--dialog-help__title-font-color);
+        margin-bottom: 0.5em;
+    }
+
+    @($".card-title__{ CssClassSuffix }")::after {
+        content: "";
+        flex-grow: 1;
+        height: 1px;
+        background: var(--dialog-help__title-font-color);
+        min-width: 20px;
+        margin: auto auto auto 0.5em;
+    }
+
+    @($".card-section__{ CssClassSuffix }") {
+        padding: 0 1em 0.75em 1em;
+        background-color: var(--dialog-help__background-color);
+    }
+
+    @($".card-section-title__{ CssClassSuffix }") {
+        display: flex;
+        align-items: flex-start;
+        text-align: left;
+        font-size: 1.1em;
+        font-weight: 600;
+        color: var(--dialog-help__subtitle-font-color);
+    }
+
+    @($".card-section-title__{ CssClassSuffix }")::after {
+        content: "";
+        flex-grow: 1;
+        height: 1px;
+        background: var(--dialog-help__subtitle-font-color);
+        min-width: 20px;
+        margin: auto auto auto 0.5em;
+    }
+
+</style>

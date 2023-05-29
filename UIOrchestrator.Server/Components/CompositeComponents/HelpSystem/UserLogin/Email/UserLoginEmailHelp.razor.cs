@@ -14,6 +14,11 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSyste
     /// page. This component provides the base help icon, customized tooltip contents and dialog
     /// which is displayed when the Learn More button in the tooltip is clicked. 
     /// </summary>
+    /// <remarks>
+    /// The following parameters must be set:<br />
+    /// <see cref="Target"/> -- The CSS id or class of the dialog box's parent.<br />
+    /// <see cref="CssClassSuffix"/> -- The suffix to append to the CSS class name to provide styling segregation.
+    /// </remarks>
     public partial class UserLoginEmailHelp : ComponentBase
     {
 
@@ -35,8 +40,22 @@ namespace Code420.UIOrchestrator.Server.Components.CompositeComponents.HelpSyste
         /// Default value is null indicating the target element is the HTML body element.
         /// </summary>
         [Parameter]
+        [EditorRequired]
         public string Target { get; set; }
 
+        #endregion
+        
+        #region CSS Parameters
+
+        /// <summary>
+        /// String value containing a suffix applied to the CSS class name to
+        /// provide styling segregation.
+        /// Default value is string.Empty.
+        /// </summary>
+        [Parameter]
+        [EditorRequired]
+        public string CssClassSuffix { get; set; } = string.Empty;
+        
         #endregion
 
         #endregion
