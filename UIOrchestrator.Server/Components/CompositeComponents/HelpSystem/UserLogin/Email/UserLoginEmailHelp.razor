@@ -77,7 +77,13 @@ The HelpDialog component extends the basic styling using the <style> tag.
         below, the body is either a <p> element or an additional section card 
         (class="card-section__*"). Additional section cards can be added as needed.
         
-        Styling for the cards and their titles is provided in the <style> tag below.
+        Since this is the standard class structure for the application's help
+        system, the styling is contained in the HelpDialog component's <style> tag.
+        
+        CSS isolation is achieved by using the CssClassSuffix property which is defined
+        by the consuming component and passed through to the HelpDialog component. The suffix
+        is added to the base classes (e.g., card__) to generate a unique class name for
+        each instance of the HelpDialog component.
         *@
         <div class=@($"content__{ CssClassSuffix }")>
             <article class=@($"card__{ CssClassSuffix }")>

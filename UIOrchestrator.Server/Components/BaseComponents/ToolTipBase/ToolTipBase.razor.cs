@@ -32,6 +32,10 @@ namespace Code420.UIOrchestrator.Server.Components.BaseComponents.ToolTipBase
     /// <remarks>
     /// Consider setting the following parameters:<br />
     /// <see cref="CssClass"/> -- Provides CSS isolation.
+    /// <see cref="CssId"/> -- Solves a display bug in the <see cref="sfTooltip"/>
+    /// component in certain situations. To see the problem, remove the CssId parameter
+    /// in the HelpButton component. The issue will be apparent when the LoginUserEmailHelp
+    /// is displayed.
     /// </remarks>
     public partial class ToolTipBase : ComponentBase
     {
